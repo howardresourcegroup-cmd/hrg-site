@@ -263,4 +263,165 @@
 
           <div class="card glass">
             <h3>Book Piano Systems Help</h3>
-            <p class="muted">Text a few details and we’ll respo
+            <p class="muted">Text a few details and we’ll respond quickly.</p>
+            <div class="divider"></div>
+            <a class="btn btn-secondary full" href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20help%20with%20a%20player%20piano%20system.%20Piano%20type%3A%20%5Btype%5D%20.%20Issue%3A%20%5Bissue%5D%20.%20City%3A%20%5Bcity%5D">Text about Piano Systems</a>
+            <a class="btn btn-ghost full mt-sm" href="mailto:howardresourcegroup@gmail.com?subject=Player%20Piano%20Systems%20Request&body=Name%3A%0ACity%3A%0APiano%20Brand%2FModel%3A%0ASystem%20(if%20known)%3A%0AIssue%3A%0APreferred%20time%3A">Email Request</a>
+          </div>
+        </div>
+
+        <div class="card glass mt">
+          <h3>What to include</h3>
+          <div class="grid2">
+            <div class="note">
+              <strong>Piano:</strong> brand/model (if known)<br/>
+              <strong>System:</strong> installed system name (if known)<br/>
+              <strong>Issue:</strong> what it’s doing + when it started
+            </div>
+            <div class="note">
+              <strong>Photos help:</strong> controller/interface, labels, and connections (no personal info).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Fastest: text your device/system + issue + city.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card glass">
+            <h3>Call / Text</h3>
+            <div class="contact-lines">
+              <div class="contact-line">
+                <span>Phone</span>
+                <a href="tel:+16784214125">(678) 421-4125</a>
+              </div>
+              <div class="contact-line">
+                <span>Text</span>
+                <a href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20help%20with%20%5Bdevice%2Fsystem%5D%20in%20%5Bcity%5D.%20Issue%3A%20%5Bissue%5D">Send a message</a>
+              </div>
+              <div class="contact-line">
+                <span>Email</span>
+                <a href="mailto:howardresourcegroup@gmail.com">howardresourcegroup@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <p class="muted">
+              Mobile service by appointment. Serving Dawsonville and surrounding North Georgia areas.
+            </p>
+          </div>
+
+          <div class="card glass">
+            <h3>Request Service</h3>
+            <form id="requestForm">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label>
+                Service
+                <select name="service" required>
+                  <option value="" disabled selected>Select…</option>
+                  <option>IT Consulting</option>
+                  <option>Player Piano Systems</option>
+                </select>
+              </label>
+
+              <label>
+                City / Area
+                <input type="text" name="city" placeholder="Dawsonville / Gainesville / etc." required />
+              </label>
+
+              <label>
+                What’s going on?
+                <textarea name="details" rows="4" placeholder="Describe the issue + device/system" required></textarea>
+              </label>
+
+              <button class="btn btn-primary full" type="submit">Send Request</button>
+              <p class="tiny muted">
+                This opens your email app. If you prefer, just text the details.
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="wrap footer-inner">
+            <div class="foot-left">
+              <div class="foot-title">Howard Resource Group</div>
+              <div class="foot-sub">IT Consulting • Player Piano Systems</div>
+            </div>
+            <div class="foot-right">
+              <a href="#top">Back to top ↑</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.hidden = expanded;
+    });
+    menu?.addEventListener('click', (e) => {
+      if (e.target && e.target.tagName === 'A') {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+      }
+    });
+
+    // Smooth scroll offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        const topbar = document.querySelector('.topbar');
+        const offset = topbar ? topbar.offsetHeight + 12 : 0;
+        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+
+    // Contact form -> mailto
+    const form = document.getElementById('requestForm');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const name = String(fd.get('name') || '');
+      const service = String(fd.get('service') || '');
+      const city = String(fd.get('city') || '');
+      const details = String(fd.get('details') || '');
+
+      const subject = encodeURIComponent(`Service Request: ${service} (${city})`);
+      const body = encodeURIComponent(
+`Name: ${name}
+Service: ${service}
+City/Area: ${city}
+
+Details:
+${details}
+
+Phone/Text: (678) 421-4125`
+      );
+
+      window.location.href = `mailto:howardresourcegroup@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
