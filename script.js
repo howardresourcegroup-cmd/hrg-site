@@ -1,17 +1,39 @@
 (() => {
-  // ===== HRG config =====
   const HRG = {
     phoneDisplay: "678-421-4125",
     phoneDial: "6784214125",
     textHref: "sms:6784214125",
-    formAction: "https://formspree.io/f/xkgqpggr", // ✅ your Formspree
+    formAction: "https://formspree.io/f/xkgqpggr",
   };
 
-  // Set year if present
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // Header shrink
+  const header = document.getElementById("siteHeader");
+  const shrinkAt = 20;
+  const onScroll = () => {
+    if (!header) return;
+    if (window.scrollY > shrinkAt) header.classList.add("shrink");
+    else header.classList.remove("shrink");
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  // ===== "cascading" background lines animation (lightweight) =====
+  // Mobile menu
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = mobileMenu.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+    mobileMenu.addEventListener("click", (e) => e.stopPropagation());
+  }
+
+  // Background cascade
   const cascade = document.querySelector("[data-cascade]");
   if (cascade) {
     let t = 0;
@@ -23,32 +45,15 @@
     requestAnimationFrame(tick);
   }
 
-  // ===== Main menu selection =====
+  // Main menu selection (right panel)
   const menu = document.querySelector("[data-main-menu]");
   const subtitle = document.querySelector("[data-subtitle]");
-  const goLinks = document.querySelectorAll("[data-go]");
 
   const map = {
-    computers: {
-      title: "Computers",
-      desc: "Game-themed systems • Productivity • Pro niche builds",
-      href: "products.html",
-    },
-    services: {
-      title: "Services",
-      desc: "Repair • Quick Startup • Setup & optimization",
-      href: "services.html",
-    },
-    support: {
-      title: "Support",
-      desc: "Upgrades • Picking a PC • Fixes • Selling",
-      href: "support.html",
-    },
-    about: {
-      title: "About",
-      desc: "Who we are and how we build systems that last",
-      href: "about.html",
-    },
+    computers: { desc: "Game-themed systems • Productivity • Pro niche builds", href: "products.html" },
+    services: { desc: "Repair • Quick Startup • Setup & optimization", href: "services.html" },
+    support: { desc: "Upgrades • Picking a PC • Fixes • Selling", href: "support.html" },
+    about: { desc: "Who we are and how we build systems that last", href: "about.html" },
   };
 
   function setActive(key) {
@@ -56,10 +61,7 @@
     menu.querySelectorAll("button[data-key]").forEach(b => b.classList.remove("active"));
     const btn = menu.querySelector(`button[data-key="${key}"]`);
     if (btn) btn.classList.add("active");
-
-    if (subtitle && map[key]) {
-      subtitle.textContent = map[key].desc;
-    }
+    if (subtitle && map[key]) subtitle.textContent = map[key].desc;
   }
 
   if (menu) {
@@ -69,7 +71,6 @@
       setActive(btn.getAttribute("data-key"));
     });
 
-    // keyboard navigation (up/down/enter)
     menu.addEventListener("keydown", (e) => {
       const buttons = Array.from(menu.querySelectorAll("button[data-key]"));
       const current = buttons.findIndex(b => b.classList.contains("active"));
@@ -95,11 +96,9 @@
       }
     });
   }
-
-  // Default selection
   setActive("computers");
 
-  // ===== Consultation modal =====
+  // Consultation modal
   const modal = document.getElementById("consultModal");
   const openBtns = document.querySelectorAll("[data-consult]");
   const closeBtn = document.getElementById("closeModal");
@@ -124,7 +123,7 @@
   if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
   window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
-  // Set CTA links if present
+  // CTA links
   const callLink = document.querySelector("[data-call-link]");
   const textLink = document.querySelector("[data-text-link]");
   const phoneSpans = document.querySelectorAll("[data-phone-display]");
@@ -132,21 +131,18 @@
   if (callLink) callLink.href = `tel:${HRG.phoneDial}`;
   if (textLink) textLink.href = HRG.textHref;
 
-  // Wire Formspree
+  // Formspree (AJAX)
   if (form) {
     form.setAttribute("action", HRG.formAction);
     form.setAttribute("method", "POST");
 
-    // AJAX submit so we can show a clean success state
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
 
       try {
         const fd = new FormData(form);
-        // Honeypot (optional). If you fill it, we ignore.
         if ((fd.get("company") || "").toString().trim().length > 0) return;
 
         const res = await fetch(HRG.formAction, {
