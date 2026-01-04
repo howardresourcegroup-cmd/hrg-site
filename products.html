@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HRG Products | Systems</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div>
+  </div>
+
+  <!-- Header (same as index) -->
+  <header id="siteHeader">
+    <div class="container">
+      <div class="nav-wrap glass">
+        <a class="brand" href="index.html">
+          <div class="mark">H</div>
+          <div class="brand-title">
+            <div class="swap"><strong class="full">Howard Resource Group</strong><strong class="short">HRG</strong></div>
+            <span>Computers • Services • Support</span>
+          </div>
+        </a>
+
+        <nav>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+          </button>
+
+          <div class="menu glass-soft" id="menu">
+            <div class="dd" data-dd>
+              <button type="button">About <span class="caret"></span></button>
+              <div class="dd-panel glass">
+                <a href="about.html">About HRG <small>Who we are</small></a>
+                <a href="support.html">Contact & Support <small>Get help fast</small></a>
+              </div>
+            </div>
+
+            <div class="dd" data-dd>
+              <button type="button">Support <span class="caret"></span></button>
+              <div class="dd-panel glass">
+                <button type="button" data-consult>Consultation on Tech <span class="right-arrow"></span></button>
+                <a href="support.html#upgrading">Upgrading Your System <small>Smart upgrade paths</small></a>
+                <a href="support.html#picking">Picking a Computer <small>Match your use-case</small></a>
+                <a href="support.html#fixing">Fixing Computers <small>Diagnostics to repair</small></a>
+                <a href="support.html#selling">Selling Computers <small>Build & sell guidance</small></a>
+              </div>
+            </div>
+
+            <div class="dd" data-dd>
+              <button type="button">Services <span class="caret"></span></button>
+              <div class="dd-panel glass">
+                <button type="button" data-consult>Consultations <small>Links to Support consultation</small></button>
+                <a href="services.html#repair">Repair <small>Hardware & software</small></a>
+                <a href="services.html#startup">Quick Startup Services <small>Get tech running fast</small></a>
+              </div>
+            </div>
+
+            <div class="dd" data-dd>
+              <button type="button">Computers <span class="caret"></span></button>
+              <div class="dd-panel glass">
+                <a href="#game">Game-specific Built Systems <small>Designed per game</small></a>
+                <a href="#productivity">Productivity Systems <small>Fast, quiet, efficient</small></a>
+                <div class="subdd" data-subdd>
+                  <button type="button">Professional Niche <span class="right-arrow"></span></button>
+                  <div class="sub-panel glass">
+                    <a href="#content">Content Creation <small>Editing, 3D, audio</small></a>
+                    <a href="#education">Education <small>Reliable daily drivers</small></a>
+                    <a href="#programming">Programming <small>Compile + multitask</small></a>
+                  </div>
+                </div>
+                <a href="#office">Small Businesses & Home Offices <small>Secure + scalable</small></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container section glass">
+      <div class="section-head">
+        <div>
+          <h2>Systems Catalog</h2>
+          <p>Same filters as home — add as many builds as you want.</p>
+        </div>
+        <button class="btn primary" data-consult><span class="dot"></span>Request a Build</button>
+      </div>
+
+      <div class="shop-controls">
+        <div class="shop-left">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="game">Game</button>
+          <button class="chip" data-filter="productivity">Productivity</button>
+          <button class="chip" data-filter="pro">Pro Niche</button>
+          <button class="chip" data-filter="office">Office</button>
+          <input class="search" type="search" placeholder="Search builds…" data-search />
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Copy/paste items from index and add more -->
+        <article class="product glass-soft"
+          id="game"
+          data-item data-type="game"
+          data-tags="roblox themed rgb glass"
+          data-title="Roblox Themed Build"
+          data-desc="A clean frosted-glass look with playful lighting accents and a stable config tuned for Roblox + everyday use."
+          data-badges="Game|Themed|Frosted Glass"
+          data-bullets="Theme-forward lighting without looking cheap|Quiet cooling profile|Great for streaming + school too">
+          <div class="tag"><span class="pill">Game</span> Themed</div>
+          <h3>Roblox Themed Build</h3>
+          <p>Playful + clean. Frosted glass aesthetic with soft glow.</p>
+          <div class="meta"><span class="badge">Themed</span><span class="badge">Quiet</span><span class="badge">Upgradeable</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          data-item data-type="game"
+          data-tags="minecraft themed green earthy"
+          data-title="Minecraft Themed Build"
+          data-desc="Matte + glass mix with earthy lighting and a performance profile tuned for modpacks and shaders."
+          data-badges="Game|Themed"
+          data-bullets="Modpack-friendly planning|Airflow-first case layout|Aesthetic notes included">
+          <div class="tag"><span class="pill">Game</span> Themed</div>
+          <h3>Minecraft Themed Build</h3>
+          <p>Earthy palette + clean lines with room for modpacks.</p>
+          <div class="meta"><span class="badge">Modpacks</span><span class="badge">Cool temps</span><span class="badge">Clean cables</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          id="productivity"
+          data-item data-type="productivity"
+          data-tags="quiet office fast boot"
+          data-title="Quiet Productivity Tower"
+          data-desc="Noise-controlled cooling, fast storage, and a clean Windows setup for daily work."
+          data-badges="Productivity|Quiet"
+          data-bullets="Quiet fans + tuned curve|Fast boot + app load|Multi-monitor ready">
+          <div class="tag"><span class="pill">Productivity</span> Quiet</div>
+          <h3>Quiet Productivity Tower</h3>
+          <p>Snappy + silent. Built for focus.</p>
+          <div class="meta"><span class="badge">Quiet</span><span class="badge">Fast SSD</span><span class="badge">Reliable</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          id="content"
+          data-item data-type="pro"
+          data-tags="content creation editing 4k"
+          data-title="Creator Workstation"
+          data-desc="Balanced CPU/GPU/RAM planning for editing, 3D, audio, and long sessions."
+          data-badges="Pro Niche|Creator"
+          data-bullets="Stable under long renders|Planned upgrade path|IO + peripherals guidance">
+          <div class="tag"><span class="pill">Pro</span> Creator</div>
+          <h3>Creator Workstation</h3>
+          <p>For editing, 3D, and audio — tuned for stability.</p>
+          <div class="meta"><span class="badge">Workflows</span><span class="badge">Stable</span><span class="badge">Upgradeable</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          id="education"
+          data-item data-type="pro"
+          data-tags="education student reliable"
+          data-title="Education Daily Driver"
+          data-desc="Reliable configuration for school, research, and daily productivity with strong value."
+          data-badges="Pro Niche|Education"
+          data-bullets="Reliable + easy to maintain|Great value parts|Perfect for daily use">
+          <div class="tag"><span class="pill">Pro</span> Education</div>
+          <h3>Education Daily Driver</h3>
+          <p>Reliable, simple, and value-forward.</p>
+          <div class="meta"><span class="badge">Reliable</span><span class="badge">Value</span><span class="badge">Support</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          id="programming"
+          data-item data-type="pro"
+          data-tags="programming dev compile multitask"
+          data-title="Programming Rig"
+          data-desc="Compile + multitask focused build planning with RAM and storage headroom."
+          data-badges="Pro Niche|Dev"
+          data-bullets="Fast compile + multitask|Memory headroom planned|Dock/peripheral options">
+          <div class="tag"><span class="pill">Pro</span> Dev</div>
+          <h3>Programming Rig</h3>
+          <p>Fast compiles, smooth multitasking, smart paths.</p>
+          <div class="meta"><span class="badge">Multitask</span><span class="badge">Headroom</span><span class="badge">Stable</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+
+        <article class="product glass-soft"
+          id="office"
+          data-item data-type="office"
+          data-tags="small business home office secure"
+          data-title="Small Business Office Setup"
+          data-desc="Secure, scalable setup with backup strategy, organization, and network cleanup."
+          data-badges="Office|Secure"
+          data-bullets="Backup + organization strategy|Wi-Fi/printer cleanup|Longevity-first hardware">
+          <div class="tag"><span class="pill">Office</span> Secure</div>
+          <h3>Small Business Office Setup</h3>
+          <p>Practical systems that stay reliable.</p>
+          <div class="meta"><span class="badge">Secure</span><span class="badge">Scalable</span><span class="badge">Support</span></div>
+          <div class="actions"><button class="btn" data-detail>Details</button><button class="btn primary" data-consult><span class="dot"></span>Request</button></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container footer glass">
+      <div>© <span id="year"></span> Howard Resource Group (HRG)</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Consultation Modal -->
+  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
+    <div class="modal"><div class="modal-inner">
+      <div class="modal-head">
+        <div><h3 id="consultTitle">Consultation Request</h3><p>Shared consultation flow.</p></div>
+        <button class="x" id="closeModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="consultForm" action="#" method="POST">
+        <label>Name<input name="name" autocomplete="name" required /></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Phone (optional)<input name="phone" autocomplete="tel" /></label>
+        <label>What do you need?
+          <select name="topic" required>
+            <option value="" selected disabled>Select one</option>
+            <option>Game-specific build</option>
+            <option>Productivity build</option>
+            <option>Professional niche build</option>
+            <option>Small business / home office</option>
+            <option>Upgrade guidance</option>
+            <option>Troubleshooting / repair</option>
+            <option>Quick startup services</option>
+            <option>Picking a computer</option>
+            <option>Selling a computer</option>
+          </select>
+        </label>
+        <div class="hint">Add budget + timeframe + aesthetic notes.</div>
+        <textarea name="details" placeholder="Describe what you want..."></textarea>
+        <div class="form-actions">
+          <button class="btn" type="button" id="closeModal2">Cancel</button>
+          <button class="btn primary" type="submit"><span class="dot"></span>Submit</button>
+        </div>
+      </form>
+    </div></div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal"><div class="modal-inner">
+      <div class="modal-head">
+        <div><h3 id="detailTitle">System Details</h3><p>Quick overview + next steps.</p></div>
+        <button class="x" id="detailClose" aria-label="Close">✕</button>
+      </div>
+      <div id="detailBody"></div>
+    </div></div>
+  </div>
+
+  <!-- Floating CTA Bar -->
+  <div class="floating-cta">
+    <div class="container">
+      <div class="cta-inner glass">
+        <div class="cta-left">
+          <strong>Need help now?</strong>
+          <span>Call or text <span data-phone-display></span> • Or book a consult</span>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" data-call-link href="tel:6784214125">Call</a>
+          <a class="btn" data-text-link href="sms:6784214125">Text</a>
+          <button class="btn primary" data-consult><span class="dot"></span>Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
