@@ -14,6 +14,40 @@
     <div class="cascade" data-cascade></div>
   </div>
 
+  <!-- TOP BANNER NAV -->
+  <header id="siteHeader">
+    <div class="container">
+      <div class="navbar panel">
+        <a class="brand" href="index.html" aria-label="Howard Resource Group">
+          <div class="mark">HRG</div>
+          <div class="brandtext">
+            <strong>HOWARD RESOURCE GROUP</strong>
+            <span>Computers • Services • Support</span>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary navigation">
+          <a href="about.html">About</a>
+          <a href="support.html">Support</a>
+          <a href="services.html">Services</a>
+          <a href="products.html" class="active">Computers</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Computers</a>
+      </div>
+    </div>
+  </header>
+
   <main class="landing">
     <div class="container landing-grid">
 
@@ -65,7 +99,7 @@
         </p>
 
         <div class="btnRow">
-          <a class="btn" href="products.html">ENTER <span class="chev" aria-hidden="true" style="transform:rotate(45deg)"></span></a>
+          <a class="btn" href="products.html">ENTER <span class="chev" aria-hidden="true"></span></a>
           <button class="btn primary" data-consult>REQUEST HELP</button>
         </div>
 
@@ -96,20 +130,19 @@
         </div>
 
         <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
-          <!-- Honeypot -->
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
 
           <label>
             Name
-            <input name="name" autocomplete="name" placeholder="Your name" required />
+            <input name="name" autocomplete="name" required />
           </label>
           <label>
             Email
-            <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            <input name="email" type="email" autocomplete="email" required />
           </label>
           <label>
             Phone (optional)
-            <input name="phone" autocomplete="tel" placeholder="(###) ###-####" />
+            <input name="phone" autocomplete="tel" />
           </label>
           <label>
             Topic
