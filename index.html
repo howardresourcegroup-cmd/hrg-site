@@ -1,427 +1,381 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Howard Resource Group | IT Consulting & Player Piano Systems</title>
-  <meta name="description" content="Howard Resource Group: IT Consulting (computer repair, Wi-Fi, installs) and Player Piano Systems. Serving Dawsonville and surrounding North Georgia." />
-
-  <meta property="og:title" content="Howard Resource Group" />
-  <meta property="og:description" content="IT Consulting & Player Piano Systems • Dawsonville & North Georgia" />
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Howard Resource Group | HRG</title>
+  <meta name="description" content="Howard Resource Group (HRG) — game-specific PC builds, productivity and professional systems, repairs, and fast tech startup services." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="bg">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="grain"></div>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div>
   </div>
 
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#top" aria-label="Howard Resource Group Home">
-        <span class="brand-mark">HRG</span>
-        <span class="brand-text">
-          <span class="brand-name">Howard Resource Group</span>
-          <span class="brand-tag">IT Consulting • Player Piano Systems</span>
-        </span>
-      </a>
+  <header id="siteHeader">
+    <div class="container">
+      <div class="nav-wrap glass">
+        <a class="brand" href="index.html" aria-label="Howard Resource Group home">
+          <div class="mark">H</div>
+          <div class="brand-title">
+            <div class="swap" aria-label="Brand name">
+              <strong class="full">Howard Resource Group</strong>
+              <strong class="short">HRG</strong>
+            </div>
+            <span>Computers • Services • Support</span>
+          </div>
+        </a>
 
-      <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#it">IT Consulting</a>
-        <a href="#piano">Player Piano Systems</a>
-        <a href="#contact" class="btn btn-ghost">Contact</a>
-      </nav>
+        <nav>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+          </button>
 
-      <button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+          <div class="menu glass-soft" id="menu">
+            <!-- About -->
+            <div class="dd" data-dd>
+              <button type="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></button>
+              <div class="dd-panel glass" role="menu" aria-label="About menu">
+                <a href="about.html" role="menuitem">About HRG <small>Who we are</small></a>
+                <a href="support.html" role="menuitem">Contact & Support <small>Get help fast</small></a>
+              </div>
+            </div>
 
-    <div class="mobile-menu" id="mobileMenu" hidden>
-      <div class="wrap mobile-menu-inner">
-        <a href="#services">Services</a>
-        <a href="#it">IT Consulting</a>
-        <a href="#piano">Player Piano Systems</a>
-        <a href="#contact">Contact</a>
+            <!-- Support -->
+            <div class="dd" data-dd>
+              <button type="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></button>
+              <div class="dd-panel glass" role="menu" aria-label="Support menu">
+                <button type="button" role="menuitem" data-consult>Consultation on Tech <span class="right-arrow"></span></button>
+                <a href="support.html#upgrading" role="menuitem">Upgrading Your System <small>Smart upgrade paths</small></a>
+                <a href="support.html#picking" role="menuitem">Picking a Computer <small>Match your use-case</small></a>
+                <a href="support.html#fixing" role="menuitem">Fixing Computers <small>Diagnostics to repair</small></a>
+                <a href="support.html#selling" role="menuitem">Selling Computers <small>Build & sell guidance</small></a>
+              </div>
+            </div>
+
+            <!-- Services -->
+            <div class="dd" data-dd>
+              <button type="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></button>
+              <div class="dd-panel glass" role="menu" aria-label="Services menu">
+                <button type="button" role="menuitem" data-consult>Consultations <small>Links to Support consultation</small></button>
+                <a href="services.html#repair" role="menuitem">Repair <small>Hardware & software</small></a>
+                <a href="services.html#startup" role="menuitem">Quick Startup Services <small>Get tech running fast</small></a>
+              </div>
+            </div>
+
+            <!-- Computers -->
+            <div class="dd" data-dd>
+              <button type="button" aria-haspopup="true" aria-expanded="false">Computers <span class="caret"></span></button>
+              <div class="dd-panel glass" role="menu" aria-label="Computers menu">
+                <a href="products.html#game" role="menuitem">Game-specific Built Systems <small>Designed per game</small></a>
+                <a href="products.html#productivity" role="menuitem">Productivity Systems <small>Fast, quiet, efficient</small></a>
+
+                <div class="subdd" data-subdd>
+                  <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                    Professional Niche <span class="right-arrow"></span>
+                  </button>
+                  <div class="sub-panel glass" role="menu" aria-label="Professional niche submenu">
+                    <a href="products.html#content" role="menuitem">Content Creation <small>Editing, 3D, audio</small></a>
+                    <a href="products.html#education" role="menuitem">Education <small>Reliable daily drivers</small></a>
+                    <a href="products.html#programming" role="menuitem">Programming <small>Compile + multitask</small></a>
+                  </div>
+                </div>
+
+                <a href="products.html#office" role="menuitem">Small Businesses & Home Offices <small>Secure + scalable</small></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
       </div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-left">
-          <div class="pill">North Georgia • Dawsonville & Surrounding Areas</div>
-
-          <h1>
-            A clean, reliable resource for
-            <span class="glow">tech support</span>
-            and
-            <span class="glow">player piano systems</span>.
-          </h1>
-
+      <div class="container hero-grid">
+        <div class="hero-card glass">
+          <div class="kicker">
+            <span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.8);display:inline-block"></span>
+            Sleek builds. Real support. Zero fluff.
+          </div>
+          <h1>HRG — computers designed for your exact use-case.</h1>
           <p class="lead">
-            Howard Resource Group provides two specialized services:
-            <strong>IT Consulting</strong> (computer repair, Wi-Fi, installs) and
-            <strong>Player Piano Systems</strong>.
-            Fast communication, straightforward pricing, and professional results.
+            Game-specific systems, productivity builds, and professional niche rigs — plus repair and “quick startup” services
+            to get your tech running clean and fast.
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="tel:+16784214125">Call (678) 421-4125</a>
-            <a class="btn btn-secondary" href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20help%20with%20%5Bdevice%2Fissue%5D%20in%20%5Bcity%5D.%20Are%20you%20available%20today%3F">Text to Book</a>
-            <a class="btn btn-ghost" href="#contact">Request Service</a>
-          </div>
-
-          <div class="trust">
-            <div class="trust-item">
-              <div class="trust-title">Straightforward Pricing</div>
-              <div class="trust-sub">$50 diagnostic • $40/hr labor</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-title">Mobile Service</div>
-              <div class="trust-sub">On-site and remote</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-title">Two Divisions</div>
-              <div class="trust-sub">IT Consulting • Player Piano Systems</div>
-            </div>
+            <button class="btn primary" data-consult><span class="dot"></span>Book a Consultation</button>
+            <a class="btn" href="products.html">Explore Systems <span class="right-arrow"></span></a>
+            <a class="btn" href="services.html">View Services <span class="right-arrow"></span></a>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="card glass">
-            <div class="card-header">
-              <h2>Quick Start</h2>
-              <p>Send 3 details and we’ll reply fast.</p>
-            </div>
-
-            <ol class="steps">
-              <li><span>1</span> What device/system? (PC/Mac/Wi-Fi/Printer or Piano system)</li>
-              <li><span>2</span> What’s happening?</li>
-              <li><span>3</span> Your location (city) + best callback time</li>
-            </ol>
-
-            <div class="mini">
-              <div class="mini-row">
-                <div class="mini-label">Phone</div>
-                <div class="mini-value"><a href="tel:+16784214125">(678) 421-4125</a></div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-label">Email</div>
-                <div class="mini-value"><a href="mailto:howardresourcegroup@gmail.com">howardresourcegroup@gmail.com</a></div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-label">Service Area</div>
-                <div class="mini-value">Dawsonville + North GA</div>
-              </div>
-            </div>
-
-            <div class="card-footer">
-              <a class="btn btn-primary full" href="#it">View IT Services</a>
-              <a class="btn btn-secondary full" href="#piano">View Piano Systems</a>
-            </div>
+        <aside class="hero-side glass">
+          <div class="mini-grid">
+            <div class="mini"><strong>Game-Specific Aesthetics</strong><p>Theme your build to the game — case, lighting, accents.</p></div>
+            <div class="mini"><strong>Professional Niche</strong><p>Content creation, education, programming — tuned for stability.</p></div>
+            <div class="mini"><strong>Quick Startup</strong><p>Setup, security, Wi-Fi/printers, backups, optimizations.</p></div>
+            <div class="mini"><strong>Repair & Upgrades</strong><p>Diagnostics, part swaps, OS cleanup, thermal fixes.</p></div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section id="services" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Services</h2>
-          <p>Choose a division — both are handled with the same standard: clean work, clear expectations.</p>
+    <!-- SHOP / SYSTEMS -->
+    <section class="container section glass">
+      <div class="section-head">
+        <div>
+          <h2>Shop Systems</h2>
+          <p>Filter by category or search. Click “Details” to open the build drawer.</p>
         </div>
+        <a class="btn" href="products.html">View all <span class="right-arrow"></span></a>
+      </div>
 
-        <div class="grid2">
-          <article class="card glass hover">
-            <div class="badge">Division</div>
-            <h3>IT Consulting</h3>
-            <p>Computer repair, Wi-Fi/network troubleshooting, installations, and small business support.</p>
-            <ul class="bullets">
-              <li>Slow computers, cleanup, updates</li>
-              <li>Wi-Fi/router/mesh installs</li>
-              <li>Printer setup & troubleshooting</li>
-              <li>New device setup + data transfer</li>
-            </ul>
-            <a class="link" href="#it">Explore IT Consulting →</a>
-          </article>
-
-          <article class="card glass hover">
-            <div class="badge">Division</div>
-            <h3>Player Piano Systems</h3>
-            <p>Support, integration, and service for player piano system setups and related components.</p>
-            <ul class="bullets">
-              <li>System evaluation & troubleshooting</li>
-              <li>Install coordination & configuration</li>
-              <li>Connectivity/controls assistance</li>
-              <li>General tech integration</li>
-            </ul>
-            <a class="link" href="#piano">Explore Piano Systems →</a>
-          </article>
+      <div class="shop-controls">
+        <div class="shop-left">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="game">Game</button>
+          <button class="chip" data-filter="productivity">Productivity</button>
+          <button class="chip" data-filter="pro">Pro Niche</button>
+          <button class="chip" data-filter="office">Office</button>
+          <input class="search" type="search" placeholder="Search (e.g., roblox, editing, quiet…)" data-search />
         </div>
+        <button class="btn primary" data-consult><span class="dot"></span>Request a Custom Build</button>
+      </div>
+
+      <div class="grid">
+        <!-- item 1 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="game"
+          data-tags="roblox themed rgb glass"
+          data-title="Roblox Themed Build"
+          data-desc="A clean frosted-glass look with playful lighting accents and a stable config tuned for Roblox + everyday use."
+          data-badges="Game|Themed|Frosted Glass"
+          data-bullets="Theme-forward lighting without looking cheap|Quiet cooling profile|Great for streaming + school too">
+          <div class="tag"><span class="pill">Game</span> Featured</div>
+          <h3>Roblox Themed Build</h3>
+          <p>Playful + clean. Frosted glass aesthetic, soft glow, and a balanced config.</p>
+          <div class="meta">
+            <span class="badge">Themed</span><span class="badge">Quiet</span><span class="badge">Upgradeable</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Build This</button>
+          </div>
+        </article>
+
+        <!-- item 2 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="game"
+          data-tags="minecraft themed green earthy"
+          data-title="Minecraft Themed Build"
+          data-desc="Matte + glass mix with earthy lighting and a performance profile tuned for modpacks and shaders."
+          data-badges="Game|Themed"
+          data-bullets="Modpack-friendly performance planning|Airflow-first case layout|Aesthetic notes included">
+          <div class="tag"><span class="pill">Game</span> Popular</div>
+          <h3>Minecraft Themed Build</h3>
+          <p>Earthy palette, clean lines, and room for heavy modpacks/shaders.</p>
+          <div class="meta">
+            <span class="badge">Modpacks</span><span class="badge">Cool temps</span><span class="badge">Clean cables</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Build This</button>
+          </div>
+        </article>
+
+        <!-- item 3 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="productivity"
+          data-tags="quiet office fast boot"
+          data-title="Quiet Productivity Tower"
+          data-desc="Noise-controlled cooling, fast storage, and a clean Windows setup for daily work."
+          data-badges="Productivity|Quiet"
+          data-bullets="Quiet fans + tuned curve|Fast boot + app load|Multi-monitor ready">
+          <div class="tag"><span class="pill">Productivity</span> Clean</div>
+          <h3>Quiet Productivity Tower</h3>
+          <p>Snappy + silent. Built for focus and reliability.</p>
+          <div class="meta">
+            <span class="badge">Quiet</span><span class="badge">Fast SSD</span><span class="badge">Reliable</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Spec Mine</button>
+          </div>
+        </article>
+
+        <!-- item 4 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="pro"
+          data-tags="content creation editing 4k"
+          data-title="Creator Workstation"
+          data-desc="Balanced CPU/GPU/RAM planning for editing, 3D, audio, and long sessions."
+          data-badges="Pro Niche|Creator"
+          data-bullets="Stable under long renders|Planned upgrade path|IO + peripherals guidance">
+          <div class="tag"><span class="pill">Pro</span> Creator</div>
+          <h3>Creator Workstation</h3>
+          <p>For editing, 3D, and audio — tuned for stability and speed.</p>
+          <div class="meta">
+            <span class="badge">Workflows</span><span class="badge">Stable</span><span class="badge">Upgradeable</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Plan Mine</button>
+          </div>
+        </article>
+
+        <!-- item 5 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="office"
+          data-tags="small business home office secure"
+          data-title="Small Business Office Setup"
+          data-desc="Secure, scalable setup with backup strategy, organization, and network cleanup."
+          data-badges="Office|Secure"
+          data-bullets="Backup + organization strategy|Wi-Fi/printer cleanup|Hardware chosen for longevity">
+          <div class="tag"><span class="pill">Office</span> Secure</div>
+          <h3>Small Business Office Setup</h3>
+          <p>Practical systems that stay reliable and easy to maintain.</p>
+          <div class="meta">
+            <span class="badge">Secure</span><span class="badge">Scalable</span><span class="badge">Support</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Consult</button>
+          </div>
+        </article>
+
+        <!-- item 6 -->
+        <article class="product glass-soft"
+          data-item
+          data-type="pro"
+          data-tags="programming dev compile multitask"
+          data-title="Programming Rig"
+          data-desc="Compile + multitask focused build planning with RAM and storage headroom."
+          data-badges="Pro Niche|Dev"
+          data-bullets="Fast compile + multitask|Memory headroom planned|Clean dock/peripheral options">
+          <div class="tag"><span class="pill">Pro</span> Dev</div>
+          <h3>Programming Rig</h3>
+          <p>Fast compiles, smooth multitasking, and smart upgrade paths.</p>
+          <div class="meta">
+            <span class="badge">Multitask</span><span class="badge">Headroom</span><span class="badge">Stable</span>
+          </div>
+          <div class="actions">
+            <button class="btn" data-detail>Details</button>
+            <button class="btn primary" data-consult><span class="dot"></span>Spec Mine</button>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="it" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>IT Consulting</h2>
-          <p>Local tech help for homes and small businesses — Dawsonville and surrounding areas.</p>
-        </div>
-
-        <div class="grid3">
-          <div class="card glass">
-            <h3>Pricing</h3>
-            <div class="price">
-              <div class="price-row">
-                <div class="price-label">Diagnostic / Evaluation</div>
-                <div class="price-value">$50</div>
-              </div>
-              <div class="price-row">
-                <div class="price-label">Labor</div>
-                <div class="price-value">$40/hr</div>
-              </div>
-              <div class="price-note">
-                Diagnostic applies toward repair when you proceed. Remote or on-site.
-              </div>
-            </div>
-            <div class="divider"></div>
-            <p class="muted">Want to add a trip fee or 1-hour minimum later? Easy — we can update this section.</p>
-          </div>
-
-          <div class="card glass">
-            <h3>Most Requested</h3>
-            <ul class="bullets">
-              <li>Slow PC/Mac tune-ups</li>
-              <li>Virus/malware cleanup</li>
-              <li>Wi-Fi issues, router/mesh setup</li>
-              <li>Printer problems</li>
-              <li>New computer setup + transfer</li>
-              <li>Email/Microsoft/Google account help</li>
-            </ul>
-          </div>
-
-          <div class="card glass">
-            <h3>Book IT Help</h3>
-            <p class="muted">Fastest: send a text with device + issue + city.</p>
-            <div class="divider"></div>
-            <a class="btn btn-primary full" href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20IT%20help%20with%20%5Bissue%5D%20in%20%5Bcity%5D.%20Can%20we%20schedule%3F">Text for IT Help</a>
-            <a class="btn btn-ghost full mt-sm" href="mailto:howardresourcegroup@gmail.com?subject=IT%20Consulting%20Request&body=Name%3A%0ACity%3A%0ADevice%3A%0AIssue%3A%0APreferred%20time%3A">Email Request</a>
-          </div>
-        </div>
-
-        <div class="card glass mt">
-          <h3>What to send for fastest scheduling</h3>
-          <div class="grid2">
-            <div class="note">
-              <strong>Device:</strong> PC/Mac/Printer/Wi-Fi<br/>
-              <strong>Issue:</strong> What’s happening + any error message<br/>
-              <strong>Location:</strong> City + best time window
-            </div>
-            <div class="note">
-              <strong>Optional:</strong> photo of the error, router model, or computer model.<br/>
-              We’ll respond with the quickest plan and availability.
-            </div>
-          </div>
-        </div>
+    <div class="container footer glass">
+      <div>© <span id="year"></span> Howard Resource Group (HRG)</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="products.html">Products</a>
+        <a href="services.html">Services</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
       </div>
-    </section>
-
-    <section id="piano" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Player Piano Systems</h2>
-          <p>System support and tech integration for player piano setups.</p>
-        </div>
-
-        <div class="grid3">
-          <div class="card glass">
-            <h3>Support & Troubleshooting</h3>
-            <ul class="bullets">
-              <li>System assessment & diagnostics</li>
-              <li>Connectivity and control troubleshooting</li>
-              <li>Configuration assistance</li>
-              <li>General tech integration</li>
-            </ul>
-          </div>
-
-          <div class="card glass">
-            <h3>Install Coordination</h3>
-            <ul class="bullets">
-              <li>Pre-install evaluation</li>
-              <li>Equipment planning and setup</li>
-              <li>Network/streaming integration</li>
-              <li>Post-install verification</li>
-            </ul>
-          </div>
-
-          <div class="card glass">
-            <h3>Book Piano Systems Help</h3>
-            <p class="muted">Text a few details and we’ll respond quickly.</p>
-            <div class="divider"></div>
-            <a class="btn btn-secondary full" href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20help%20with%20a%20player%20piano%20system.%20Piano%20type%3A%20%5Btype%5D%20.%20Issue%3A%20%5Bissue%5D%20.%20City%3A%20%5Bcity%5D">Text about Piano Systems</a>
-            <a class="btn btn-ghost full mt-sm" href="mailto:howardresourcegroup@gmail.com?subject=Player%20Piano%20Systems%20Request&body=Name%3A%0ACity%3A%0APiano%20Brand%2FModel%3A%0ASystem%20(if%20known)%3A%0AIssue%3A%0APreferred%20time%3A">Email Request</a>
-          </div>
-        </div>
-
-        <div class="card glass mt">
-          <h3>What to include</h3>
-          <div class="grid2">
-            <div class="note">
-              <strong>Piano:</strong> brand/model (if known)<br/>
-              <strong>System:</strong> installed system name (if known)<br/>
-              <strong>Issue:</strong> what it’s doing + when it started
-            </div>
-            <div class="note">
-              <strong>Photos help:</strong> controller/interface, labels, and connections (no personal info).
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Contact</h2>
-          <p>Fastest: text your device/system + issue + city.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card glass">
-            <h3>Call / Text</h3>
-            <div class="contact-lines">
-              <div class="contact-line">
-                <span>Phone</span>
-                <a href="tel:+16784214125">(678) 421-4125</a>
-              </div>
-              <div class="contact-line">
-                <span>Text</span>
-                <a href="sms:+16784214125?&body=Hi%20HRG%2C%20I%20need%20help%20with%20%5Bdevice%2Fsystem%5D%20in%20%5Bcity%5D.%20Issue%3A%20%5Bissue%5D">Send a message</a>
-              </div>
-              <div class="contact-line">
-                <span>Email</span>
-                <a href="mailto:howardresourcegroup@gmail.com">howardresourcegroup@gmail.com</a>
-              </div>
-            </div>
-
-            <div class="divider"></div>
-            <p class="muted">
-              Mobile service by appointment. Serving Dawsonville and surrounding North Georgia areas.
-            </p>
-          </div>
-
-          <div class="card glass">
-            <h3>Request Service</h3>
-            <form id="requestForm">
-              <label>
-                Name
-                <input type="text" name="name" placeholder="Your name" required />
-              </label>
-
-              <label>
-                Service
-                <select name="service" required>
-                  <option value="" disabled selected>Select…</option>
-                  <option>IT Consulting</option>
-                  <option>Player Piano Systems</option>
-                </select>
-              </label>
-
-              <label>
-                City / Area
-                <input type="text" name="city" placeholder="Dawsonville / Gainesville / etc." required />
-              </label>
-
-              <label>
-                What’s going on?
-                <textarea name="details" rows="4" placeholder="Describe the issue + device/system" required></textarea>
-              </label>
-
-              <button class="btn btn-primary full" type="submit">Send Request</button>
-              <p class="tiny muted">
-                This opens your email app. If you prefer, just text the details.
-              </p>
-            </form>
-          </div>
-        </div>
-
-        <footer class="footer">
-          <div class="wrap footer-inner">
-            <div class="foot-left">
-              <div class="foot-title">Howard Resource Group</div>
-              <div class="foot-sub">IT Consulting • Player Piano Systems</div>
-            </div>
-            <div class="foot-right">
-              <a href="#top">Back to top ↑</a>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <script>
-    // Mobile menu
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn?.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      menu.hidden = expanded;
-    });
-    menu?.addEventListener('click', (e) => {
-      if (e.target && e.target.tagName === 'A') {
-        btn.setAttribute('aria-expanded', 'false');
-        menu.hidden = true;
-      }
-    });
+  <!-- Consultation Modal -->
+  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="modal-head">
+          <div>
+            <h3 id="consultTitle">Consultation Request</h3>
+            <p>
+              This is the shared consultation flow for Services + Support. When you give me Formspree,
+              I’ll plug it into the form action and add a success message state.
+            </p>
+          </div>
+          <button class="x" id="closeModal" aria-label="Close">✕</button>
+        </div>
 
-    // Smooth scroll offset for fixed header
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        if (!id || id === '#') return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        const topbar = document.querySelector('.topbar');
-        const offset = topbar ? topbar.offsetHeight + 12 : 0;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      });
-    });
+        <form id="consultForm" action="#" method="POST">
+          <label>
+            Name
+            <input name="name" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Phone (optional)
+            <input name="phone" autocomplete="tel" placeholder="(###) ###-####" />
+          </label>
+          <label>
+            What do you need?
+            <select name="topic" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Game-specific build</option>
+              <option>Productivity build</option>
+              <option>Professional niche build</option>
+              <option>Small business / home office</option>
+              <option>Upgrade guidance</option>
+              <option>Troubleshooting / repair</option>
+              <option>Quick startup services</option>
+              <option>Picking a computer</option>
+              <option>Selling a computer</option>
+            </select>
+          </label>
 
-    // Contact form -> mailto
-    const form = document.getElementById('requestForm');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const name = String(fd.get('name') || '');
-      const service = String(fd.get('service') || '');
-      const city = String(fd.get('city') || '');
-      const details = String(fd.get('details') || '');
+          <div class="hint">Add budget + timeframe + game/software + aesthetic notes.</div>
 
-      const subject = encodeURIComponent(`Service Request: ${service} (${city})`);
-      const body = encodeURIComponent(
-`Name: ${name}
-Service: ${service}
-City/Area: ${city}
+          <textarea name="details" placeholder="Tell me the game/software you use, budget range, and the style/theme you want."></textarea>
 
-Details:
-${details}
+          <div class="form-actions">
+            <button class="btn" type="button" id="closeModal2">Cancel</button>
+            <button class="btn primary" type="submit"><span class="dot"></span>Submit Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-Phone/Text: (678) 421-4125`
-      );
+  <!-- Detail Drawer Modal -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="modal-head">
+          <div>
+            <h3 id="detailTitle">System Details</h3>
+            <p>Quick overview + recommended next steps.</p>
+          </div>
+          <button class="x" id="detailClose" aria-label="Close">✕</button>
+        </div>
+        <div id="detailBody"></div>
+      </div>
+    </div>
+  </div>
 
-      window.location.href = `mailto:howardresourcegroup@gmail.com?subject=${subject}&body=${body}`;
-    });
-  </script>
+  <!-- Floating CTA Bar -->
+  <div class="floating-cta">
+    <div class="container">
+      <div class="cta-inner glass">
+        <div class="cta-left">
+          <strong>Need help now?</strong>
+          <span>Call or text <span data-phone-display></span> • Or book a consult</span>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" data-call-link href="tel:6784214125">Call</a>
+          <a class="btn" data-text-link href="sms:6784214125">Text</a>
+          <button class="btn primary" data-consult><span class="dot"></span>Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
