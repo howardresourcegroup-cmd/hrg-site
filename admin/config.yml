@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: howardresourcegroup-cmd/hrg-site
+  branch: main
+
+media_folder: "assets/products"
+public_folder: "/assets/products"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["game","productivity","pro","office"] }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Short Blurb", name: "short", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Badges", name: "badges", widget: "list", default: ["CLEAN","UPGRADABLE"] }
+      - { label: "Image", name: "image", widget: "image", required: false }
