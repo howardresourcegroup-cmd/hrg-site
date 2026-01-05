@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Background Scene -->
   <div class="scene" aria-hidden="true">
     <div class="cascade" data-cascade></div>
   </div>
@@ -27,10 +26,10 @@
         </a>
 
         <nav class="navlinks" aria-label="Primary navigation">
-          <a href="about.html">About</a>
-          <a href="support.html">Support</a>
-          <a href="services.html">Services</a>
-          <a href="products.html" class="active">Computers</a>
+          <a href="#about">About</a>
+          <a href="#support">Support</a>
+          <a href="#services">Services</a>
+          <a href="products.html">Computers</a>
         </nav>
 
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -38,77 +37,138 @@
         </button>
       </div>
 
-      <!-- Mobile dropdown -->
       <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="about.html">About</a>
-        <a href="support.html">Support</a>
-        <a href="services.html">Services</a>
+        <a href="#about">About</a>
+        <a href="#support">Support</a>
+        <a href="#services">Services</a>
         <a href="products.html">Computers</a>
       </div>
     </div>
   </header>
 
-  <main class="landing">
-    <div class="container landing-grid">
+  <main class="page">
+    <div class="container">
 
-      <!-- Left: Wordmark + intro -->
-      <section class="brandblock panel">
-        <h1 class="wordmark">
-          HOWARD RESOURCE GROUP
-          <span class="accent" aria-hidden="true"></span>
-        </h1>
-        <p class="subline">
-          Custom computers with clean design, real support, and practical builds — from game-themed systems to pro workstations.
-        </p>
+      <!-- HERO -->
+      <section class="panel section hero">
+        <div class="heroGrid">
+          <div>
+            <h1 class="wordmark">
+              HOWARD RESOURCE GROUP <span class="accent" aria-hidden="true"></span>
+            </h1>
+            <p class="subline">
+              Custom computers and real support. Clean builds, clean setups, clean advice — whether you’re gaming, creating, or running a business.
+            </p>
 
-        <div class="rule"></div>
+            <div class="btnRow" style="margin-top:14px;">
+              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK CONSULT</button>
+              <a class="btn" href="products.html">BROWSE COMPUTERS</a>
+            </div>
 
-        <div class="hud">
-          <div class="pill"><span class="dot" aria-hidden="true"></span> NORTH GA • REMOTE OPTIONS</div>
-          <div class="pill">BUILDS • REPAIR • SETUP</div>
-          <div class="pill">NO-FLUFF RECOMMENDATIONS</div>
-        </div>
+            <div class="hud" style="margin-top:14px;">
+              <div class="pill"><span class="dot" aria-hidden="true"></span> NORTH GA • REMOTE OPTIONS</div>
+              <div class="pill">BUILDS • REPAIR • SETUP</div>
+              <div class="pill">NO-FLUFF RECOMMENDATIONS</div>
+            </div>
+          </div>
 
-        <div class="btnRow" style="margin-top:14px;">
-          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK CONSULT</button>
-          <a class="btn" href="products.html"><span class="dot" aria-hidden="true" style="background:rgba(255,255,255,.7)"></span>VIEW SYSTEMS</a>
+          <div class="media panel mediaBox">
+            <div class="mediaLabel">FEATURED BUILD</div>
+            <!-- Replace with your image -->
+            <img src="assets/featured-build.jpg" alt="Featured HRG build" onerror="this.style.display='none'">
+            <div class="mediaFallback">
+              Add image: <code>assets/featured-build.jpg</code>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Right: Main Menu -->
-      <aside class="menuPanel panel">
-        <div class="menuTitle">MAIN MENU</div>
-
-        <div class="mainMenu" data-main-menu tabindex="0" aria-label="Main menu">
-          <button class="menuBtn active" data-key="computers">
-            Computers <span class="chev" aria-hidden="true"></span>
-          </button>
-          <button class="menuBtn" data-key="services">
-            Services <span class="chev" aria-hidden="true"></span>
-          </button>
-          <button class="menuBtn" data-key="support">
-            Support <span class="chev" aria-hidden="true"></span>
-          </button>
-          <button class="menuBtn" data-key="about">
-            About <span class="chev" aria-hidden="true"></span>
-          </button>
+      <!-- ABOUT -->
+      <section id="about" class="panel section split">
+        <div>
+          <h2 class="h2">About</h2>
+          <p class="p">
+            HRG builds systems that look intentional and perform reliably. We’ll spec parts based on what you actually do, keep thermals and noise in check,
+            and make sure you can upgrade later without rebuilding from scratch.
+          </p>
+          <div class="badges">
+            <span class="badge">CLEAN BUILDS</span>
+            <span class="badge">UPGRADE PATHS</span>
+            <span class="badge">HONEST SPECS</span>
+          </div>
         </div>
+        <div class="media panel mediaBox">
+          <div class="mediaLabel">PROCESS</div>
+          <img src="assets/process.jpg" alt="Build process" onerror="this.style.display='none'">
+          <div class="mediaFallback">Add image: <code>assets/process.jpg</code></div>
+        </div>
+      </section>
 
-        <p class="subdesc" data-subtitle>
-          Game-themed systems • Productivity • Pro niche builds
+      <!-- SERVICES -->
+      <section id="services" class="panel section">
+        <h2 class="h2">Services</h2>
+        <div class="cards">
+          <article class="panel card">
+            <div class="kTag"><span class="bar"></span> CONSULTATION</div>
+            <h3>Consultations</h3>
+            <p>Pick a computer, design a themed build, or plan upgrades with a clear path and budget.</p>
+            <div class="itemActions">
+              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK</button>
+            </div>
+          </article>
+
+          <article class="panel card">
+            <div class="kTag"><span class="bar"></span> REPAIR</div>
+            <h3>Repair</h3>
+            <p>Troubleshooting, part replacement, OS issues, performance drops, and cleanup.</p>
+          </article>
+
+          <article class="panel card">
+            <div class="kTag"><span class="bar"></span> QUICK STARTUP</div>
+            <h3>Quick Startup Services</h3>
+            <p>Fast setup for new tech: accounts, updates, drivers, backups, Wi-Fi, printers, and organization.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section id="support" class="panel section">
+        <h2 class="h2">Support</h2>
+        <p class="p">
+          Upgrading your system • picking the right computer • fixing computers • selling computers • optimizing performance
         </p>
-
         <div class="btnRow">
-          <a class="btn" href="products.html">ENTER <span class="chev" aria-hidden="true"></span></a>
-          <button class="btn primary" data-consult>REQUEST HELP</button>
+          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>ASK FOR HELP</button>
+          <a class="btn" href="products.html">VIEW CATALOG</a>
         </div>
+      </section>
 
-        <div class="rule" style="margin-top:14px;"></div>
-
-        <div style="color:var(--muted2); font-size:12px; line-height:1.6;">
-          Call/text <span data-phone-display></span> for quick questions — or book a consult to spec a full build.
+      <!-- SHOP TEASER -->
+      <section class="panel section split">
+        <div>
+          <h2 class="h2">Computers</h2>
+          <p class="p">Browse categories, open a build, and request it — the catalog is editable from your admin dashboard.</p>
+          <div class="btnRow">
+            <a class="btn primary" href="products.html"><span class="dot" aria-hidden="true"></span>OPEN CATALOG</a>
+          </div>
         </div>
-      </aside>
+        <div class="media panel mediaBox">
+          <div class="mediaLabel">CATALOG</div>
+          <img src="assets/catalog.jpg" alt="Catalog preview" onerror="this.style.display='none'">
+          <div class="mediaFallback">Add image: <code>assets/catalog.jpg</code></div>
+        </div>
+      </section>
+
+      <footer class="panel footer">
+        <div>© <span id="year"></span> Howard Resource Group</div>
+        <div class="footlinks">
+          <a href="products.html">Computers</a>
+          <a href="#services">Services</a>
+          <a href="#support">Support</a>
+          <a href="#about">About</a>
+          <a href="admin/">Admin</a>
+        </div>
+      </footer>
 
     </div>
   </main>
@@ -125,25 +185,13 @@
           <button class="x" id="closeModal" aria-label="Close">✕</button>
         </div>
 
-        <div class="success" id="consultSuccess">
-          ✅ Sent. You’re all set — we’ll follow up soon.
-        </div>
+        <div class="success" id="consultSuccess">✅ Sent. You’re all set — we’ll follow up soon.</div>
 
         <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
-
-          <label>
-            Name
-            <input name="name" autocomplete="name" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-          <label>
-            Phone (optional)
-            <input name="phone" autocomplete="tel" />
-          </label>
+          <label>Name <input name="name" autocomplete="name" required /></label>
+          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+          <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
           <label>
             Topic
             <select name="topic" required>
@@ -160,10 +208,7 @@
             </select>
           </label>
 
-          <div class="hint">
-            Include: game/software • budget range • aesthetic vibe • timeline.
-          </div>
-
+          <div class="hint">Include: game/software • budget range • aesthetic vibe • timeline.</div>
           <textarea name="details" placeholder="Describe what you want (and the look you’re going for)."></textarea>
 
           <div class="form-actions">
@@ -175,7 +220,7 @@
     </div>
   </div>
 
-  <!-- Floating CTA Bar -->
+  <!-- Floating CTA -->
   <div class="floating-cta">
     <div class="container">
       <div class="cta-inner panel">
