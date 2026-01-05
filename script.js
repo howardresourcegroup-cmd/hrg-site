@@ -6,12 +6,15 @@
     formAction: "https://formspree.io/f/xkgqpggr",
   };
 
+  // Year
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   // Header shrink
   const header = document.getElementById("siteHeader");
-  const shrinkAt = 20;
   const onScroll = () => {
     if (!header) return;
-    if (window.scrollY > shrinkAt) header.classList.add("shrink");
+    if (window.scrollY > 20) header.classList.add("shrink");
     else header.classList.remove("shrink");
   };
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -38,65 +41,20 @@
   if (cascade) {
     let t = 0;
     const tick = () => {
-      t += 0.0022;
+      t += 0.0019;
       cascade.style.setProperty("--shift", `${(t % 1) * 100}%`);
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   }
 
-  // Main menu selection (right panel)
-  const menu = document.querySelector("[data-main-menu]");
-  const subtitle = document.querySelector("[data-subtitle]");
-
-  const map = {
-    computers: { desc: "Game-themed systems • Productivity • Pro niche builds", href: "products.html" },
-    services: { desc: "Repair • Quick Startup • Setup & optimization", href: "services.html" },
-    support: { desc: "Upgrades • Picking a PC • Fixes • Selling", href: "support.html" },
-    about: { desc: "Who we are and how we build systems that last", href: "about.html" },
-  };
-
-  function setActive(key) {
-    if (!menu) return;
-    menu.querySelectorAll("button[data-key]").forEach(b => b.classList.remove("active"));
-    const btn = menu.querySelector(`button[data-key="${key}"]`);
-    if (btn) btn.classList.add("active");
-    if (subtitle && map[key]) subtitle.textContent = map[key].desc;
-  }
-
-  if (menu) {
-    menu.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-key]");
-      if (!btn) return;
-      setActive(btn.getAttribute("data-key"));
-    });
-
-    menu.addEventListener("keydown", (e) => {
-      const buttons = Array.from(menu.querySelectorAll("button[data-key]"));
-      const current = buttons.findIndex(b => b.classList.contains("active"));
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        const next = (current + 1) % buttons.length;
-        setActive(buttons[next].getAttribute("data-key"));
-        buttons[next].focus();
-      }
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        const prev = (current - 1 + buttons.length) % buttons.length;
-        setActive(buttons[prev].getAttribute("data-key"));
-        buttons[prev].focus();
-      }
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const active = menu.querySelector("button.active");
-        if (active) {
-          const key = active.getAttribute("data-key");
-          if (map[key]) window.location.href = map[key].href;
-        }
-      }
-    });
-  }
-  setActive("computers");
+  // CTA links
+  const callLink = document.querySelector("[data-call-link]");
+  const textLink = document.querySelector("[data-text-link]");
+  const phoneSpans = document.querySelectorAll("[data-phone-display]");
+  phoneSpans.forEach(s => s.textContent = HRG.phoneDisplay);
+  if (callLink) callLink.href = `tel:${HRG.phoneDial}`;
+  if (textLink) textLink.href = HRG.textHref;
 
   // Consultation modal
   const modal = document.getElementById("consultModal");
@@ -123,15 +81,7 @@
   if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
   window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
-  // CTA links
-  const callLink = document.querySelector("[data-call-link]");
-  const textLink = document.querySelector("[data-text-link]");
-  const phoneSpans = document.querySelectorAll("[data-phone-display]");
-  phoneSpans.forEach(s => s.textContent = HRG.phoneDisplay);
-  if (callLink) callLink.href = `tel:${HRG.phoneDial}`;
-  if (textLink) textLink.href = HRG.textHref;
-
-  // Formspree (AJAX)
+  // Formspree submit (AJAX)
   if (form) {
     form.setAttribute("action", HRG.formAction);
     form.setAttribute("method", "POST");
@@ -155,10 +105,10 @@
           form.reset();
           if (success) success.classList.add("show");
         } else {
-          alert("Something went wrong sending the request. Please try again or call/text.");
+          alert("Could not send right now. Please call/text and we’ll take care of you.");
         }
       } catch {
-        alert("Network error. Please try again or call/text.");
+        alert("Network error. Please call/text and we’ll take care of you.");
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
