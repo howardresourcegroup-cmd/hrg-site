@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HOWARD RESOURCE GROUP</title>
-  <meta name="description" content="Howard Resource Group — custom computers, repairs, and tech support." />
+  <meta name="description" content="Luxury gaming PC repair, diagnostics, troubleshooting, and upgrades. Howard Resource Group." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,14 +21,14 @@
           <div class="mark">HRG</div>
           <div class="brandtext">
             <strong>HOWARD RESOURCE GROUP</strong>
-            <span>Computers • Services • Support</span>
+            <span>Gaming PC Repair • Diagnostics • Upgrades</span>
           </div>
         </a>
 
         <nav class="navlinks" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#support">Support</a>
+          <a href="#repair" class="active">Repair</a>
           <a href="#services">Services</a>
+          <a href="#support">Support</a>
           <a href="products.html">Computers</a>
         </nav>
 
@@ -38,9 +38,9 @@
       </div>
 
       <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="#about">About</a>
-        <a href="#support">Support</a>
+        <a href="#repair">Repair</a>
         <a href="#services">Services</a>
+        <a href="#support">Support</a>
         <a href="products.html">Computers</a>
       </div>
     </div>
@@ -49,84 +49,134 @@
   <main class="page">
     <div class="container">
 
-      <!-- HERO -->
-      <section class="panel section hero">
+      <!-- HERO (simple, premium) -->
+      <section class="panel section hero" id="top">
         <div class="heroGrid">
           <div>
             <h1 class="wordmark">
               HOWARD RESOURCE GROUP <span class="accent" aria-hidden="true"></span>
             </h1>
             <p class="subline">
-              Custom computers and real support. Clean builds, clean setups, clean advice — whether you’re gaming, creating, or running a business.
+              Luxury service for <strong>gaming computers</strong>: diagnostics, troubleshooting, upgrades, refresh & tuning —
+              built around real game workloads (temps, stability, FPS consistency).
             </p>
 
-            <div class="btnRow" style="margin-top:14px;">
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK CONSULT</button>
-              <a class="btn" href="products.html">BROWSE COMPUTERS</a>
+            <div class="btnRow">
+              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK DIAGNOSTIC</button>
+              <a class="btn" href="#repair">VIEW REPAIR</a>
+              <a class="btn" data-text-link href="sms:6784214125">TEXT A QUESTION</a>
             </div>
 
-            <div class="hud" style="margin-top:14px;">
-              <div class="pill"><span class="dot" aria-hidden="true"></span> NORTH GA • REMOTE OPTIONS</div>
-              <div class="pill">BUILDS • REPAIR • SETUP</div>
-              <div class="pill">NO-FLUFF RECOMMENDATIONS</div>
+            <div class="hud">
+              <div class="pill"><span class="dot" aria-hidden="true"></span> GAMING PCS ONLY</div>
+              <div class="pill">DIAG • REPAIR • UPGRADES</div>
+              <div class="pill">PERFORMANCE TUNING</div>
             </div>
           </div>
 
           <div class="media panel mediaBox">
-            <div class="mediaLabel">FEATURED BUILD</div>
-            <!-- Replace with your image -->
-            <img src="assets/featured-build.jpg" alt="Featured HRG build" onerror="this.style.display='none'">
-            <div class="mediaFallback">
-              Add image: <code>assets/featured-build.jpg</code>
+            <div class="mediaLabel">FEATURED</div>
+            <img src="assets/featured-build.jpg" alt="Featured gaming PC" onerror="this.style.display='none'">
+            <div class="mediaFallback">Add image: <code>assets/featured-build.jpg</code></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REPAIR (centerpiece) -->
+      <section id="repair" class="panel section">
+        <div class="repairGrid">
+          <div>
+            <div class="kicker"><span class="line"></span> LUXURY SERVICE • GAMING PCS</div>
+
+            <h2 class="repairTitle">
+              Gaming PC Repair <span>Only</span>
+            </h2>
+
+            <p class="repairCopy">
+              Root-cause diagnostics, performance restoration, and upgrade planning for gaming computers.
+              We focus on what matters: stability under load, thermals, airflow, clean drivers, and repeatable testing.
+            </p>
+
+            <div class="repairPills">
+              <div class="rpill">Diagnostics</div>
+              <div class="rpill">Troubleshooting</div>
+              <div class="rpill">Refresh & Clean</div>
+              <div class="rpill">Thermals</div>
+              <div class="rpill">FPS Stability</div>
+              <div class="rpill">Upgrade Roadmap</div>
+            </div>
+
+            <div class="softRule"></div>
+
+            <div class="repairCTA">
+              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK DIAGNOSTIC</button>
+              <a class="btn" href="products.html">UPGRADE OPTIONS</a>
+              <a class="btn" data-call-link href="tel:6784214125">CALL</a>
+            </div>
+
+            <div class="notice">
+              <strong>Scope note</strong><br />
+              Due to manufacturer restrictions and verification requirements, HRG currently services
+              <strong>gaming PCs exclusively</strong>. If you’re unsure whether your system qualifies, text us and we’ll confirm quickly.
+            </div>
+          </div>
+
+          <div class="serviceList">
+            <h4>What we handle</h4>
+
+            <div class="srow">
+              <b>Performance drops</b>
+              <span>Stutters, crashing, low FPS, overheating, unstable clocks</span>
+            </div>
+
+            <div class="srow">
+              <b>Upgrade planning</b>
+              <span>GPU/CPU/RAM/SSD sized for your games & target FPS</span>
+            </div>
+
+            <div class="srow">
+              <b>Refresh & cleanup</b>
+              <span>Thermal paste, dust, airflow, fan curves, OS cleanup</span>
+            </div>
+
+            <div class="srow">
+              <b>Diagnostics</b>
+              <span>Clear “fix vs upgrade” guidance with next steps</span>
+            </div>
+
+            <div class="srow">
+              <b>Game-ready setup</b>
+              <span>Drivers, baseline tuning, stability testing</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section id="about" class="panel section split">
-        <div>
-          <h2 class="h2">About</h2>
-          <p class="p">
-            HRG builds systems that look intentional and perform reliably. We’ll spec parts based on what you actually do, keep thermals and noise in check,
-            and make sure you can upgrade later without rebuilding from scratch.
-          </p>
-          <div class="badges">
-            <span class="badge">CLEAN BUILDS</span>
-            <span class="badge">UPGRADE PATHS</span>
-            <span class="badge">HONEST SPECS</span>
-          </div>
-        </div>
-        <div class="media panel mediaBox">
-          <div class="mediaLabel">PROCESS</div>
-          <img src="assets/process.jpg" alt="Build process" onerror="this.style.display='none'">
-          <div class="mediaFallback">Add image: <code>assets/process.jpg</code></div>
-        </div>
-      </section>
-
-      <!-- SERVICES -->
+      <!-- SERVICES (simple) -->
       <section id="services" class="panel section">
         <h2 class="h2">Services</h2>
+        <p class="p">Focused, premium help. No fluff.</p>
+
         <div class="cards">
           <article class="panel card">
-            <div class="kTag"><span class="bar"></span> CONSULTATION</div>
-            <h3>Consultations</h3>
-            <p>Pick a computer, design a themed build, or plan upgrades with a clear path and budget.</p>
-            <div class="itemActions">
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK</button>
+            <div class="kTag"><span class="bar"></span> DIAGNOSTIC</div>
+            <h3 style="margin:12px 0 8px; text-transform:uppercase; letter-spacing:.10em;">Gaming PC Diagnostic</h3>
+            <p class="p">We test, isolate the cause, and give a clear plan: fix, refresh, or upgrade.</p>
+            <div class="btnRow" style="margin-top:12px;">
+              <button class="btn primary" data-consult><span class="dot"></span>BOOK</button>
             </div>
           </article>
 
           <article class="panel card">
             <div class="kTag"><span class="bar"></span> REPAIR</div>
-            <h3>Repair</h3>
-            <p>Troubleshooting, part replacement, OS issues, performance drops, and cleanup.</p>
+            <h3 style="margin:12px 0 8px; text-transform:uppercase; letter-spacing:.10em;">Troubleshooting</h3>
+            <p class="p">Crashes, overheating, weird FPS, driver conflicts, instability — handled cleanly.</p>
           </article>
 
           <article class="panel card">
-            <div class="kTag"><span class="bar"></span> QUICK STARTUP</div>
-            <h3>Quick Startup Services</h3>
-            <p>Fast setup for new tech: accounts, updates, drivers, backups, Wi-Fi, printers, and organization.</p>
+            <div class="kTag"><span class="bar"></span> UPGRADES</div>
+            <h3 style="margin:12px 0 8px; text-transform:uppercase; letter-spacing:.10em;">Upgrade & Refresh</h3>
+            <p class="p">Target FPS upgrades, airflow fixes, thermals, storage expansion, clean setup.</p>
           </article>
         </div>
       </section>
@@ -135,38 +185,21 @@
       <section id="support" class="panel section">
         <h2 class="h2">Support</h2>
         <p class="p">
-          Upgrading your system • picking the right computer • fixing computers • selling computers • optimizing performance
+          Not sure what you need? Tell us your games, your budget, and what’s wrong — we’ll give you a clean direction.
         </p>
         <div class="btnRow">
-          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>ASK FOR HELP</button>
-          <a class="btn" href="products.html">VIEW CATALOG</a>
-        </div>
-      </section>
-
-      <!-- SHOP TEASER -->
-      <section class="panel section split">
-        <div>
-          <h2 class="h2">Computers</h2>
-          <p class="p">Browse categories, open a build, and request it — the catalog is editable from your admin dashboard.</p>
-          <div class="btnRow">
-            <a class="btn primary" href="products.html"><span class="dot" aria-hidden="true"></span>OPEN CATALOG</a>
-          </div>
-        </div>
-        <div class="media panel mediaBox">
-          <div class="mediaLabel">CATALOG</div>
-          <img src="assets/catalog.jpg" alt="Catalog preview" onerror="this.style.display='none'">
-          <div class="mediaFallback">Add image: <code>assets/catalog.jpg</code></div>
+          <button class="btn primary" data-consult><span class="dot"></span>ASK FOR HELP</button>
+          <a class="btn" data-text-link href="sms:6784214125">TEXT NOW</a>
+          <a class="btn" href="products.html">VIEW COMPUTERS</a>
         </div>
       </section>
 
       <footer class="panel footer">
         <div>© <span id="year"></span> Howard Resource Group</div>
         <div class="footlinks">
+          <a href="#top">Top</a>
+          <a href="#repair">Repair</a>
           <a href="products.html">Computers</a>
-          <a href="#services">Services</a>
-          <a href="#support">Support</a>
-          <a href="#about">About</a>
-          <a href="admin/">Admin</a>
         </div>
       </footer>
 
@@ -180,7 +213,7 @@
         <div class="modal-head">
           <div>
             <h3 id="consultTitle">CONSULTATION REQUEST</h3>
-            <p>Send details and we’ll respond with a clean plan and next steps.</p>
+            <p>Tell us your games, symptoms, and budget — we’ll respond with next steps.</p>
           </div>
           <button class="x" id="closeModal" aria-label="Close">✕</button>
         </div>
@@ -189,31 +222,31 @@
 
         <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
+
           <label>Name <input name="name" autocomplete="name" required /></label>
           <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+
           <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
           <label>
             Topic
             <select name="topic" required>
               <option value="" selected disabled>Select one</option>
-              <option>Game-specific build</option>
-              <option>Productivity build</option>
-              <option>Professional niche build</option>
-              <option>Small business / home office</option>
-              <option>Troubleshooting / repair</option>
-              <option>Quick startup services</option>
-              <option>Upgrades</option>
-              <option>Picking a computer</option>
-              <option>Selling a computer</option>
+              <option>Gaming PC diagnostic</option>
+              <option>Gaming PC troubleshooting</option>
+              <option>Gaming PC upgrade / refresh</option>
+              <option>Performance tuning</option>
             </select>
           </label>
 
-          <div class="hint">Include: game/software • budget range • aesthetic vibe • timeline.</div>
-          <textarea name="details" placeholder="Describe what you want (and the look you’re going for)."></textarea>
+          <div class="hint">
+            Include: games • symptoms • specs (if known) • budget range • timeline.
+          </div>
+
+          <textarea name="details" placeholder="Describe the issue or the upgrade target."></textarea>
 
           <div class="form-actions">
             <button class="btn" type="button" id="closeModal2">CANCEL</button>
-            <button class="btn primary" type="submit"><span class="dot" aria-hidden="true"></span>SEND</button>
+            <button class="btn primary" type="submit"><span class="dot"></span>SEND</button>
           </div>
         </form>
       </div>
@@ -226,12 +259,12 @@
       <div class="cta-inner panel">
         <div class="cta-left">
           <strong>CONTACT</strong>
-          <span>Call/text <span data-phone-display></span> • Or book a consult</span>
+          <span>Call/text <span data-phone-display></span> • Book a diagnostic</span>
         </div>
         <div class="cta-actions">
           <a class="btn" data-call-link href="tel:6784214125">CALL</a>
           <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
-          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK</button>
+          <button class="btn primary" data-consult><span class="dot"></span>BOOK</button>
         </div>
       </div>
     </div>
