@@ -4,21 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HRG — Computers</title>
-  <meta name="description" content="HRG systems catalog: game-specific themed PCs, productivity builds, professional niche rigs, and small business/home office systems." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Background Scene -->
   <div class="scene" aria-hidden="true">
     <div class="cascade" data-cascade></div>
   </div>
 
-  <!-- TOP BANNER NAV (same as index) -->
+  <!-- Banner (same as index) -->
   <header id="siteHeader">
     <div class="container">
       <div class="navbar panel">
-        <a class="brand" href="index.html" aria-label="Howard Resource Group">
+        <a class="brand" href="index.html">
           <div class="mark">HRG</div>
           <div class="brandtext">
             <strong>HOWARD RESOURCE GROUP</strong>
@@ -27,9 +25,9 @@
         </a>
 
         <nav class="navlinks" aria-label="Primary navigation">
-          <a href="about.html">About</a>
-          <a href="support.html">Support</a>
-          <a href="services.html">Services</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#support">Support</a>
+          <a href="index.html#services">Services</a>
           <a href="products.html" class="active">Computers</a>
         </nav>
 
@@ -38,11 +36,10 @@
         </button>
       </div>
 
-      <!-- Mobile dropdown -->
-      <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="about.html">About</a>
-        <a href="support.html">Support</a>
-        <a href="services.html">Services</a>
+      <div class="mobileMenu panel" id="mobileMenu">
+        <a href="index.html#about">About</a>
+        <a href="index.html#support">Support</a>
+        <a href="index.html#services">Services</a>
         <a href="products.html">Computers</a>
       </div>
     </div>
@@ -50,20 +47,16 @@
 
   <main class="page">
     <div class="container">
-
-      <section class="panel">
-        <div class="pageHead">
+      <section class="panel section">
+        <div class="pageHead" style="padding:0; margin-bottom:10px;">
           <div>
-            <h2>Systems Catalog</h2>
-            <p>
-              Filter builds by category or search by game/workflow (ex: “Roblox”, “editing”, “quiet”, “office”).
-              Click <strong>Details</strong> to open the request flow.
-            </p>
+            <h2 class="h2" style="margin-bottom:8px;">Systems Catalog</h2>
+            <p class="p">Editor-backed catalog. Filter + search. Click Request to book.</p>
           </div>
           <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK CONSULT</button>
         </div>
 
-        <div class="tools">
+        <div class="tools" style="padding:0; margin-top:10px;">
           <button class="chip active" data-filter="all">All</button>
           <button class="chip" data-filter="game">Game</button>
           <button class="chip" data-filter="productivity">Productivity</button>
@@ -72,245 +65,23 @@
           <input class="search" type="search" placeholder="Search builds…" data-search />
         </div>
 
-        <div class="catalog">
+        <div id="catalog" class="catalog" style="padding:0; margin-top:10px;"></div>
 
-          <!-- GAME -->
-          <article class="panel item"
-            data-item
-            data-type="game"
-            data-tags="roblox themed rgb glass"
-            data-title="Roblox Themed Build"
-            data-desc="A clean themed system with a soft frosted-glass aesthetic and stable performance for Roblox + daily use."
-            data-badges="Game|Themed|Frosted"
-            data-bullets="Theme-forward lighting without looking cheap|Quiet cooling profile|Great for streaming + school too">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> GAME</div>
-              <span class="badge">FEATURED</span>
-            </div>
-            <h3>Roblox Themed Build</h3>
-            <p>Clean theme, soft glow, and upgrade-friendly planning.</p>
-            <div class="badges">
-              <span class="badge">THEMED</span>
-              <span class="badge">QUIET</span>
-              <span class="badge">UPGRADABLE</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-          <article class="panel item"
-            data-item
-            data-type="game"
-            data-tags="minecraft themed green earthy shaders modpacks"
-            data-title="Minecraft Themed Build"
-            data-desc="Matte + glass mix with earthy lighting; tuned for modpacks and shaders with airflow-first layout."
-            data-badges="Game|Themed"
-            data-bullets="Modpack-friendly planning|Airflow-first case layout|Aesthetic notes included">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> GAME</div>
-              <span class="badge">POPULAR</span>
-            </div>
-            <h3>Minecraft Themed Build</h3>
-            <p>Room for modpacks/shaders with a clean “crafted” vibe.</p>
-            <div class="badges">
-              <span class="badge">MODPACKS</span>
-              <span class="badge">COOL</span>
-              <span class="badge">CLEAN CABLES</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-          <!-- PRODUCTIVITY -->
-          <article class="panel item"
-            data-item
-            data-type="productivity"
-            data-tags="quiet office fast boot daily work"
-            data-title="Quiet Productivity Tower"
-            data-desc="Noise-controlled cooling with fast storage and a clean OS setup for daily productivity."
-            data-badges="Productivity|Quiet"
-            data-bullets="Quiet fans + tuned curve|Fast boot + app load|Multi-monitor ready">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> PRODUCTIVITY</div>
-              <span class="badge">CLEAN</span>
-            </div>
-            <h3>Quiet Productivity Tower</h3>
-            <p>Snappy, silent, and reliable — built for focus.</p>
-            <div class="badges">
-              <span class="badge">QUIET</span>
-              <span class="badge">FAST SSD</span>
-              <span class="badge">RELIABLE</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-          <!-- PRO NICHE -->
-          <article class="panel item"
-            data-item
-            data-type="pro"
-            data-tags="content creation editing 4k workstation"
-            data-title="Creator Workstation"
-            data-desc="Balanced CPU/GPU/RAM planning for editing, 3D, audio, and long sessions."
-            data-badges="Pro|Creator"
-            data-bullets="Stable under long renders|Planned upgrade path|IO + peripherals guidance">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> PRO NICHE</div>
-              <span class="badge">CREATOR</span>
-            </div>
-            <h3>Creator Workstation</h3>
-            <p>Stability-first planning for real workloads.</p>
-            <div class="badges">
-              <span class="badge">EDITING</span>
-              <span class="badge">3D</span>
-              <span class="badge">AUDIO</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-          <article class="panel item"
-            data-item
-            data-type="pro"
-            data-tags="programming dev compile multitask"
-            data-title="Programming Rig"
-            data-desc="Compile + multitask focused planning with RAM and storage headroom."
-            data-badges="Pro|Dev"
-            data-bullets="Fast compile + multitask|Memory headroom planned|Dock/peripheral options">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> PRO NICHE</div>
-              <span class="badge">DEV</span>
-            </div>
-            <h3>Programming Rig</h3>
-            <p>Fast compiles, smooth multitasking, upgrade paths.</p>
-            <div class="badges">
-              <span class="badge">HEADROOM</span>
-              <span class="badge">STABLE</span>
-              <span class="badge">FAST IO</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-          <!-- OFFICE -->
-          <article class="panel item"
-            data-item
-            data-type="office"
-            data-tags="small business home office secure backup"
-            data-title="Small Business / Home Office Setup"
-            data-desc="Secure, scalable setup with backup strategy, organization, and network cleanup."
-            data-badges="Office|Secure"
-            data-bullets="Backup + organization strategy|Wi-Fi/printer cleanup|Longevity-first hardware">
-            <div class="itemTop">
-              <div class="kTag"><span class="bar"></span> OFFICE</div>
-              <span class="badge">SECURE</span>
-            </div>
-            <h3>Small Business / Home Office Setup</h3>
-            <p>Practical systems that stay stable and maintainable.</p>
-            <div class="badges">
-              <span class="badge">SECURE</span>
-              <span class="badge">SCALABLE</span>
-              <span class="badge">BACKUPS</span>
-            </div>
-            <div class="itemActions">
-              <button class="btn" data-detail>DETAILS</button>
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST</button>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="footer">
+        <div class="footer" style="margin-top:12px;">
           <div>© <span id="year"></span> Howard Resource Group</div>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <div class="footlinks">
             <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="support.html">Support</a>
-            <a href="about.html">About</a>
+            <a href="admin/">Admin</a>
           </div>
         </div>
       </section>
-
     </div>
   </main>
 
-  <!-- Consultation Modal (same as index) -->
-  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
-    <div class="modal">
-      <div class="modal-inner">
-        <div class="modal-head">
-          <div>
-            <h3 id="consultTitle">CONSULTATION REQUEST</h3>
-            <p>Send details and we’ll respond with a clean plan and next steps.</p>
-          </div>
-          <button class="x" id="closeModal" aria-label="Close">✕</button>
-        </div>
-
-        <div class="success" id="consultSuccess">
-          ✅ Sent. You’re all set — we’ll follow up soon.
-        </div>
-
-        <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
-          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
-
-          <label>Name <input name="name" autocomplete="name" required /></label>
-          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
-          <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
-          <label>
-            Topic
-            <select name="topic" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Game-specific build</option>
-              <option>Productivity build</option>
-              <option>Professional niche build</option>
-              <option>Small business / home office</option>
-              <option>Troubleshooting / repair</option>
-              <option>Quick startup services</option>
-              <option>Upgrades</option>
-              <option>Picking a computer</option>
-              <option>Selling a computer</option>
-            </select>
-          </label>
-
-          <div class="hint">Include: game/software • budget range • aesthetic vibe • timeline.</div>
-          <textarea name="details" placeholder="Describe what you want (and the look you’re going for)."></textarea>
-
-          <div class="form-actions">
-            <button class="btn" type="button" id="closeModal2">CANCEL</button>
-            <button class="btn primary" type="submit"><span class="dot" aria-hidden="true"></span>SEND</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating CTA Bar -->
-  <div class="floating-cta">
-    <div class="container">
-      <div class="cta-inner panel">
-        <div class="cta-left">
-          <strong>CONTACT</strong>
-          <span>Call/text <span data-phone-display></span> • Or book a consult</span>
-        </div>
-        <div class="cta-actions">
-          <a class="btn" data-call-link href="tel:6784214125">CALL</a>
-          <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
-          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- reuse your consult modal + CTA (same blocks as index) -->
+  <!-- (copy/paste from index.html below if you want identical) -->
 
   <script src="script.js"></script>
+  <script src="catalog.js"></script>
 </body>
 </html>
