@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HRG — Computers</title>
+  <meta name="description" content="HRG computers catalog — gaming-focused builds and upgrade options." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,22 +13,21 @@
     <div class="cascade" data-cascade></div>
   </div>
 
-  <!-- Banner (same as index) -->
   <header id="siteHeader">
     <div class="container">
       <div class="navbar panel">
-        <a class="brand" href="index.html">
+        <a class="brand" href="index.html" aria-label="Howard Resource Group">
           <div class="mark">HRG</div>
           <div class="brandtext">
             <strong>HOWARD RESOURCE GROUP</strong>
-            <span>Computers • Services • Support</span>
+            <span>Gaming PC Repair • Diagnostics • Upgrades</span>
           </div>
         </a>
 
         <nav class="navlinks" aria-label="Primary navigation">
-          <a href="index.html#about">About</a>
-          <a href="index.html#support">Support</a>
+          <a href="index.html#repair">Repair</a>
           <a href="index.html#services">Services</a>
+          <a href="index.html#support">Support</a>
           <a href="products.html" class="active">Computers</a>
         </nav>
 
@@ -37,9 +37,9 @@
       </div>
 
       <div class="mobileMenu panel" id="mobileMenu">
-        <a href="index.html#about">About</a>
-        <a href="index.html#support">Support</a>
+        <a href="index.html#repair">Repair</a>
         <a href="index.html#services">Services</a>
+        <a href="index.html#support">Support</a>
         <a href="products.html">Computers</a>
       </div>
     </div>
@@ -48,38 +48,93 @@
   <main class="page">
     <div class="container">
       <section class="panel section">
-        <div class="pageHead" style="padding:0; margin-bottom:10px;">
-          <div>
-            <h2 class="h2" style="margin-bottom:8px;">Systems Catalog</h2>
-            <p class="p">Editor-backed catalog. Filter + search. Click Request to book.</p>
-          </div>
-          <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>BOOK CONSULT</button>
-        </div>
+        <h1 class="wordmark" style="font-size:clamp(22px, 3vw, 34px);">
+          Systems Catalog <span class="accent" aria-hidden="true"></span>
+        </h1>
+        <p class="subline">Browse builds. Request one. Or book a diagnostic for upgrades and tuning.</p>
 
-        <div class="tools" style="padding:0; margin-top:10px;">
+        <div class="tools">
           <button class="chip active" data-filter="all">All</button>
           <button class="chip" data-filter="game">Game</button>
           <button class="chip" data-filter="productivity">Productivity</button>
           <button class="chip" data-filter="pro">Pro Niche</button>
           <button class="chip" data-filter="office">Office</button>
           <input class="search" type="search" placeholder="Search builds…" data-search />
+          <button class="btn primary" data-consult style="margin-left:auto;"><span class="dot"></span>REQUEST HELP</button>
         </div>
 
-        <div id="catalog" class="catalog" style="padding:0; margin-top:10px;"></div>
+        <div id="catalog" class="catalog"></div>
 
-        <div class="footer" style="margin-top:12px;">
+        <div class="footer">
           <div>© <span id="year"></span> Howard Resource Group</div>
           <div class="footlinks">
             <a href="index.html">Home</a>
-            <a href="admin/">Admin</a>
+            <a href="index.html#repair">Repair</a>
           </div>
         </div>
       </section>
     </div>
   </main>
 
-  <!-- reuse your consult modal + CTA (same blocks as index) -->
-  <!-- (copy/paste from index.html below if you want identical) -->
+  <!-- Reuse modal + CTA (same as index) -->
+  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="modal-head">
+          <div>
+            <h3 id="consultTitle">CONSULTATION REQUEST</h3>
+            <p>Tell us your games, symptoms, and budget — we’ll respond with next steps.</p>
+          </div>
+          <button class="x" id="closeModal" aria-label="Close">✕</button>
+        </div>
+
+        <div class="success" id="consultSuccess">✅ Sent. You’re all set — we’ll follow up soon.</div>
+
+        <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
+
+          <label>Name <input name="name" autocomplete="name" required /></label>
+          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+
+          <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
+          <label>
+            Topic
+            <select name="topic" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Gaming PC diagnostic</option>
+              <option>Gaming PC troubleshooting</option>
+              <option>Gaming PC upgrade / refresh</option>
+              <option>Performance tuning</option>
+            </select>
+          </label>
+
+          <div class="hint">Include: games • symptoms • budget range • timeline.</div>
+          <textarea name="details" placeholder="What are you trying to run or fix?"></textarea>
+
+          <div class="form-actions">
+            <button class="btn" type="button" id="closeModal2">CANCEL</button>
+            <button class="btn primary" type="submit"><span class="dot"></span>SEND</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-cta">
+    <div class="container">
+      <div class="cta-inner panel">
+        <div class="cta-left">
+          <strong>CONTACT</strong>
+          <span>Call/text <span data-phone-display></span> • Book a diagnostic</span>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" data-call-link href="tel:6784214125">CALL</a>
+          <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
+          <button class="btn primary" data-consult><span class="dot"></span>BOOK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script src="catalog.js"></script>
