@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft — High-End Creative Build",
+  "category": "game",
+  "featured": true,
+  "short": "Ultra-powerful build for shaders, large modpacks, and creative worlds.",
+  "description": "High-end system tuned for Minecraft with shaders and heavy modpacks: high-core CPU, powerful GPU, abundant RAM, and NVMe storage for fast world loads.",
+  "badges": ["HIGH-END", "SHADERS", "MODS", "UPGRADABLE"],
+  "services": ["Custom Build — Gaming", "Shaders & Mods Tuning", "Performance Tuning"],
+  "image": "https://via.placeholder.com/800x520?text=Minecraft+High-End"
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HRG — Product</title>
+  <meta name="description" content="HRG product details — custom gaming PCs and upgrades." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Howard Resource Group" />
+  <meta property="og:title" content="HRG — Product Details" />
+  <meta property="og:description" content="Explore a refined HRG system with performance-focused specs and tuning." />
+  <meta property="og:image" content="assets/og.jpg" />
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="cascade" data-cascade></div>
+  </div>
+
+  <header id="siteHeader">
+    <div class="container">
+      <div class="navbar panel">
+        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
+          <div class="brand-inner">
+            <div class="brand-full">HOWARD RESOURCE GROUP</div>
+            <div class="brand-compact">HRG</div>
+          </div>
+        </a>
+
+        <div class="search-box">
+          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+
+        <nav class="navlinks" aria-label="Primary navigation">
+          <a href="consulting.html">Tech Support</a>
+          <a href="consulting.html#how-it-works">How It Works</a>
+          <a href="index.html#services">Services</a>
+          <div class="dropdown" id="navProducts">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navProductsMenu">Products</button>
+            <div class="dropdownMenu panel mega" id="navProductsMenu" role="menu" aria-label="Products submenu">
+              <div class="megaGrid">
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> Browse</div>
+                  <a role="menuitem" href="products.html">All Builds</a>
+                  <a role="menuitem" href="products.html#featured">Featured</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Use</div>
+                  <a role="menuitem" href="products.html#game">Gaming</a>
+                  <a role="menuitem" href="products.html#professional">Professional</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Tier</div>
+                  <a role="menuitem" href="products.html#premium">Premium</a>
+                  <a role="menuitem" href="products.html#budget">Budget</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="consulting.html">Tech Support</a>
+        <a href="consulting.html#how-it-works">How It Works</a>
+        <a href="index.html#services">Services</a>
+        <a href="products.html">Products</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <!-- Product Hero -->
+      <section class="section panel product-hero" data-hero>
+        <div class="productGrid">
+          <div class="productContent" data-reveal>
+            <div class="halo" aria-hidden="true"></div>
+            <h1 id="pTitle" class="wordmark product-title">Loading…</h1>
+            <p id="pShort" class="subline product-subline"></p>
+
+            <div id="pBadges" class="badges" style="margin-top:10px"></div>
+            <div id="pServices" class="services" style="margin-top:8px"></div>
+
+            <div class="btnRow">
+              <a class="btn primary" data-consult href="#"><span class="dot"></span>REQUEST BUILD</a>
+              <a class="text-link" href="products.html">Back to catalog</a>
+            </div>
+          </div>
+
+          <div class="media panel mediaBox" data-parallax data-reveal>
+            <div class="mediaLabel">PREVIEW</div>
+            <img id="pImage" src="" alt="Product image" onerror="this.style.display='none'">
+            <div class="mediaFallback">Add image via product JSON</div>
+            <div class="mediaOverlay" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Details -->
+      <section class="section panel">
+        <div class="detailGrid">
+          <div>
+            <div class="kicker"><span class="line"></span> DETAILS</div>
+            <div id="pDescription" class="p" style="margin-top:10px"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="panel footer">
+        <div>© <span id="year"></span> Howard Resource Group</div>
+        <div class="footlinks">
+          <a href="index.html">Home</a>
+          <a href="products.html">Catalog</a>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>

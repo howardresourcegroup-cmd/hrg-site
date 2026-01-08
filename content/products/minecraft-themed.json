@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft Themed Build",
+  "category": "game",
+  "featured": true,
+  "short": "Blocky-cool build optimized for Minecraft and creative play.",
+  "description": "A balanced system tuned for Minecraft with mods and shaders, offering stable fps and upgrade paths.",
+  "badges": ["THEMED", "UPGRADABLE"],
+  "services": ["Custom Build — Gaming", "Mods & Shaders Tuning"],
+  "image": "https://via.placeholder.com/800x520?text=Minecraft+Build"
+}

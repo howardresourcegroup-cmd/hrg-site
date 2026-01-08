@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HRG — Computers</title>
   <meta name="description" content="HRG computers catalog — gaming-focused builds and upgrade options." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Howard Resource Group" />
+  <meta property="og:title" content="HRG — Systems Catalog" />
+  <meta property="og:description" content="Refined gaming and professional systems. Browse featured, premium, and budget builds." />
+  <meta property="og:image" content="assets/og.jpg" />
 </head>
 <body>
 
@@ -16,19 +25,46 @@
   <header id="siteHeader">
     <div class="container">
       <div class="navbar panel">
-        <a class="brand" href="index.html" aria-label="Howard Resource Group">
-          <div class="mark">HRG</div>
-          <div class="brandtext">
-            <strong>HOWARD RESOURCE GROUP</strong>
-            <span>Gaming PC Repair • Diagnostics • Upgrades</span>
+        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
+          <div class="brand-inner">
+            <div class="brand-full">HOWARD RESOURCE GROUP</div>
+            <div class="brand-compact">HRG</div>
           </div>
         </a>
 
+        <div class="search-box">
+          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+
         <nav class="navlinks" aria-label="Primary navigation">
-          <a href="index.html#repair">Repair</a>
+          <a href="consulting.html">Tech Support</a>
+          <a href="consulting.html#how-it-works">How It Works</a>
           <a href="index.html#services">Services</a>
-          <a href="index.html#support">Support</a>
-          <a href="products.html" class="active">Computers</a>
+          <div class="dropdown" id="navProducts">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navProductsMenu">Products</button>
+            <div class="dropdownMenu panel mega" id="navProductsMenu" role="menu" aria-label="Products submenu">
+              <div class="megaGrid">
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> Browse</div>
+                  <a role="menuitem" href="products.html">All Builds</a>
+                  <a role="menuitem" href="products.html#featured">Featured</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Use</div>
+                  <a role="menuitem" href="products.html#game">Gaming</a>
+                  <a role="menuitem" href="products.html#professional">Professional</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Tier</div>
+                  <a role="menuitem" href="products.html#premium">Premium</a>
+                  <a role="menuitem" href="products.html#budget">Budget</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
 
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -37,10 +73,10 @@
       </div>
 
       <div class="mobileMenu panel" id="mobileMenu">
-        <a href="index.html#repair">Repair</a>
+        <a href="consulting.html">Tech Support</a>
+        <a href="consulting.html#how-it-works">How It Works</a>
         <a href="index.html#services">Services</a>
-        <a href="index.html#support">Support</a>
-        <a href="products.html">Computers</a>
+        <a href="products.html">Products</a>
       </div>
     </div>
   </header>
@@ -49,16 +85,17 @@
     <div class="container">
       <section class="panel section">
         <h1 class="wordmark" style="font-size:clamp(22px, 3vw, 34px);">
-          Systems Catalog <span class="accent" aria-hidden="true"></span>
+          Systems Catalog — Elevated Builds
         </h1>
-        <p class="subline">Browse builds. Request one. Or book a diagnostic for upgrades and tuning.</p>
+        <p class="subline">Refined systems for every play-style: from accessible value builds to ultra-premium, bespoke rigs.</p>
 
         <div class="tools">
           <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="game">Game</button>
-          <button class="chip" data-filter="productivity">Productivity</button>
-          <button class="chip" data-filter="pro">Pro Niche</button>
-          <button class="chip" data-filter="office">Office</button>
+          <button class="chip" data-filter="game">Gaming</button>
+          <button class="chip" data-filter="professional">Professional</button>
+          <button class="chip" data-filter="premium">Premium</button>
+          <button class="chip" data-filter="budget">Budget</button>
+          <button class="chip" data-filter="featured">Featured</button>
           <input class="search" type="search" placeholder="Search builds…" data-search />
           <button class="btn primary" data-consult style="margin-left:auto;"><span class="dot"></span>REQUEST HELP</button>
         </div>
@@ -69,7 +106,7 @@
           <div>© <span id="year"></span> Howard Resource Group</div>
           <div class="footlinks">
             <a href="index.html">Home</a>
-            <a href="index.html#repair">Repair</a>
+            <a href="index.html#consulting">Tech Support</a>
           </div>
         </div>
       </section>
@@ -82,8 +119,8 @@
       <div class="modal-inner">
         <div class="modal-head">
           <div>
-            <h3 id="consultTitle">CONSULTATION REQUEST</h3>
-            <p>Tell us your games, symptoms, and budget — we’ll respond with next steps.</p>
+            <h3 id="consultTitle">REQUEST TECH CONSULTATION</h3>
+            <p>Describe your issue and we'll help you understand what's happening and what your options are.</p>
           </div>
           <button class="x" id="closeModal" aria-label="Close">✕</button>
         </div>
@@ -101,14 +138,22 @@
             Topic
             <select name="topic" required>
               <option value="" selected disabled>Select one</option>
-              <option>Gaming PC diagnostic</option>
-              <option>Gaming PC troubleshooting</option>
-              <option>Gaming PC upgrade / refresh</option>
-              <option>Performance tuning</option>
+              <option>Remote Support</option>
+              <option>Computer Repair</option>
+              <option>Custom Build — Gaming</option>
+              <option>Custom Build — Professional</option>
+              <option>Diagnostics & Troubleshooting</option>
+              <option>Upgrades & Performance Tuning</option>
+              <option>Thermal & Cooling Optimization</option>
+              <option>Data Recovery & Backup Setup</option>
+              <option>Parts Sourcing & Installation</option>
+              <option>Game-specific Optimization</option>
+              <option>Ongoing Maintenance & Support Plans</option>
+              <option>General Tech Support & Consulting</option>
             </select>
-          </label>
+          </label> 
 
-          <div class="hint">Include: games • symptoms • budget range • timeline.</div>
+          <div class="hint">Include: symptoms • what you've tried • system specs (if known) • urgency.</div>
           <textarea name="details" placeholder="What are you trying to run or fix?"></textarea>
 
           <div class="form-actions">
@@ -120,17 +165,18 @@
     </div>
   </div>
 
-  <div class="floating-cta">
+  <div class="floating-cta" id="floatingCta">
     <div class="container">
       <div class="cta-inner panel">
+        <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
         <div class="cta-left">
-          <strong>CONTACT</strong>
-          <span>Call/text <span data-phone-display></span> • Book a diagnostic</span>
+          <strong>NEED HELP?</strong>
+          <span>Call/text <span data-phone-display></span> • Speak with a consultant</span>
         </div>
         <div class="cta-actions">
           <a class="btn" data-call-link href="tel:6784214125">CALL</a>
           <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
-          <button class="btn primary" data-consult><span class="dot"></span>BOOK</button>
+          <button class="btn primary" data-consult><span class="dot"></span>GET HELP</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tech Consulting — HRG</title>
+  <meta name="description" content="Professional tech consulting and support. Get expert help with troubleshooting, diagnostics, and technical guidance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Howard Resource Group" />
+  <meta property="og:title" content="Tech Consulting — HRG" />
+  <meta property="og:description" content="Professional tech support and consulting services. Call a consultant for help." />
+  <meta property="og:image" content="assets/og.jpg" />
+</head>
+<body>
+
+  <div class="scene" aria-hidden="true">
+    <div class="cascade" data-cascade></div>
+  </div>
+
+  <header id="siteHeader">
+    <div class="container">
+      <div class="navbar panel">
+        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
+          <div class="brand-inner">
+            <div class="brand-full">HOWARD RESOURCE GROUP</div>
+            <div class="brand-compact">HRG</div>
+          </div>
+        </a>
+        <div class="search-box">
+          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+        <nav class="navlinks" aria-label="Primary navigation">
+          <a href="consulting.html">Tech Support</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#services">Services</a>
+          <div class="dropdown" id="navProducts">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navProductsMenu">Products</button>
+            <div class="dropdownMenu panel mega" id="navProductsMenu" role="menu" aria-label="Products submenu">
+              <div class="megaGrid">
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> Browse</div>
+                  <a role="menuitem" href="products.html">All Builds</a>
+                  <a role="menuitem" href="products.html#featured">Featured</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Use</div>
+                  <a role="menuitem" href="products.html#game">Gaming</a>
+                  <a role="menuitem" href="products.html#professional">Professional</a>
+                </div>
+                <div>
+                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Tier</div>
+                  <a role="menuitem" href="products.html#premium">Premium</a>
+                  <a role="menuitem" href="products.html#budget">Budget</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="consulting.html">Tech Support</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#services">Services</a>
+        <a href="products.html">Products</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="panel section hero" data-hero>
+        <div class="heroGrid">
+          <div class="heroContent" data-reveal>
+            <h1 class="wordmark hero-title">Tech Problems? We Fix Them.
+              <span style="display:block; font-weight:400; font-size:18px; margin-top:8px; letter-spacing:0">All computers. Clear prices. No pressure.</span>
+            </h1>
+            <p class="subline hero-subline">
+              Computer not working right? We'll figure out what's wrong and give you honest options. You decide what to fix and what to spend.
+            </p>
+
+            <div class="btnRow">
+              <button class="btn primary" data-consult><span class="dot"></span>REQUEST CONSULTATION</button>
+              <a class="btn" data-call-link href="tel:6784214125">CALL NOW</a>
+              <a class="text-link" href="#pricing">View pricing</a>
+            </div>
+          </div>
+
+          <div class="media panel mediaBox" data-parallax data-reveal>
+            <div class="mediaLabel">FRIENDLY SUPPORT</div>
+            <img src="assets/consulting.jpg" alt="Tech consulting" onerror="this.style.display='none'">
+            <div class="mediaFallback">Professional, friendly tech support</div>
+            <div class="mediaOverlay" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Help With -->
+      <section class="panel section">
+        <h2 class="h2">Common Problems We Fix</h2>
+        <p class="p">If it's broken, slow, or acting weird — we can help.</p>
+
+        <div class="cards">
+          <article class="panel card clickable-card" data-consult data-subject="Computer is Slow">
+            <h3 style="margin:12px 0 8px;">Computer is Slow</h3>
+            <p class="p">We'll find out why and fix it.</p>
+          </article>
+
+          <article class="panel card clickable-card" data-consult data-subject="Won't Turn On">
+            <h3 style="margin:12px 0 8px;">Won't Turn On</h3>
+            <p class="p">We'll diagnose and repair it.</p>
+          </article>
+
+          <article class="panel card clickable-card" data-consult data-subject="Internet Problems">
+            <h3 style="margin:12px 0 8px;">Internet Problems</h3>
+            <p class="p">Wi-Fi issues, can't connect, slow speeds.</p>
+          </article>
+
+          <article class="panel card clickable-card" data-consult data-subject="Crashes & Errors">
+            <h3 style="margin:12px 0 8px;">Crashes & Errors</h3>
+            <p class="p">Programs freezing, blue screens, errors.</p>
+          </article>
+
+          <article class="panel card clickable-card" data-consult data-subject="Gaming Issues">
+            <h3 style="margin:12px 0 8px;">Gaming Issues</h3>
+            <p class="p">Low FPS, overheating, games crashing.</p>
+          </article>
+
+          <article class="panel card clickable-card" data-consult data-subject="Need an Upgrade">
+            <h3 style="margin:12px 0 8px;">Need an Upgrade?</h3>
+            <p class="p">We'll tell you if it's worth it or not.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="panel section">
+        <h2 class="h2">How It Works</h2>
+        <p class="p">Three simple steps. No surprises.</p>
+
+        <div class="repairGrid">
+          <div>
+            <div class="kicker"><span class="line"></span> STEP 1</div>
+            <h2 class="repairTitle">Call or Text Us</h2>
+            <p class="repairCopy">
+              Tell us what's wrong. Use normal words, not tech words.
+            </p>
+
+            <div class="softRule"></div>
+
+            <div class="kicker"><span class="line"></span> STEP 2</div>
+            <h2 class="repairTitle">We Figure It Out</h2>
+            <p class="repairCopy">
+              We'll test everything and tell you exactly what's wrong. In plain English.
+            </p>
+
+            <div class="softRule"></div>
+
+            <div class="kicker"><span class="line"></span> STEP 3</div>
+            <h2 class="repairTitle">You Decide</h2>
+            <p class="repairCopy">
+              We'll tell you the price to fix it. You say yes or no. That's it.
+            </p>
+          </div>
+
+          <div class="serviceList">
+            <h4>Why Choose Us</h4>
+
+            <div class="srow">
+              <b>Honest</b>
+              <span>We tell you the truth, not what makes us money</span>
+            </div>
+
+            <div class="srow">
+              <b>Clear Prices</b>
+              <span>You know the cost before we fix anything</span>
+            </div>
+
+            <div class="srow">
+              <b>No Pressure</b>
+              <span>If you don't want to fix it, that's fine</span>
+            </div>
+
+            <div class="srow">
+              <b>Fast</b>
+              <span>We respond quickly and work around your schedule</span>
+            </div>
+
+            <div class="srow">
+              <b>Can Do Remote</b>
+              <span>Many issues fixed without leaving your house</span>
+            </div>
+
+            <div class="srow">
+              <b>We Follow Up</b>
+              <span>We check back to make sure it's still working</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="panel section">
+        <h2 class="h2">What It Costs</h2>
+        <p class="p">Simple pricing. No games.</p>
+
+        <div class="cards">
+          <article class="panel card" style="background: rgba(96,213,255,.05); border-color: rgba(96,213,255,.2);">
+            <div class="kTag"><span class="bar"></span> START HERE</div>
+            <h3 style="margin:12px 0 8px; font-size:20px;">Just Ask Us</h3>
+            <p class="p" style="font-size:32px; font-weight:700; margin:12px 0; color: var(--accent);">FREE</p>
+            <p class="p">Call or text. We'll talk about what's wrong. No charge for that.</p>
+          </article>
+
+          <article class="panel card">
+            <div class="kTag"><span class="bar"></span> MOST PEOPLE</div>
+            <h3 style="margin:12px 0 8px; font-size:20px;">Figure Out What's Wrong</h3>
+            <p class="p" style="font-size:32px; font-weight:700; margin:12px 0;">$75</p>
+            <p class="p">We test everything and tell you what's broken. <strong>Free if you let us fix it.</strong></p>
+          </article>
+
+          <article class="panel card">
+            <div class="kTag"><span class="bar"></span> EASY STUFF</div>
+            <h3 style="margin:12px 0 8px; font-size:20px;">Fix It Over The Phone</h3>
+            <p class="p" style="font-size:32px; font-weight:700; margin:12px 0;">$50/hr</p>
+            <p class="p">Screen share, walk you through it. Most fixes take less than an hour.</p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:24px; font-size:16px;">
+          <strong>Everything Else?</strong><br />
+          Hardware repairs, parts, upgrades — we'll give you the exact price before we do anything. You always know what it costs.
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="panel section">
+        <h2 class="h2">Got A Problem?</h2>
+        <p class="p">Just call or text. We'll help you figure it out.</p>
+        <div class="btnRow">
+          <button class="btn primary" data-consult><span class="dot"></span>REQUEST HELP</button>
+          <a class="btn" data-call-link href="tel:6784214125">CALL 678-421-4125</a>
+          <a class="btn" data-text-link href="sms:6784214125">TEXT US</a>
+        </div>
+      </section>
+
+      <footer class="panel footer">
+        <div>© <span id="year"></span> Howard Resource Group</div>
+        <div class="footlinks">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Consultation Modal -->
+  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="modal-head">
+          <div>
+            <h3 id="consultTitle">REQUEST TECH CONSULTATION</h3>
+            <p>Describe your issue and we'll help you understand what's happening and what your options are.</p>
+          </div>
+          <button class="x" id="closeModal" aria-label="Close">✕</button>
+        </div>
+
+        <div class="success" id="consultSuccess">✅ Sent. You're all set — we'll follow up soon.</div>
+
+        <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
+
+          <label>Name <input name="name" autocomplete="name" required /></label>
+          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+
+          <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
+          <label>
+            Topic
+            <select name="topic" required>
+              <option value="" selected disabled>Select one</option>
+              <option>General Tech Support</option>
+              <option>Computer Running Slow</option>
+              <option>Won't Turn On or Boot</option>
+              <option>Internet/Network Issues</option>
+              <option>Software Problems</option>
+              <option>Gaming PC Issues</option>
+              <option>Hardware Repair</option>
+              <option>Upgrade Consultation</option>
+              <option>Remote Support</option>
+              <option>Data Recovery</option>
+              <option>Other</option>
+            </select>
+          </label> 
+
+          <div class="hint">
+            Include: symptoms • what you've tried • system specs (if known) • urgency.
+          </div>
+
+          <textarea name="details" placeholder="Describe what's happening with your computer or device..."></textarea>
+
+          <div class="form-actions">
+            <button class="btn" type="button" id="closeModal2">CANCEL</button>
+            <button class="btn primary" type="submit"><span class="dot"></span>SEND</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating CTA -->
+  <div class="floating-cta" id="floatingCta">
+    <div class="container">
+      <div class="cta-inner panel">
+        <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
+        <div class="cta-left">
+          <strong>NEED HELP?</strong>
+          <span>Call/text <span data-phone-display></span> • Speak with a consultant</span>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" data-call-link href="tel:6784214125">CALL</a>
+          <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
+          <button class="btn primary" data-consult><span class="dot"></span>GET HELP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

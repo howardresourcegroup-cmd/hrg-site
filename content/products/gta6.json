@@ -1,0 +1,10 @@
+{
+  "title": "GTA 6 — Open World Performance Build",
+  "category": "game",
+  "featured": true,
+  "short": "Optimized for large open-world performance and smooth streaming of assets.",
+  "description": "A balanced system for GTA-scale worlds: strong CPU, high-memory capacity, and fast NVMe storage to reduce pop-in and keep FPS steady.",
+  "badges": ["OPEN-WORLD", "BALANCED", "UPGRADABLE"],
+  "services": ["Custom Build — Gaming", "Open-World Tuning", "NVMe Fast Storage"],
+  "image": "https://via.placeholder.com/800x520?text=GTA+6"
+}

@@ -1,6 +1,13 @@
 {
   "items": [
     "roblox-themed.json",
+    "roblox-highend.json",
+    "roblox-budget.json",
+    "minecraft-highend.json",
+    "minecraft-budget.json",
+    "battlefield6.json",
+    "gta6.json",
+    "aaa-highclass.json",
     "minecraft-themed.json"
   ]
 }

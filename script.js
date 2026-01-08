@@ -20,6 +20,110 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Observe sections and cards
+  document.querySelectorAll('.section, .productCard, .repairCard, .iconCard').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Search functionality
+  const searchInput = document.getElementById("siteSearch");
+  const searchResults = document.createElement("div");
+  searchResults.className = "search-results panel";
+  searchResults.style.display = "none";
+  
+  if (searchInput) {
+    searchInput.parentElement.appendChild(searchResults);
+    
+    let searchData = [];
+    
+    // Load products for search
+    fetch('content/products/index.json')
+      .then(r => r.json())
+      .then(async data => {
+        const products = await Promise.all(
+          data.items.map(file => 
+            fetch(`content/products/${file}`)
+              .then(r => r.json())
+              .then(product => ({
+                ...product,
+                type: 'product',
+                url: `product.html?item=${file.replace('.json', '')}`
+              }))
+              .catch(() => null)
+          )
+        );
+        searchData = products.filter(p => p !== null);
+        
+        // Add page sections
+        searchData.push(
+          { title: 'Tech Support', type: 'page', url: 'consulting.html', description: 'Computer repair and tech consulting services' },
+          { title: 'How It Works', type: 'page', url: 'consulting.html#how-it-works', description: 'Our simple 3-step process' },
+          { title: 'Services', type: 'page', url: 'index.html#services', description: 'All our tech services' },
+          { title: 'Products', type: 'page', url: 'products.html', description: 'Browse our computer builds' }
+        );
+      });
+    
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      
+      if (query.length < 2) {
+        searchResults.style.display = "none";
+        return;
+      }
+      
+      const matches = searchData.filter(item => {
+        const searchText = `${item.title} ${item.description || item.short || ''} ${(item.badges || []).join(' ')}`.toLowerCase();
+        return searchText.includes(query);
+      }).slice(0, 6);
+      
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+        searchResults.style.display = "block";
+        return;
+      }
+      
+      searchResults.innerHTML = matches.map(item => `
+        <a href="${item.url}" class="search-result-item">
+          <div class="search-result-title">${item.title}</div>
+          <div class="search-result-desc">${item.description || item.short || ''}</div>
+          <div class="search-result-type">${item.type === 'product' ? 'Product' : 'Page'}</div>
+        </a>
+      `).join('');
+      searchResults.style.display = "block";
+    });
+    
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const firstResult = searchResults.querySelector('a');
+        if (firstResult) {
+          window.location.href = firstResult.href;
+        }
+      }
+    });
+    
+    // Close search results when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!searchInput.parentElement.contains(e.target)) {
+        searchResults.style.display = "none";
+      }
+    });
+  }
+
   // Mobile menu
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -36,8 +140,42 @@
     mobileMenu.addEventListener("click", (e) => e.stopPropagation());
   }
 
-  // Background cascade
+  // Dropdown menu (desktop + mobile friendly)
+  const dropdownToggles = Array.from(document.querySelectorAll('.dropdown-toggle'));
+  dropdownToggles.forEach(btn => {
+    const wrapper = btn.closest('.dropdown');
+    if (!wrapper) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = wrapper.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Close dropdown when a menu item is clicked
+    const items = wrapper.querySelectorAll('.dropdownMenu a');
+    items.forEach(it => it.addEventListener('click', () => {
+      wrapper.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  });
+
+  // Close open dropdowns on outside click or Escape
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown.open').forEach(d => {
+      d.classList.remove('open');
+      const b = d.querySelector('.dropdown-toggle'); if (b) b.setAttribute('aria-expanded','false');
+    });
+  });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') {
+    document.querySelectorAll('.dropdown.open').forEach(d => {
+      d.classList.remove('open');
+      const b = d.querySelector('.dropdown-toggle'); if (b) b.setAttribute('aria-expanded','false');
+    });
+  }});
+
+  // Background cascade with parallax
   const cascade = document.querySelector("[data-cascade]");
+  const scene = document.querySelector(".scene");
   if (cascade) {
     let t = 0;
     const tick = () => {
@@ -46,6 +184,42 @@
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
+  }
+  
+  // Parallax background on scroll
+  if (scene && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const parallax = scrolled * 0.3;
+        scene.style.transform = `translateY(${parallax}px)`;
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Close floating CTA
+  const floatingCta = document.getElementById('floatingCta');
+  const ctaClose = document.getElementById('ctaClose');
+  if (floatingCta && ctaClose) {
+    ctaClose.addEventListener('click', () => {
+      floatingCta.classList.add('hidden');
+      // Remember the user closed it
+      try {
+        localStorage.setItem('hrg-cta-closed', 'true');
+      } catch(e) {}
+    });
+    
+    // Check if user previously closed it
+    try {
+      if (localStorage.getItem('hrg-cta-closed') === 'true') {
+        floatingCta.classList.add('hidden');
+      }
+    } catch(e) {}
   }
 
   // CTA links
@@ -75,7 +249,19 @@
   };
   const closeModal = () => modal && modal.classList.remove("open");
 
-  openBtns.forEach(b => b.addEventListener("click", (e) => { e.preventDefault(); openModal(); }));
+  openBtns.forEach(b => b.addEventListener("click", (e) => { 
+    e.preventDefault(); 
+    e.stopPropagation();
+    // Pre-fill message with subject if data-subject exists
+    const subject = b.getAttribute('data-subject');
+    if (subject) {
+      const messageField = modal.querySelector('textarea[name="message"]');
+      if (messageField) {
+        messageField.value = `I need help with: ${subject}\n\n`;
+      }
+    }
+    openModal(); 
+  }));
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
   if (closeBtn2) closeBtn2.addEventListener("click", closeModal);
   if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
@@ -114,4 +300,79 @@
       }
     });
   }
+
+  // Render featured builds on the homepage (if present)
+  (async function renderFeatured(){
+    const root = document.getElementById("featured");
+    if (!root) return;
+    try {
+      const idx = await fetch("content/products/index.json", { cache: "no-store" });
+      if (!idx.ok) return;
+      const data = await idx.json();
+      const files = Array.isArray(data.items) ? data.items : [];
+      const items = [];
+      for (const name of files){
+        try {
+          const r = await fetch(`content/products/${name}`, { cache: "no-store" });
+          if (!r.ok) continue;
+          const obj = await r.json();
+          obj.__file = name;
+          if (obj.featured) items.push(obj);
+        } catch {}
+      }
+      if (!items.length) return;
+      root.innerHTML = items.slice(0,3).map(it => `
+        <article class="panel item" data-reveal>
+          <div class="itemTop"><div class="kTag"><span class="bar"></span> ${(it.category||"system").toUpperCase()}</div>${it.featured?'<span class="badge">FEATURED</span>':''}</div>
+          <h3>${it.title}</h3>
+          <p>${it.short || ""}</p>
+          ${it.image?`<div class="media panel mediaBox" style="padding:8px;margin-top:10px"><img src="${it.image}" alt="${it.title}" loading="lazy" onerror="this.style.display='none'"></div>`:''}
+          <div class="itemActions"><a class="link" href="product.html?item=${encodeURIComponent(it.__file || '')}">View</a> <a class="text-link" data-consult href="#">Request</a></div>
+        </article>
+      `).join('');
+    } catch (e) { /* silent */ }
+  })();
+
+  // Parallax effect for elements with data-parallax
+  (function heroParallax(){
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    const els = Array.from(document.querySelectorAll('[data-parallax]'));
+    if (!els.length) return;
+    let ticking = false;
+    function onScroll(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(()=>{
+        els.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+          const offset = Math.max(-60, Math.min(60, -center * 0.06));
+          el.style.transform = `translateY(${offset}px)`;
+        });
+        ticking = false;
+      });
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // Reveal on scroll for elements with data-reveal
+  (function revealOnScroll(){
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!els.length) return;
+    if ('IntersectionObserver' in window){
+      const obs = new IntersectionObserver((entries, o) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add('show');
+            o.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => obs.observe(el));
+    } else {
+      els.forEach(el => el.classList.add('show'));
+    }
+  })();
 })();

@@ -1,11 +1,64 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HRG Admin</title>
-</head>
-<body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <title>HRG Admin — Coming Soon</title>
+  <link rel="stylesheet" href="/style.css" />
+  <main>
+    <div class="panel">
+      <h1 class="wordmark">Admin — Content Guide</h1>
+      <p style="margin-top:8px">This site is modular and content-driven. Products are JSON files; adding one automatically updates the catalog, the Products mega menu filters, and the product detail page.</p>
+      <div style="margin-top:14px">
+        <h3>Add a product</h3>
+        <ol>
+          <li>Create a JSON file under <code>content/products/</code> (e.g., <code>my-build.json</code>).</li>
+          <li>Add the filename to <code>content/products/index.json</code> in the <code>items</code> array.</li>
+          <li>Visit <a href="../products.html">products.html</a>. Use the “Products ▾” menu to filter (Gaming, Professional, Premium, Budget, Featured).</li>
+        </ol>
+        <p><strong>Schema</strong> (copy/paste and edit):</p>
+<pre style="white-space:pre-wrap;background:rgba(255,255,255,.03);padding:10px;border:1px solid rgba(255,255,255,.12);border-radius:6px">{
+  "title": "Build Name",
+  "short": "One-line summary.",
+  "description": "Longer description with optional line breaks.",
+  "image": "assets/your-image.jpg",
+  "category": "game", // or "professional"
+  "badges": ["premium", "silent", "RTX 4080"],
+  "services": ["Diagnostics", "Upgrade Planning"],
+  "featured": false
+}
+</pre>
+        <p>“Premium”/“Budget” filters match words in <code>badges</code> (case-insensitive). “Featured” reads <code>featured: true</code>.</p>
+      </div>
+    </div>
+  </main>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <section class="panel section">
+        <h1 class="wordmark">Admin Dashboard — Coming Soon</h1>
+        <p class="subline">A lightweight admin UI for adding and editing builds is planned. For now, manage products by editing files in <code>content/products/</code> and opening a PR.</p>
+
+        <div style="margin-top:18px; display:flex; gap:12px;">
+          <a class="btn" href="/content/products/index.json">View product index</a>
+          <a class="btn" href="/products.html">Browse catalog</a>
+        </div>
+
+        <div style="margin-top:18px; color:rgba(255,255,255,.72);">
+          <strong>Note:</strong> GitHub Pages is serving the static site — a dynamic admin will be added later (option: GitHub API or a separate backend).
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="panel footer" style="margin-top:24px;">
+    <div>© <span id="year"></span> Howard Resource Group</div>
+  </footer>
+
+  <script src="/script.js"></script>
 </body>
 </html>
