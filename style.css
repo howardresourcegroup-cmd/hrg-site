@@ -1209,9 +1209,9 @@ header.shrink{
   animation: shimmer 3s ease-in-out infinite;
 }
 @keyframes shimmer {
-  0%{ left: -100%; }
-  50%{ left: 100%; }
-  100%{ left: 100%; }
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
 .banner-icon {
   font-size: 32px;
@@ -1220,8 +1220,8 @@ header.shrink{
   animation: float 3s ease-in-out infinite;
 }
 @keyframes float {
-  0%, 100%{ transform: translateY(0px); }
-  50%{ transform: translateY(-4px); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
 }
 .banner-content {
   flex: 1;
