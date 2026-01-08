@@ -1185,6 +1185,78 @@ header.shrink{
   background: var(--gradient-secondary);
 }
 
+/* ===== Coming Soon Banner ===== */
+.coming-soon-banner{
+  margin: 24px 0;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(77,143,255,.08) 0%, rgba(124,92,255,.06) 100%);
+  border: 1px solid rgba(96,213,255,.2);
+  box-shadow: 0 0 24px rgba(96,213,255,.15), 0 4px 16px rgba(0,0,0,.2);
+}
+.coming-soon-banner::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(96,213,255,.1), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer{
+  0%{ left: -100%; }
+  50%{ left: 100%; }
+  100%{ left: 100%; }
+}
+.banner-icon{
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(96,213,255,.4));
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%, 100%{ transform: translateY(0px); }
+  50%{ transform: translateY(-4px); }
+}
+.banner-content{
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.banner-title{
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--text);
+  margin-bottom: 4px;
+  text-shadow: 0 0 20px rgba(96,213,255,.3);
+}
+.banner-text{
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: .01em;
+}
+@media (max-width: 720px){
+  .coming-soon-banner{
+    padding: 16px 18px;
+    gap: 12px;
+  }
+  .banner-icon{
+    font-size: 24px;
+  }
+  .banner-title{
+    font-size: 14px;
+  }
+  .banner-text{
+    font-size: 12px;
+  }
+}
+
 /* ===== Catalog ===== */
 .tools{
   display:flex;
