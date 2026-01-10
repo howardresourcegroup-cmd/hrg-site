@@ -159,10 +159,12 @@
       e.stopPropagation();
       const open = mobileMenu.classList.toggle("open");
       hamburger.setAttribute("aria-expanded", String(open));
+      hamburger.classList.toggle("active", open);
     });
     document.addEventListener("click", () => {
       mobileMenu.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
+      hamburger.classList.remove("active");
     });
     mobileMenu.addEventListener("click", (e) => e.stopPropagation());
   }
