@@ -166,10 +166,10 @@ header {
   right: 0;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
-  padding: 16px;
-  gap: 12px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  gap: 8px;
   flex-direction: column;
   z-index: 1200;
   max-height: calc(100vh - 120px);
@@ -178,13 +178,18 @@ header {
 
 .mobile-menu a {
   display: block;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: none;
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
   background: var(--section-alt);
+  transition: background 0.2s;
+}
+
+.mobile-menu a:hover {
+  background: var(--border);
 }
 
 .mobile-menu a.btn-primary {
@@ -841,11 +846,17 @@ footer {
   
   .feature-section {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
+  
   .feature-image {
     aspect-ratio: 16 / 10;
     height: auto;
+    order: -1;
+  }
+  
+  .feature-content {
+    order: 0;
   }
   
   .footer-content {
