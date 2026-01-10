@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft Performance Build",
+  "category": "game",
+  "featured": true,
+  "short": "Handles big modpacks and popular shader sets at solid FPS.",
+  "description": "Balanced CPU/GPU pairing tuned for heavier Minecraft modpacks and well-known shaders. Faster RAM, solid cooling, and NVMe storage keep worlds snappy and frame times even.",
+  "badges": ["MODPACKS", "SHADERS", "BALANCED", "UPGRADABLE"],
+  "services": ["Custom Build — Gaming", "Shaders & Mods Tuning", "Performance Tuning"],
+  "image": "assets/products/minecraft-performance.svg"
+}

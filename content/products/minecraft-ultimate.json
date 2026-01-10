@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft Ultimate Build",
+  "category": "game",
+  "featured": true,
+  "short": "Ultra settings, heavy shaders, giant modpacks, and streaming headroom.",
+  "description": "Top-end Minecraft system for creators: high-core CPU, powerful GPU, generous RAM, and premium cooling. Built for heavy shaders, massive modpacks, and recording/streaming without stutter.",
+  "badges": ["ULTRA", "SHADERS", "CREATOR", "HIGH-END"],
+  "services": ["Custom Build — Gaming", "Creator Tuning", "Thermal Optimization"],
+  "image": "assets/products/minecraft-ultimate.svg"
+}

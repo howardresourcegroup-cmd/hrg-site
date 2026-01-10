@@ -6,6 +6,33 @@
     formAction: "https://formspree.io/f/xkgqpggr",
   };
 
+  // GA4 Event Helper
+  const trackEvent = (eventName, params = {}) => {
+    if (window.gtag) {
+      gtag('event', eventName, params);
+    }
+  };
+
+  // Track Call clicks
+  document.addEventListener('click', (e) => {
+    if (e.target.getAttribute('href')?.startsWith('tel:')) {
+      trackEvent('phone_call_click', {
+        'phone_number': HRG.phoneDisplay,
+        'source': e.target.textContent || 'Call Button'
+      });
+    }
+  });
+
+  // Track Text clicks
+  document.addEventListener('click', (e) => {
+    if (e.target.getAttribute('href')?.startsWith('sms:')) {
+      trackEvent('sms_click', {
+        'phone_number': HRG.phoneDisplay,
+        'source': e.target.textContent || 'Text Button'
+      });
+    }
+  });
+
   // Year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -289,8 +316,11 @@
 
         if (res.ok) {
           form.reset();
-          if (success) success.classList.add("show");
-        } else {
+          if (success) success.classList.add("show");          // Track form submission
+          trackEvent('form_submit', {
+            'form_name': 'consultation_request',
+            'form_topic': fd.get('topic') || 'general'
+          });        } else {
           alert("Could not send right now. Please call/text and we’ll take care of you.");
         }
       } catch {
@@ -330,6 +360,49 @@
           <div class="itemActions"><a class="link" href="product.html?item=${encodeURIComponent(it.__file || '')}">View</a> <a class="text-link" data-consult href="#">Request</a></div>
         </article>
       `).join('');
+    } catch (e) { /* silent */ }
+  })();
+
+  // Render horizontal products carousel
+  (async function renderCarousel(){
+    const carousel = document.getElementById("featuredCarousel");
+    if (!carousel) return;
+    try {
+      const idx = await fetch("content/products/index.json", { cache: "no-store" });
+      if (!idx.ok) return;
+      const data = await idx.json();
+      const files = Array.isArray(data.items) ? data.items : [];
+      const items = [];
+      for (const name of files){
+        try {
+          const r = await fetch(`content/products/${name}`, { cache: "no-store" });
+          if (!r.ok) continue;
+          const obj = await r.json();
+          obj.__file = name;
+          items.push(obj);
+        } catch {}
+      }
+      if (!items.length) return;
+      
+      // Show featured first, then others
+      const featured = items.filter(it => it.featured);
+      const others = items.filter(it => !it.featured);
+      const sorted = [...featured, ...others].slice(0, 8);
+      
+      carousel.innerHTML = sorted.map(it => {
+        const price = it.price ? `$${Number(it.price).toLocaleString()}` : 'Contact for Price';
+        return `
+          <a href="product.html?item=${encodeURIComponent(it.__file || '')}" class="carousel-card" data-reveal>
+            <div class="carousel-card-image">
+              ${it.image ? `<img src="${it.image}" alt="${it.title || 'Build'}" loading="lazy">` : '💻'}
+            </div>
+            ${it.featured ? '<span class="carousel-card-badge">Featured</span>' : ''}
+            <div class="carousel-card-title">${it.title || 'Custom Build'}</div>
+            <div class="carousel-card-short">${it.short || ''}</div>
+            <div class="carousel-card-price">${price}</div>
+          </a>
+        `;
+      }).join('');
     } catch (e) { /* silent */ }
   })();
 
@@ -375,4 +448,268 @@
       els.forEach(el => el.classList.add('show'));
     }
   })();
+})();
+
+// Theme Switcher
+(function initTheme() {
+  const themeBtn = document.getElementById('themeBtn');
+  const themeDropdown = document.getElementById('themeDropdown');
+  const themeOptions = document.querySelectorAll('.theme-option');
+  const customThemeOption = document.getElementById('customThemeOption');
+  const themeCustomizer = document.getElementById('themeCustomizer');
+  const closeCustomizer = document.getElementById('closeCustomizer');
+  const applyCustomTheme = document.getElementById('applyCustomTheme');
+  const resetTheme = document.getElementById('resetTheme');
+  
+  if (!themeBtn || !themeDropdown) return;
+  
+  // Color pickers
+  const colorPickers = {
+    bg: { color: document.getElementById('bgColor'), hex: document.getElementById('bgColorHex') },
+    text: { color: document.getElementById('textColor'), hex: document.getElementById('textColorHex') },
+    accent: { color: document.getElementById('accentColor'), hex: document.getElementById('accentColorHex') },
+    cardBg: { color: document.getElementById('cardBgColor'), hex: document.getElementById('cardBgColorHex') },
+    border: { color: document.getElementById('borderColor'), hex: document.getElementById('borderColorHex') }
+  };
+  
+  // Load saved theme
+  const savedTheme = localStorage.getItem('hrg-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateActiveTheme(savedTheme);
+  
+  // Load custom theme colors if they exist
+  if (savedTheme === 'custom') {
+    loadCustomTheme();
+  }
+  
+  // Toggle dropdown
+  themeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    themeBtn.classList.toggle('active');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    themeBtn.classList.remove('active');
+  });
+  
+  themeDropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  
+  // Theme selection
+  themeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const theme = option.getAttribute('data-theme');
+      
+      if (theme === 'custom') {
+        openCustomizer();
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('hrg-theme', theme);
+        updateActiveTheme(theme);
+        themeBtn.classList.remove('active');
+      }
+    });
+  });
+  
+  // Open customizer
+  function openCustomizer() {
+    if (!themeCustomizer) return;
+    
+    // Load current custom values or defaults
+    const customColors = JSON.parse(localStorage.getItem('hrg-custom-theme') || '{}');
+    
+    colorPickers.bg.color.value = customColors.bg || '#ffffff';
+    colorPickers.bg.hex.value = customColors.bg || '#ffffff';
+    colorPickers.text.color.value = customColors.text || '#1a1a1a';
+    colorPickers.text.hex.value = customColors.text || '#1a1a1a';
+    colorPickers.accent.color.value = customColors.accent || '#00a8e8';
+    colorPickers.accent.hex.value = customColors.accent || '#00a8e8';
+    colorPickers.cardBg.color.value = customColors.cardBg || '#ffffff';
+    colorPickers.cardBg.hex.value = customColors.cardBg || '#ffffff';
+    colorPickers.border.color.value = customColors.border || '#e5e5e5';
+    colorPickers.border.hex.value = customColors.border || '#e5e5e5';
+    
+    updatePreview();
+    themeCustomizer.classList.add('open');
+    themeBtn.classList.remove('active');
+  }
+  
+  // Close customizer
+  function closeCustomizerModal() {
+    if (themeCustomizer) {
+      themeCustomizer.classList.remove('open');
+    }
+  }
+  
+  if (closeCustomizer) {
+    closeCustomizer.addEventListener('click', closeCustomizerModal);
+  }
+  
+  if (themeCustomizer) {
+    themeCustomizer.addEventListener('click', (e) => {
+      if (e.target === themeCustomizer) {
+        closeCustomizerModal();
+      }
+    });
+  }
+  
+  // Sync color picker with hex input
+  Object.keys(colorPickers).forEach(key => {
+    const { color, hex } = colorPickers[key];
+    
+    if (color && hex) {
+      color.addEventListener('input', (e) => {
+        hex.value = e.target.value;
+        updatePreview();
+      });
+      
+      hex.addEventListener('input', (e) => {
+        const value = e.target.value;
+        if (/^#[0-9A-F]{6}$/i.test(value)) {
+          color.value = value;
+          updatePreview();
+        }
+      });
+    }
+  });
+  
+  // Update preview
+  function updatePreview() {
+    const preview = document.getElementById('themePreview');
+    if (!preview) return;
+    
+    preview.style.setProperty('--bg', colorPickers.bg.color.value);
+    preview.style.setProperty('--text', colorPickers.text.color.value);
+    preview.style.setProperty('--accent', colorPickers.accent.color.value);
+    preview.style.setProperty('--card-bg', colorPickers.cardBg.color.value);
+    preview.style.setProperty('--border', colorPickers.border.color.value);
+    
+    // Calculate muted color (60% opacity of text color)
+    const textColor = colorPickers.text.color.value;
+    const muted = hexToRGBA(textColor, 0.6);
+    preview.style.setProperty('--muted', muted);
+  }
+  
+  // Apply custom theme
+  if (applyCustomTheme) {
+    applyCustomTheme.addEventListener('click', () => {
+      const customColors = {
+        bg: colorPickers.bg.color.value,
+        text: colorPickers.text.color.value,
+        accent: colorPickers.accent.color.value,
+        cardBg: colorPickers.cardBg.color.value,
+        border: colorPickers.border.color.value
+      };
+      
+      localStorage.setItem('hrg-custom-theme', JSON.stringify(customColors));
+      localStorage.setItem('hrg-theme', 'custom');
+      
+      applyCustomThemeColors(customColors);
+      document.documentElement.setAttribute('data-theme', 'custom');
+      updateActiveTheme('custom');
+      
+      closeCustomizerModal();
+    });
+  }
+  
+  // Reset theme
+  if (resetTheme) {
+    resetTheme.addEventListener('click', () => {
+      colorPickers.bg.color.value = '#ffffff';
+      colorPickers.bg.hex.value = '#ffffff';
+      colorPickers.text.color.value = '#1a1a1a';
+      colorPickers.text.hex.value = '#1a1a1a';
+      colorPickers.accent.color.value = '#00a8e8';
+      colorPickers.accent.hex.value = '#00a8e8';
+      colorPickers.cardBg.color.value = '#ffffff';
+      colorPickers.cardBg.hex.value = '#ffffff';
+      colorPickers.border.color.value = '#e5e5e5';
+      colorPickers.border.hex.value = '#e5e5e5';
+      
+      updatePreview();
+    });
+  }
+  
+  function updateActiveTheme(theme) {
+    themeOptions.forEach(opt => {
+      if (opt.getAttribute('data-theme') === theme) {
+        opt.classList.add('active');
+      } else {
+        opt.classList.remove('active');
+      }
+    });
+  }
+  
+  function loadCustomTheme() {
+    const customColors = JSON.parse(localStorage.getItem('hrg-custom-theme') || '{}');
+    if (Object.keys(customColors).length > 0) {
+      applyCustomThemeColors(customColors);
+    }
+  }
+  
+  function applyCustomThemeColors(colors) {
+    const root = document.documentElement;
+    root.style.setProperty('--custom-bg', colors.bg);
+    root.style.setProperty('--custom-text', colors.text);
+    root.style.setProperty('--custom-accent', colors.accent);
+    root.style.setProperty('--custom-card-bg', colors.cardBg);
+    root.style.setProperty('--custom-border', colors.border);
+    
+    // Calculate derived colors
+    const muted = hexToRGBA(colors.text, 0.6);
+    const sectionAlt = lightenColor(colors.bg, 0.03);
+    const headerBg = hexToRGBA(colors.bg, 0.98);
+    
+    root.style.setProperty('--custom-muted', muted);
+    root.style.setProperty('--custom-section-alt', sectionAlt);
+    root.style.setProperty('--custom-header-bg', headerBg);
+    root.style.setProperty('--custom-footer-bg', colors.text);
+  }
+  
+  function hexToRGBA(hex, alpha = 1) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  
+  function lightenColor(hex, percent) {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const r = Math.min(255, Math.floor((num >> 16) + (255 - (num >> 16)) * percent));
+    const g = Math.min(255, Math.floor(((num >> 8) & 0x00FF) + (255 - ((num >> 8) & 0x00FF)) * percent));
+    const b = Math.min(255, Math.floor((num & 0x0000FF) + (255 - (num & 0x0000FF)) * percent));
+    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+  }
+})();
+
+// Cart Management
+(function initCart() {
+  const cartCount = document.getElementById('cartCount');
+  
+  function updateCartCount() {
+    try {
+      const cart = JSON.parse(localStorage.getItem('hrg-cart') || '[]');
+      const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      
+      if (cartCount) {
+        if (count > 0) {
+          cartCount.textContent = count;
+          cartCount.style.display = 'block';
+        } else {
+          cartCount.style.display = 'none';
+        }
+      }
+    } catch(e) {
+      if (cartCount) cartCount.style.display = 'none';
+    }
+  }
+  
+  // Update on page load
+  updateCartCount();
+  
+  // Listen for cart updates
+  window.addEventListener('storage', updateCartCount);
+  window.addEventListener('cart-updated', updateCartCount);
 })();

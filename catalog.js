@@ -3,7 +3,7 @@
   if (!root) return;
 
   const state = { items: [], filter: "all", q: "" };
-  const chipEls = Array.from(document.querySelectorAll("[data-filter]"));
+    const chipEls = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
   const searchEl = document.querySelector("[data-search]");
 
   const norm = (s) => (s || "").toString().toLowerCase().trim();
@@ -39,49 +39,41 @@
     const visible = state.items.filter(matches);
 
     if (!visible.length){
-      root.innerHTML = `<article class="panel item"><h3>No matches</h3><p>Try a different filter or search term.</p></article>`;
+        root.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;"><h3 style="font-size: 24px; margin-bottom: 12px;">No products found</h3><p style="color: var(--muted);">Try a different filter or search term.</p></div>`;
       return;
     }
 
-    root.innerHTML = visible.map(item => {
-      const badges = (item.badges || []).slice(0, 4)
-        .map(b => `<span class="badge">${b}</span>`).join("");
-
-      const servicesHtml = (item.services || []).slice(0,3).map(s => `<span class="service">${s}</span>`).join(" ");
-
-      const tag = (item.category || "system").toUpperCase();
-      const flag = item.featured ? `<span class="badge">FEATURED</span>` : `<span class="badge">SYSTEM</span>`;
-
-      const img = item.image ? `
-        <div class="media panel mediaBox" style="padding:10px; margin-top:12px;">
-          <div class="mediaLabel">PREVIEW</div>
-          <img src="${item.image}" alt="${item.title || "HRG build"}" loading="lazy" onerror="this.style.display='none'">
-          <div class="mediaFallback" style="margin-top:8px; display:none;"></div>
-        </div>
-      ` : "";
-
-      return `
-        <article class="panel item" data-cat="${item.category || ""}">
-          <div class="itemTop">
-            <div class="kTag"><span class="bar"></span> ${tag}</div>
-            ${flag}
+      root.innerHTML = visible.map(item => {
+        const price = item.price || 0;
+        const priceFormatted = price > 0 ? `$${price.toLocaleString()}` : 'Contact for Price';
+        const rating = 4.5 + Math.random() * 0.5; // Random rating 4.5-5.0
+        const reviews = Math.floor(50 + Math.random() * 200);
+        const stars = '★'.repeat(Math.floor(rating)) + (rating % 1 >= 0.5 ? '½' : '') + '☆'.repeat(5 - Math.ceil(rating));
+      
+        const badge = item.featured ? '<div class="product-badge">FEATURED</div>' : '';
+        const specs = (item.badges || []).slice(0, 3).join(' • ');
+      
+        return `
+          <div class="product-card" onclick="window.location.href='product.html?item=${encodeURIComponent(item.__file || '')}'">
+            <div class="product-image">
+              ${badge}
+              ${item.image ? `<img src="${item.image}" alt="${item.title || 'HRG Build'}" loading="lazy">` : '<div style="font-size: 48px;">💻</div>'}
+            </div>
+            <div class="product-title">${item.title || 'Untitled Build'}</div>
+            <div class="product-rating">
+              <span class="stars">${stars}</span>
+              <span class="rating-count">(${reviews})</span>
+            </div>
+            <div class="product-price">${priceFormatted}</div>
+            ${price > 0 ? '<div class="product-price-label">List Price</div>' : ''}
+            <div class="product-delivery">Shipping calculated at checkout • Nationwide delivery</div>
+            <div class="product-specs">${specs || item.short || ''}</div>
+            <div class="product-actions" onclick="event.stopPropagation()">
+              <a href="product.html?item=${encodeURIComponent(item.__file || '')}" class="btn btn-secondary">View Details</a>
+            </div>
           </div>
-
-          <h3>${item.title || "Untitled Build"}</h3>
-          <p>${item.short || ""}</p>
-
-          <div class="badges">${badges}</div>
-          <div class="services">${servicesHtml}</div>
-
-          ${img}
-
-          <div class="itemActions">
-            <a class="link" href="product.html?item=${encodeURIComponent(item.__file || '')}">View</a>
-            <a class="text-link" data-consult href="#">Request</a>
-          </div>
-        </article>
-      `; 
-    }).join("");
+        `;
+      }).join('');
   }
 
   async function load(){

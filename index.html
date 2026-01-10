@@ -1,296 +1,409 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HRG — Expert Tech Consulting & Support</title>
-  <meta name="description" content="Professional tech support and consulting services. Call a consultant for basic troubleshooting to advanced technical solutions. Howard Resource Group." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Howard Resource Group — Tech Consulting, Repair & Custom Computers</title>
+  <meta name="description" content="Professional tech consulting, computer repair, and custom builds. Expert service with transparent pricing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Howard Resource Group" />
-  <meta property="og:title" content="Howard Resource Group — Performance Systems" />
-  <meta property="og:description" content="Performance systems with refined design: custom gaming PCs, professional workstations, repair, and tuning." />
-  <meta property="og:image" content="assets/og.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WN9XBRX8DN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WN9XBRX8DN', {
+      'page_path': window.location.pathname
+    });
+  </script>
 </head>
-<body>
-
-  <div class="scene" aria-hidden="true">
-    <div class="cascade" data-cascade></div>
-  </div>
-
-  <!-- TOP BANNER NAV -->
-  <header id="siteHeader">
+<body>  <!-- Header -->
+  <header>
     <div class="container">
-      <div class="navbar panel">
-        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
-          <div class="brand-inner">
-            <div class="brand-full">HOWARD RESOURCE GROUP</div>
-            <div class="brand-compact">HRG</div>
-          </div>
-        </a>
-
-        <div class="search-box">
-          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </div>
-
-        <nav class="navlinks" aria-label="Primary navigation">
-          <a href="consulting.html">Tech Support</a>
-          <a href="consulting.html#how-it-works">How It Works</a>
-          <a href="#services">Services</a>
-          <div class="dropdown" id="navProducts">
-            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navProductsMenu">Products</button>
-            <div class="dropdownMenu panel mega" id="navProductsMenu" role="menu" aria-label="Products submenu">
-              <div class="megaGrid">
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> Browse</div>
-                  <a role="menuitem" href="products.html">All Builds</a>
-                  <a role="menuitem" href="products.html#featured">Featured</a>
-                </div>
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Use</div>
-                  <a role="menuitem" href="products.html#game">Gaming</a>
-                  <a role="menuitem" href="products.html#professional">Professional</a>
-                </div>
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Tier</div>
-                  <a role="menuitem" href="products.html#premium">Premium</a>
-                  <a role="menuitem" href="products.html#budget">Budget</a>
-                </div>
-              </div>
+      <nav class="navbar">
+        <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
+        <div class="nav-links">
+          <a href="#consulting">Consulting</a>
+          <a href="#repair">Repair</a>
+          <a href="#computers">Custom Computers</a>
+          <a href="#websites">Websites</a>
+          <a href="#apps">Apps</a>
+          <div class="dropdown">
+            <button class="dropdown-toggle">More</button>
+            <div class="dropdownMenu">
+              <a href="#consulting">Consulting Details</a>
+              <a href="#repair">Repair Specs</a>
+              <a href="#computers">Computer Specs</a>
+              <a href="#websites">Website Services</a>
+              <a href="#apps">App Services</a>
             </div>
           </div>
-        </nav>
-
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="mobileMenu panel" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="consulting.html">Tech Support</a>
-        <a href="consulting.html#how-it-works">How It Works</a>
-        <a href="#services">Services</a>
-        <a href="products.html">Products</a>
-      </div>
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeBtn" title="Change Theme">
+            🎨
+            <div class="theme-dropdown" id="themeDropdown">
+              <div class="theme-option" data-theme="light">
+                <span class="theme-color" style="background: #ffffff;"></span>
+                Light
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <span class="theme-color" style="background: #0f0f0f;"></span>
+                Dark
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-color" style="background: #f0f4f8;"></span>
+                Blue
+              </div>
+              <div class="theme-option" data-theme="custom" id="customThemeOption">
+                <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                Custom
+              </div>
+            </div>
+          </button>
+          <a href="cart.html" class="icon-btn" id="cartBtn" title="Cart">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <main class="page">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-
-      <!-- HERO (tech consulting focus) -->
-      <section class="panel section hero" id="top" data-hero>
-        <div class="heroGrid">
-          <div class="heroContent" data-reveal>
-            <h1 class="wordmark hero-title">Computer Broken? We'll Fix It.
-              <span style="display:block; font-weight:400; font-size:18px; margin-top:8px; letter-spacing:0">Call us. Get answers. Pay only if you want us to fix it.</span>
-            </h1>
-            <p class="subline hero-subline">
-              All computers. All problems. We'll tell you what's wrong and how much it costs to fix. You decide what happens next.
-            </p>
-
-            <div class="btnRow">
-              <button class="btn primary" data-consult><span class="dot"></span>CALL A CONSULTANT</button>
-              <a class="btn" data-call-link href="tel:6784214125">CALL NOW</a>
-              <a class="text-link" href="#how-it-works">How it works</a>
-            </div>
-
-            <div class="hud">
-              <div class="pill">BASIC TROUBLESHOOTING</div>
-              <div class="pill">DIAGNOSTIC SERVICES</div>
-              <div class="pill">REMOTE SUPPORT</div>
-              <div class="pill">TRANSPARENT PRICING</div>
-            </div>
-          </div>
-
-          <div class="media panel mediaBox" data-parallax data-reveal>
-            <div class="mediaLabel">TECH SUPPORT</div>
-            <img src="assets/tech-support.jpg" alt="Tech support consultation" onerror="this.style.display='none'">
-            <div class="mediaFallback">Professional consulting services available</div>
-            <div class="mediaOverlay" aria-hidden="true"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS -->
-      <section id="how-it-works" class="panel section">
-        <h2 class="h2">How Tech Consulting Works</h2>
-        <p class="p">Simple, transparent process — from first contact to final resolution.</p>
-        <div class="cards">
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> STEP 1</div>
-            <h3 style="margin:12px 0 8px;">Call or Request Consultation</h3>
-            <p class="p">Reach out via phone, text, or our consultation form. Tell us what's happening with your system.</p>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> STEP 2</div>
-            <h3 style="margin:12px 0 8px;">Basic Troubleshooting</h3>
-            <p class="p">We diagnose the issue, identify root causes, and explain what's going on in clear terms.</p>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> STEP 3</div>
-            <h3 style="margin:12px 0 8px;">Your Choice</h3>
-            <p class="p">We present your options with transparent pricing. You decide if you want us to proceed with repairs or additional services — no pressure.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- TECH CONSULTING (centerpiece) -->
-      <section id="consulting" class="panel section">
-        <div class="repairGrid">
-          <div>
-            <div class="kicker"><span class="line"></span> ALL COMPUTERS</div>
-
-            <h2 class="repairTitle">
-              We Fix Computers
-            </h2>
-
-            <p class="repairCopy">
-              Gaming PCs, laptops, desktops — if it's a computer, we can fix it. We'll figure out what's wrong, tell you the price, and fix it only if you say yes. Simple as that.
-            </p>
-
-            <div class="repairPills">
-              <div class="rpill">Diagnostics</div>
-              <div class="rpill">Troubleshooting</div>
-              <div class="rpill">Refresh & Clean</div>
-              <div class="rpill">Thermals</div>
-              <div class="rpill">FPS Stability</div>
-              <div class="rpill">Upgrade Roadmap</div>
-            </div>
-
-            <div class="softRule"></div>
-
-            <div class="repairCTA">
-              <button class="btn primary" data-consult><span class="dot" aria-hidden="true"></span>REQUEST CONSULTATION</button>
-              <a class="btn" data-text-link href="sms:6784214125">TEXT US</a>
-              <a class="btn" data-call-link href="tel:6784214125">CALL NOW</a>
-            </div>
-
-            <div class="notice">
-              <strong>We Service All Computers</strong><br />
-              Gaming PCs, laptops, desktops, workstations — if it's a computer, we can help. We believe in transparent service with clear pricing and options. You're always in control of what happens next. No hidden fees, no pressure.
-            </div>
-          </div>
-
-          <div class="serviceList">
-            <h4>What we handle</h4>
-
-            <div class="srow clickable-card" data-consult data-subject="Performance Issues">
-              <b>Performance drops</b>
-              <span>Stutters, crashing, low FPS, overheating, unstable clocks</span>
-            </div>
-
-            <div class="srow clickable-card" data-consult data-subject="Upgrade Planning">
-              <b>Upgrade planning</b>
-              <span>GPU/CPU/RAM/SSD sized for your games & target FPS</span>
-            </div>
-
-            <div class="srow clickable-card" data-consult data-subject="Refresh & Cleanup">
-              <b>Refresh & cleanup</b>
-              <span>Thermal paste, dust, airflow, fan curves, OS cleanup</span>
-            </div>
-
-            <div class="srow clickable-card" data-consult data-subject="Gaming PC Issues">
-              <b>Gaming PCs</b>
-              <span>FPS drops, overheating, game-specific optimization</span>
-            </div>
-
-            <div class="srow clickable-card" data-consult data-subject="General Computer Support">
-              <b>All Computer Types</b>
-              <span>Gaming PCs, laptops, desktops, workstations, custom & pre-built</span>
-            </div>
-
-            <div class="srow clickable-card" data-consult data-subject="Tech Support">
-              <b>General Tech Support</b>
-              <span>Setup help, configuration, maintenance advice for any system</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SERVICES (expanded) -->
-      <section id="services" class="panel section">
-        <h2 class="h2">All Services</h2>
-        <p class="p">From basic troubleshooting to complete system builds — we're here to help at every level.</p>
-
-        <div class="cards">
-          <article class="panel card clickable-card" data-consult data-subject="Tech Consultation">
-            <div class="kTag"><span class="bar"></span> CONSULTING</div>
-            <h3 style="margin:12px 0 8px;">Tech Consultation</h3>
-            <p class="p">Call a consultant for expert guidance on any tech issue. We diagnose, explain, and help you make informed decisions.</p>
-            <div class="btnRow" style="margin-top:12px;"><span class="text-link">Request Consultation →</span></div>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> REMOTE</div>
-            <h3 style="margin:12px 0 8px;">Remote Support</h3>
-            <p class="p">Fast screenshare troubleshooting and remote configuration for software issues and setup help.</p>
-            <div class="btnRow" style="margin-top:12px;"><a class="text-link" data-consult href="#">Request Remote Help</a></div>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> REPAIR</div>
-            <h3 style="margin:12px 0 8px;">Hardware Repair</h3>
-            <p class="p">Hardware diagnostics, component replacement, and repair services when you decide to proceed.</p>
-            <div class="btnRow" style="margin-top:12px;"><a class="text-link" data-consult href="#">Request Repair</a></div>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> PRODUCTS</div>
-            <h3 style="margin:12px 0 8px;">Custom Systems</h3>
-            <p class="p">Need a new computer? Browse our custom-built gaming PCs and professional workstations.</p>
-            <div class="btnRow" style="margin-top:12px;"><a class="text-link" href="products.html">View Products</a></div>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> TUNING</div>
-            <h3 style="margin:12px 0 8px;">Performance Optimization</h3>
-            <p class="p">Thermal optimization, driver cleanup, and performance tuning for gaming and professional systems.</p>
-            <div class="btnRow" style="margin-top:12px;"><a class="text-link" data-consult href="#">Request Tuning</a></div>
-          </article>
-
-          <article class="panel card">
-            <div class="kTag"><span class="bar"></span> DATA</div>
-            <h3 style="margin:12px 0 8px;">Data Services</h3>
-            <p class="p">Data recovery, backup setup, and migration services to protect your important files.</p>
-            <div class="btnRow" style="margin-top:12px;"><a class="text-link" data-consult href="#">Request Data Help</a></div>
-          </article>
-        </div>
-      </section> 
-
-      <!-- SUPPORT -->
-      <section id="support" class="panel section">
-        <h2 class="h2">Get Help Now</h2>
-        <p class="p">
-          Not sure what's wrong or what you need? That's exactly what we're here for. Reach out and we'll help you understand what's happening and what your options are.
-        </p>
-        <div class="btnRow">
-          <button class="btn primary" data-consult><span class="dot"></span>CALL A CONSULTANT</button>
-          <a class="btn" data-call-link href="tel:6784214125">CALL NOW</a>
-          <a class="btn" data-text-link href="sms:6784214125">TEXT US</a>
-        </div>
-      </section>
-
-      <footer class="panel footer">
-        <div>© <span id="year"></span> Howard Resource Group</div>
-        <div class="footlinks">
-          <a href="#top">Top</a>
-          <a href="#consulting">Tech Support</a>
-          <a href="products.html">Products</a>
-        </div>
-      </footer>
-
+      <h1>Tech problems solved, systems perfected.</h1>
+      <p>Professional tech consulting, expert repair, and custom-built computers. Building a national network of certified technicians operating under our quality standards.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px;">
+        <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
+        <a href="#services" class="btn btn-secondary">Our Services</a>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Services Overview -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Three core services, one trusted partner.</h2>
+        <p class="section-description">From expert guidance to hands-on repair to custom builds—we're here for every stage of your tech journey.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3>Tech Consulting</h3>
+          <p>Expert guidance for any tech issue. Diagnostics, troubleshooting, optimization, and planning—all with transparent pricing and clear communication.</p>
+          <a href="#consulting" class="btn btn-secondary">Learn More →</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3>Repair &amp; Diagnostics</h3>
+          <p>Professional hardware repair and restoration. Component replacement, thermal optimization, cleaning, and complete system restoration for all computers.</p>
+          <a href="#repair" class="btn btn-secondary">Learn More →</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3>Custom Computers</h3>
+          <p>Gaming PCs and professional workstations built to your exact specifications. Quality components, expert assembly, professional configuration.</p>
+          <a href="#computers" class="btn btn-secondary">View Catalog →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h3>Custom Websites</h3>
+          <p>Professional websites that convert. Clean, fast, and built to your brand. From design to deployment—we handle the full journey.</p>
+          <a href="#websites" class="btn btn-secondary">Learn More →</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-number">05</div>
+          <h3>App Design &amp; Development</h3>
+          <p>iOS, Android, and web apps that users love. Beautiful interfaces, smooth performance, and features that matter. We build, deploy, and support.</p>
+          <a href="#apps" class="btn btn-secondary">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting Section -->
+  <section id="consulting" class="section section-alt">
+    <div class="container">
+      <div class="feature-section">
+        <div class="feature-content" data-reveal>
+          <div class="section-label">Tech Consulting</div>
+          <h2>Expert guidance for<br>any tech challenge.</h2>
+          <p>Strategic IT consulting and technology planning for individuals and businesses. Professional advice on system architecture, upgrades, optimization, and complete tech solutions tailored to your needs.</p>
+          <ul class="feature-list">
+            <li><strong>Business Solutions</strong> — Complete IT infrastructure planning and implementation</li>
+            <li><strong>Small Business Tech Setups</strong> — Networks, workstations, security, and scalable systems</li>
+            <li><strong>Home Office Setups</strong> — Productive, reliable workspaces designed for remote work</li>
+            <li><strong>Technology Planning</strong> — Build the right tech stack for your budget and goals</li>
+            <li><strong>System Architecture</strong> — Design optimal setups for performance and reliability</li>
+            <li><strong>Upgrade Consulting</strong> — Know what to upgrade and when to maximize ROI</li>
+            <li><strong>Performance Optimization</strong> — Get the most from your existing hardware</li>
+            <li><strong>Remote & On-Site</strong> — Available nationwide with local support</li>
+          </ul>
+          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Talk to a Consultant</button>
+        </div>
+        <div class="feature-image" data-reveal>
+          <img src="assets/site/consulting.svg" alt="Tech Consulting" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Repair Section -->
+  <section id="repair" class="section">
+    <div class="container">
+      <div class="feature-section" style="grid-template-columns: 1fr 1fr;">
+        <div class="feature-image">
+          <img src="assets/site/repair.svg" alt="Repair & Diagnostics" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+        </div>
+        <div class="feature-content" data-reveal>
+          <div class="section-label">Repair & Diagnostics</div>
+          <h2>We fix all computers, all problems.</h2>
+          <p>Professional diagnostics and repair for all computer issues. From overheating gaming PCs to laptops that won't boot—we handle it with quality parts and transparent pricing.</p>
+          <ul class="feature-list">
+            <li><strong>$50 diagnostic fee</strong> — We'll figure out what's wrong (free if you proceed with repair)</li>
+            <li><strong>$40/hour on-site service</strong> — Certified technicians available nationwide</li>
+            <li><strong>Component replacement</strong> — GPU, CPU, RAM, storage upgrades</li>
+            <li><strong>Thermal optimization</strong> — Paste replacement, cooling solutions</li>
+            <li><strong>Deep cleaning</strong> — Dust removal, fan maintenance</li>
+            <li><strong>Gaming PC repair</strong> — FPS issues, crashes, optimization</li>
+          </ul>
+          <a href="tel:6784214125" class="btn btn-primary" style="margin-top: 32px;">Request Repair</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Carousel -->
+  <section class="products-carousel-section">
+    <div class="container">
+      <div class="carousel-header" data-reveal>
+        <h3>Featured Custom Builds</h3>
+        <a href="products.html" class="carousel-view-all">View All →</a>
+      </div>
+    </div>
+    <div class="products-carousel" id="featuredCarousel">
+      <!-- Products will be loaded here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Custom Computers Section -->
+  <section id="computers" class="section section-alt">
+    <div class="container">
+      <div class="feature-section">
+        <div class="feature-content">
+          <div class="section-label">Custom Computers</div>
+          <h2>Built for you, configured by experts.</h2>
+          <p>Custom gaming PCs and professional workstations tailored to your exact needs. We source quality components, assemble with precision, and optimize every setting.</p>
+          <p style="color: var(--muted); margin-top: 8px;">Catalog launching soon — explore repair and diagnostics in the meantime.</p>
+          <ul class="feature-list">
+            <li><strong>Gaming builds</strong> — From budget to high-end, optimized for your games</li>
+            <li><strong>Workstations</strong> — Professional systems for content creation and production</li>
+            <li><strong>Quality parts</strong> — Reliable components from trusted manufacturers</li>
+            <li><strong>Expert assembly</strong> — Clean cable management, optimal airflow</li>
+            <li><strong>Full configuration</strong> — OS install, drivers, software, tested and ready</li>
+          </ul>
+          <a href="products.html" class="btn btn-primary" style="margin-top: 32px;">Catalog — Coming Soon</a>
+        </div>
+        <div class="feature-image">
+          <img src="assets/site/computers.svg" alt="Custom Computers" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Websites Section -->
+  <section id="websites" class="section section-alt">
+    <div class="container">
+      <div class="feature-section">
+        <div class="feature-content" data-reveal>
+          <div class="section-label">Custom Websites</div>
+          <h2>Professional websites that convert.</h2>
+          <p>Clean, fast, and built to win. We design and develop custom websites that look great, load fast, and turn visitors into customers. From branding to deployment, we handle the whole journey.</p>
+          <ul class="feature-list">
+            <li><strong>Custom design</strong> — Built to match your brand and vision, not a template</li>
+            <li><strong>Mobile-first</strong> — Perfect on phones, tablets, and desktops</li>
+            <li><strong>Fast performance</strong> — Optimized for speed and SEO rankings</li>
+            <li><strong>Content management</strong> — Easy to update your site without coding</li>
+            <li><strong>Secure & scalable</strong> — Built on modern, reliable infrastructure</li>
+            <li><strong>Analytics ready</strong> — Track visitors and conversions from day one</li>
+          </ul>
+          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Request Website Consultation</button>
+        </div>
+        <div class="feature-image" data-reveal>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="web_bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#ec4899"/></linearGradient><radialGradient id="web_glow" cx="50%" cy="42%" r="40%"><stop offset="0" stop-color="#f97316" stop-opacity="0.35"/><stop offset="1" stop-color="#f97316" stop-opacity="0"/></radialGradient><filter id="web_blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceGraphic" stdDeviation="40"/></filter></defs><rect width="1200" height="800" rx="24" fill="url(#web_bg)"/><g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"><path d="M120 560 H1080"/><path d="M120 600 H1080"/><path d="M120 640 H1080"/></g><circle cx="600" cy="360" r="300" fill="url(#web_glow)" filter="url(#web_blur)"/><g><rect x="300" y="200" width="600" height="450" rx="12" fill="#0f172a" stroke="#f97316" stroke-opacity="0.25" stroke-width="2"/><rect x="300" y="200" width="600" height="60" rx="12" fill="#1e293b"/><circle cx="330" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><circle cx="354" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><circle cx="378" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><rect x="320" y="290" width="560" height="20" rx="4" fill="#f97316" fill-opacity="0.15"/><rect x="320" y="330" width="480" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="355" width="450" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="380" width="520" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="420" width="400" height="12" rx="2" fill="#f97316" fill-opacity="0.12"/></g><text x="50%" y="95%" text-anchor="middle" font-family="Manrope, Inter, Arial" font-size="40" fill="#ffffff" fill-opacity="0.9">Custom Websites</text><text x="50%" y="95%" dy="32" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#fed7aa" fill-opacity="0.85">Design • Development • Deployment</text></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Design Section -->
+  <section id="apps" class="section">
+    <div class="container">
+      <div class="feature-section" style="grid-template-columns: 1fr 1fr;">
+        <div class="feature-image" data-reveal>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="app_bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#06b6d4"/></linearGradient><radialGradient id="app_glow" cx="50%" cy="42%" r="40%"><stop offset="0" stop-color="#06b6d4" stop-opacity="0.35"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0"/></radialGradient><filter id="app_blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceGraphic" stdDeviation="40"/></filter></defs><rect width="1200" height="800" rx="24" fill="url(#app_bg)"/><g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"><path d="M120 560 H1080"/><path d="M120 600 H1080"/><path d="M120 640 H1080"/></g><circle cx="600" cy="360" r="300" fill="url(#app_glow)" filter="url(#app_blur)"/><g><rect x="420" y="240" width="360" height="380" rx="28" fill="#0f172a" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="2"/><rect x="440" y="270" width="320" height="280" rx="8" fill="#1e293b"/><circle cx="600" cy="410" r="12" fill="#06b6d4" fill-opacity="0.4"/><circle cx="600" cy="290" r="8" fill="#06b6d4"/><rect x="450" y="320" width="300" height="16" rx="3" fill="#06b6d4" fill-opacity="0.15"/><rect x="450" y="350" width="280" height="12" rx="2" fill="#06b6d4" fill-opacity="0.12"/><rect x="450" y="370" width="270" height="12" rx="2" fill="#06b6d4" fill-opacity="0.12"/><path d="M600 560 L580 580 L620 580 Z" fill="#06b6d4" fill-opacity="0.5"/></g><text x="50%" y="95%" text-anchor="middle" font-family="Manrope, Inter, Arial" font-size="40" fill="#ffffff" fill-opacity="0.9">App Design</text><text x="50%" y="95%" dy="32" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#cffafe" fill-opacity="0.85">iOS • Android • Cross-Platform</text></svg>
+        </div>
+        <div class="feature-content" data-reveal>
+          <div class="section-label">App Design &amp; Development</div>
+          <h2>Apps that engage and delight.</h2>
+          <p>From concept to app store. We design and build mobile and web apps that users love. Clean interfaces, smooth performance, and features that matter.</p>
+          <ul class="feature-list">
+            <li><strong>iOS &amp; Android</strong> — Native apps or cross-platform solutions</li>
+            <li><strong>UX/UI design</strong> — Intuitive interfaces that users enjoy</li>
+            <li><strong>Backend integration</strong> — Connect to APIs and databases seamlessly</li>
+            <li><strong>App store ready</strong> — Handle submission, review, and deployment</li>
+            <li><strong>Performance tuned</strong> — Fast, smooth, battery-efficient</li>
+            <li><strong>Ongoing support</strong> — Updates, bug fixes, and feature requests</li>
+          </ul>
+          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Request App Consultation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose HRG -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Why Choose HRG</div>
+        <h2 class="section-title">Professional service, transparent pricing.</h2>
+      </div>
+      
+      <div class="services-grid" data-reveal>
+        <div class="service-card">
+          <h3>Expert Team</h3>
+          <p>Technicians and developers with years of experience in hardware, software, web, and mobile solutions.</p>
+        </div>
+        
+        <div class="service-card" data-reveal>
+          <h3>Clear Communication</h3>
+          <p>We explain everything in plain English. No jargon, no pressure—just honest guidance to help you make the right decision.</p>
+        </div>
+        
+        <div class="service-card" data-reveal>
+          <h3>Quality First</h3>
+          <p>We use proven tools, best practices, and quality assurance at every stage—from component selection to app testing.</p>
+        </div>
+        
+        <div class="service-card">
+          <h3>Fast Turnaround</h3>
+          <p>We respond quickly to requests, provide updates regularly, and keep projects on schedule and within budget.</p>
+        </div>
+        
+        <div class="service-card">
+          <h3>Transparent Pricing</h3>
+          <p>You'll know the cost before work starts. No hidden fees, no surprises—just honest pricing for quality service.</p>
+        </div>
+        
+        <div class="service-card" data-reveal>
+          <h3>Full Support</h3>
+          <p>We don't just hand off a project. We provide training, documentation, and ongoing support for your success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, transparent pricing.</h2>
+        <p class="section-description">No hidden fees. No surprises. Just honest pricing for quality service.</p>
+      </div>
+      
+      <div class="services-grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="service-card" style="text-align: center;">
+          <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">$50</h3>
+          <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">Diagnostic Fee</div>
+          <p>Complete computer diagnostic—we'll figure out what's wrong. Free if you proceed with repair.</p>
+        </div>
+        
+        <div class="service-card" style="text-align: center;">
+          <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">$40/hr</h3>
+          <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">On-Site Repair</div>
+          <p>Hands-on repair and service at your location. Certified technicians nationwide maintaining HRG quality standards.</p>
+        </div>
+        
+        <div class="service-card" style="text-align: center;">
+          <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">Custom</h3>
+          <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">Consulting Projects</div>
+          <p>Strategic IT consulting and technology planning quoted per project. Get expert guidance tailored to your needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2>Ready to get started?</h2>
+      <p>Call us, text us, or request service online. We're here to help.</p>
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
+        <a href="sms:6784214125" class="btn btn-secondary" style="border-color: white; color: white;">Text Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand">HOWARD RESOURCE GROUP</div>
+          <p class="footer-tagline">Professional tech consulting, repair, and custom computers.</p>
+          <p class="footer-tagline">678-421-4125</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#consulting">Tech Consulting</a></li>
+            <li><a href="#repair">Repair &amp; Diagnostics</a></li>
+            <li><a href="#computers">Custom Computers</a></li>
+            <li><a href="#websites">Custom Websites</a></li>
+            <li><a href="#apps">App Design</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:6784214125">Call Us</a></li>
+            <li><a href="sms:6784214125">Text Us</a></li>
+            <li><a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" target="_blank" rel="noopener">Review Us on Google</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>© 2026 Howard Resource Group — All rights reserved.</div>
+        <div>Atlanta, GA</div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Consultation Modal -->
   <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
@@ -298,13 +411,13 @@
       <div class="modal-inner">
         <div class="modal-head">
           <div>
-            <h3 id="consultTitle">REQUEST TECH CONSULTATION</h3>
-            <p>Describe your issue and we'll help you understand what's happening and what your options are.</p>
+            <h3 id="consultTitle">REQUEST CONSULTATION</h3>
+            <p>Tell us about your tech needs and we'll help you find the right solution.</p>
           </div>
           <button class="x" id="closeModal" aria-label="Close">✕</button>
         </div>
 
-        <div class="success" id="consultSuccess">✅ Sent. You’re all set — we’ll follow up soon.</div>
+        <div class="success" id="consultSuccess">✅ Sent. You're all set — we'll follow up soon.</div>
 
         <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
@@ -317,26 +430,23 @@
             Topic
             <select name="topic" required>
               <option value="" selected disabled>Select one</option>
-              <option>Remote Support</option>
+              <option>Business IT Solutions</option>
+              <option>Small Business Tech Setup</option>
+              <option>Home Office Setup</option>
+              <option>Computer Diagnostics</option>
               <option>Computer Repair</option>
               <option>Custom Build — Gaming</option>
               <option>Custom Build — Professional</option>
-              <option>Diagnostics & Troubleshooting</option>
               <option>Upgrades & Performance Tuning</option>
-              <option>Thermal & Cooling Optimization</option>
-              <option>Data Recovery & Backup Setup</option>
-              <option>Parts Sourcing & Installation</option>
-              <option>Game-specific Optimization</option>
-              <option>Ongoing Maintenance & Support Plans</option>
-              <option>General Tech Support & Consulting</option>
+              <option>Technology Planning</option>
+              <option>System Architecture</option>
+              <option>Remote Support</option>
+              <option>Other</option>
             </select>
           </label> 
 
-          <div class="hint">
-            Include: symptoms • what you've tried • system specs (if known) • urgency.
-          </div>
-
-          <textarea name="details" placeholder="Describe what's happening with your computer or device..."></textarea>
+          <div class="hint">Include: current situation • what you need • timeline • budget range (optional).</div>
+          <textarea name="details" placeholder="Tell us about your tech needs..."></textarea>
 
           <div class="form-actions">
             <button class="btn" type="button" id="closeModal2">CANCEL</button>
@@ -347,24 +457,105 @@
     </div>
   </div>
 
-  <!-- Floating CTA -->
-  <div class="floating-cta" id="floatingCta">
-    <div class="container">
-      <div class="cta-inner panel">
-        <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
-        <div class="cta-left">
-          <strong>NEED HELP?</strong>
-          <span>Call/text <span data-phone-display></span> • Speak with a consultant</span>
+  <!-- Theme Customizer Modal -->
+  <div id="themeCustomizer" class="theme-customizer-modal">
+    <div class="theme-customizer-content">
+      <div class="theme-customizer-header">
+        <h2>Customize Your Theme</h2>
+        <button id="closeCustomizer" class="close-btn">✕</button>
+      </div>
+      
+      <div class="theme-customizer-body">
+        <div class="color-section">
+          <label>Background Color</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="bgColor" value="#ffffff">
+            <input type="text" id="bgColorHex" value="#ffffff" class="hex-input">
+          </div>
         </div>
-        <div class="cta-actions">
-          <a class="btn" data-call-link href="tel:6784214125">CALL</a>
-          <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
-          <button class="btn primary" data-consult><span class="dot"></span>GET HELP</button>
+        
+        <div class="color-section">
+          <label>Text Color</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="textColor" value="#1a1a1a">
+            <input type="text" id="textColorHex" value="#1a1a1a" class="hex-input">
+          </div>
         </div>
+        
+        <div class="color-section">
+          <label>Accent Color</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="accentColor" value="#00a8e8">
+            <input type="text" id="accentColorHex" value="#00a8e8" class="hex-input">
+          </div>
+        </div>
+        
+        <div class="color-section">
+          <label>Card Background</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="cardBgColor" value="#ffffff">
+            <input type="text" id="cardBgColorHex" value="#ffffff" class="hex-input">
+          </div>
+        </div>
+        
+        <div class="color-section">
+          <label>Border Color</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="borderColor" value="#e5e5e5">
+            <input type="text" id="borderColorHex" value="#e5e5e5" class="hex-input">
+          </div>
+        </div>
+        
+        <div class="theme-preview">
+          <div class="preview-label">Preview</div>
+          <div class="preview-box" id="themePreview">
+            <div class="preview-card">
+              <h3>Sample Card</h3>
+              <p>This is how your custom theme will look.</p>
+              <button class="preview-btn">Button</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="theme-customizer-footer">
+        <button id="resetTheme" class="btn btn-secondary">Reset to Default</button>
+        <button id="applyCustomTheme" class="btn btn-primary">Apply Theme</button>
       </div>
     </div>
   </div>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Howard Resource Group",
+    "url": "https://howardresourcegroup.com/",
+    "telephone": "+1-678-421-4125",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Atlanta",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "United States"
+    },
+    "priceRange": "$$",
+    "image": [
+      "https://howardresourcegroup.com/assets/site/consulting.svg",
+      "https://howardresourcegroup.com/assets/site/repair.svg",
+      "https://howardresourcegroup.com/assets/site/computers.svg"
+    ]
+  }
+  </script>
   <script src="script.js"></script>
+
+  <!-- Mobile sticky call/text bar -->
+  <div class="mobile-sticky-bar" aria-label="Quick contact">
+    <a class="btn btn-primary" href="tel:6784214125" style="flex:1">Call</a>
+    <a class="btn btn-secondary" href="sms:6784214125" style="flex:1">Text</a>
+  </div>
 </body>
 </html>

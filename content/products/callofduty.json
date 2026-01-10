@@ -1,0 +1,10 @@
+{
+  "title": "Call of Duty — Esports Ready Build",
+  "category": "game",
+  "featured": true,
+  "short": "Low-latency, high-refresh build for COD ranked and Warzone.",
+  "description": "An esports-tuned Call of Duty rig focused on latency, frame consistency, and high refresh gameplay. Balanced CPU/GPU pairing, tuned RAM, and responsive storage to keep frames smooth in ranked and Warzone.",
+  "badges": ["ESPORTS", "1440P", "LOW LATENCY", "HIGH-FPS"],
+  "services": ["Custom Build — Gaming", "Input Latency Tuning", "High-FPS Tuning"],
+  "image": "assets/products/callofduty.svg"
+}

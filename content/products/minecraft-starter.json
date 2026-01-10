@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft Starter Build",
+  "category": "game",
+  "featured": false,
+  "short": "Smooth vanilla play, light mods, and starter shaders on a budget.",
+  "description": "A value-focused starter build for Minecraft. Runs vanilla smoothly, handles light modpacks, and supports starter shaders. Quiet operation with easy upgrade paths.",
+  "badges": ["BUDGET", "STARTER", "UPGRADABLE"],
+  "services": ["Custom Build — Gaming", "Budget Builds", "Upgrade Ready"],
+  "image": "assets/products/minecraft-starter.svg"
+}

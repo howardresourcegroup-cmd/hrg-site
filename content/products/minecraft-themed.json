@@ -6,5 +6,5 @@
   "description": "A balanced system tuned for Minecraft with mods and shaders, offering stable fps and upgrade paths.",
   "badges": ["THEMED", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Mods & Shaders Tuning"],
-  "image": "https://via.placeholder.com/800x520?text=Minecraft+Build"
+  "image": "assets/products/minecraft-themed.svg"
 }

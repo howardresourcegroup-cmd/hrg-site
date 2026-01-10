@@ -1,5 +1,14 @@
 {
   "items": [
+    "remote-support.json",
+    "diagnostic-dawsonville.json",
+    "blender-workstation.json",
+    "vr-superhot.json",
+    "minecraft-ultimate.json",
+    "minecraft-performance.json",
+    "minecraft-starter.json",
+    "callofduty.json",
+    "battlefield-edition.json",
     "roblox-themed.json",
     "roblox-highend.json",
     "roblox-budget.json",

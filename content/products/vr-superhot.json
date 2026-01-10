@@ -1,0 +1,10 @@
+{
+  "title": "VR — Superhot / VR Reality Build",
+  "category": "game",
+  "featured": true,
+  "short": "Smooth VR performance for Superhot VR and room-scale titles.",
+  "description": "A VR-ready build optimized for titles like Superhot VR and room-scale gameplay. Strong single-thread CPU, capable GPU for high refresh VR, USB and HDMI/DP I/O ready for major headsets, and quiet cooling.",
+  "badges": ["VR-READY", "LOW LATENCY", "ROOM-SCALE"],
+  "services": ["Custom Build — Gaming", "VR Setup", "Performance Tuning"],
+  "image": "assets/products/vr-superhot.svg"
+}

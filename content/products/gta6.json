@@ -6,5 +6,5 @@
   "description": "A balanced system for GTA-scale worlds: strong CPU, high-memory capacity, and fast NVMe storage to reduce pop-in and keep FPS steady.",
   "badges": ["OPEN-WORLD", "BALANCED", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Open-World Tuning", "NVMe Fast Storage"],
-  "image": "https://via.placeholder.com/800x520?text=GTA+6"
+  "image": "assets/products/gta6.svg"
 }

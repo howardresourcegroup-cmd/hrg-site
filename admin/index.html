@@ -3,62 +3,386 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HRG Admin — Coming Soon</title>
+  <title>HRG Admin — Product Editor</title>
   <link rel="stylesheet" href="/style.css" />
-  <main>
-    <div class="panel">
-      <h1 class="wordmark">Admin — Content Guide</h1>
-      <p style="margin-top:8px">This site is modular and content-driven. Products are JSON files; adding one automatically updates the catalog, the Products mega menu filters, and the product detail page.</p>
-      <div style="margin-top:14px">
-        <h3>Add a product</h3>
+  <style>
+    body { background: var(--section-alt); }
+    .admin-shell { max-width: 1200px; margin: 40px auto; padding: 0 24px; }
+    .admin-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+    .admin-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+    .admin-grid h2 { font-family: var(--font-display); font-size: 22px; margin-bottom: 12px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .field label { font-weight: 600; font-size: 14px; }
+    .field input, .field textarea, .field select { padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--bg); color: var(--text); }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .pill-input { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .pill-input input { flex: 1; min-width: 180px; }
+    .pill { background: var(--section-alt); border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+    .pill button { border: none; background: transparent; cursor: pointer; font-size: 14px; }
+    .preview-box { background: var(--section-alt); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .json-output { width: 100%; min-height: 200px; border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-family: "Courier New", monospace; font-size: 13px; background: #0f172a; color: #e2e8f0; }
+    .steps { line-height: 1.6; color: var(--muted); }
+    .steps ol { padding-left: 18px; }
+    .badge-preview { display: inline-block; background: var(--accent); color: #fff; border-radius: 999px; padding: 6px 10px; font-size: 12px; margin: 4px 6px 0 0; }
+    .mini-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px; background: var(--bg); }
+    .inline { display:flex; gap:10px; align-items:center; flex-wrap: wrap; }
+    .inline input, .inline select { padding:10px; border:1px solid var(--border); border-radius:8px; font-size:14px; background: var(--bg); color: var(--text); }
+    .editor-shell { border:1px solid var(--border); border-radius:12px; overflow:hidden; background: var(--bg); }
+    #fileEditor { height: 420px; width: 100%; }
+    .hint { color: var(--muted); font-size: 13px; margin-top: 6px; }
+    @media (max-width: 900px) { .admin-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="admin-shell">
+    <div class="admin-card" style="display:flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div>
+        <div class="section-label" style="margin-bottom: 8px;">Admin</div>
+        <h1 style="font-family: var(--font-display); font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em;">Product JSON Editor</h1>
+        <p style="color: var(--muted); max-width: 720px;">Create or edit product JSON, then paste it into <code>content/products/&lt;file&gt;.json</code> and list the filename in <code>content/products/index.json</code>. Designed for GitHub commits/PRs (static site—no server writes).</p>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap: wrap;">
+        <a class="btn btn-secondary" href="/products.html">View Catalog</a>
+        <a class="btn btn-secondary" href="/content/products/index.json">View index.json</a>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h2>Repo Connection</h2>
+      <div class="inline" style="margin-bottom:10px;">
+        <input id="ghRepo" placeholder="owner/repo" style="min-width:220px;" />
+        <input id="ghBranch" placeholder="branch (e.g., main)" style="min-width:160px;" />
+        <input id="ghToken" type="password" placeholder="GitHub token (repo scope)" style="min-width:240px;" />
+      </div>
+      <div class="hint">Token is kept in-memory only. Use a fine-scoped PAT. If your auth flow injects a token, paste it here.</div>
+    </div>
+
+    <div class="admin-card">
+      <h2>Live File Editor</h2>
+      <div class="inline" style="margin-bottom:10px;">
+        <input id="filePath" placeholder="content/products/aaa-highclass.json" style="flex:1; min-width:280px;" />
+        <button class="btn btn-secondary" id="btnLoad">Load</button>
+        <button class="btn btn-primary" id="btnSave">Save & Commit</button>
+      </div>
+      <div class="inline" style="margin-bottom:10px;">
+        <input id="commitMsg" placeholder="Commit message" style="flex:1; min-width:260px;" value="Update via admin" />
+      </div>
+      <div class="hint">Quick paths: content/products/index.json · content/products/&lt;your-file&gt;.json · assets/&lt;image.jpg&gt; · index.html</div>
+      <div class="editor-shell"><div id="fileEditor"></div></div>
+      <div class="hint" id="statusMsg" style="margin-top:8px;">Status: idle</div>
+    </div>
+
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h2>Product Fields</h2>
+        <div class="field">
+          <label>Title</label>
+          <input id="fTitle" placeholder="e.g., RTX 4080 Creator Build" />
+        </div>
+        <div class="field">
+          <label>Short Summary</label>
+          <input id="fShort" placeholder="One-line value prop" />
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="fDescription" placeholder="Longer description. Use line breaks for paragraphs."></textarea>
+        </div>
+        <div class="field">
+          <label>Image URL (or assets/filename.jpg)</label>
+          <input id="fImage" placeholder="https://... or assets/your-image.jpg" />
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select id="fCategory">
+            <option value="game">game</option>
+            <option value="professional">professional</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Badges (press Enter to add)</label>
+          <div class="pill-input">
+            <input id="fBadgeInput" placeholder="e.g., PREMIUM" />
+            <div id="fBadges" style="flex:1; display:flex; gap:8px; flex-wrap: wrap;"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Services (press Enter to add)</label>
+          <div class="pill-input">
+            <input id="fServiceInput" placeholder="e.g., Performance Tuning" />
+            <div id="fServices" style="flex:1; display:flex; gap:8px; flex-wrap: wrap;"></div>
+          </div>
+        </div>
+        <div class="field" style="flex-direction: row; align-items: center; gap: 10px;">
+          <input type="checkbox" id="fFeatured" /> <label for="fFeatured" style="margin:0;">Featured</label>
+        </div>
+        <div class="field">
+          <label>Price (optional number)</label>
+          <input id="fPrice" type="number" step="0.01" placeholder="Leave blank to hide price" />
+        </div>
+        <button class="btn btn-primary" id="btnGenerate" style="margin-top: 8px;">Generate JSON</button>
+      </div>
+
+      <div class="admin-card">
+        <h2>Preview & Export</h2>
+        <div class="preview-box mini-card" id="cardPreview">
+          <div class="product-title" style="font-weight:700; margin-bottom:6px;">Preview title</div>
+          <div class="product-price" id="previewPrice" style="margin-bottom:6px;">(price)</div>
+          <div id="previewBadges"></div>
+          <p id="previewShort" style="color: var(--muted); margin: 10px 0 0;"></p>
+        </div>
+        <div style="margin-top:16px; display:flex; align-items:center; gap:8px;">
+          <label style="font-weight:600;">Filename:</label>
+          <input id="fFilename" placeholder="my-build.json" style="flex:1; padding:10px; border:1px solid var(--border); border-radius:8px;" />
+        </div>
+        <textarea id="jsonOutput" class="json-output" readonly></textarea>
+        <button class="btn btn-secondary" id="btnCopy" style="margin-top:10px; width:100%;">Copy JSON</button>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h2>How to publish</h2>
+      <div class="steps">
         <ol>
-          <li>Create a JSON file under <code>content/products/</code> (e.g., <code>my-build.json</code>).</li>
-          <li>Add the filename to <code>content/products/index.json</code> in the <code>items</code> array.</li>
-          <li>Visit <a href="../products.html">products.html</a>. Use the “Products ▾” menu to filter (Gaming, Professional, Premium, Budget, Featured).</li>
+          <li>Save the JSON to <code>content/products/&lt;filename&gt;.json</code> (use the filename box above).</li>
+          <li>Edit <code>content/products/index.json</code> and add the filename to the <code>items</code> array.</li>
+          <li>Commit & push to GitHub. The catalog page will automatically include the new product.</li>
+          <li>Images: place files in <code>assets/</code> (recommended) or use a full URL. Reference in the JSON <code>image</code> field.</li>
         </ol>
-        <p><strong>Schema</strong> (copy/paste and edit):</p>
-<pre style="white-space:pre-wrap;background:rgba(255,255,255,.03);padding:10px;border:1px solid rgba(255,255,255,.12);border-radius:6px">{
-  "title": "Build Name",
-  "short": "One-line summary.",
-  "description": "Longer description with optional line breaks.",
-  "image": "assets/your-image.jpg",
-  "category": "game", // or "professional"
-  "badges": ["premium", "silent", "RTX 4080"],
-  "services": ["Diagnostics", "Upgrade Planning"],
-  "featured": false
-}
-</pre>
-        <p>“Premium”/“Budget” filters match words in <code>badges</code> (case-insensitive). “Featured” reads <code>featured: true</code>.</p>
       </div>
     </div>
-  </main>
-        </nav>
+  </div>
+
+  <script>
+    const badges = [];
+    const services = [];
+
+    const els = {
+      title: document.getElementById('fTitle'),
+      short: document.getElementById('fShort'),
+      description: document.getElementById('fDescription'),
+      image: document.getElementById('fImage'),
+      category: document.getElementById('fCategory'),
+      badgeInput: document.getElementById('fBadgeInput'),
+      badgeList: document.getElementById('fBadges'),
+      serviceInput: document.getElementById('fServiceInput'),
+      serviceList: document.getElementById('fServices'),
+      featured: document.getElementById('fFeatured'),
+      price: document.getElementById('fPrice'),
+      filename: document.getElementById('fFilename'),
+      jsonOutput: document.getElementById('jsonOutput'),
+      previewBadges: document.getElementById('previewBadges'),
+      previewShort: document.getElementById('previewShort'),
+      previewPrice: document.getElementById('previewPrice'),
+      previewCard: document.getElementById('cardPreview')
+    };
+
+    function renderPills(list, container, type){
+      container.innerHTML = list.map((val, idx) => `
+        <span class="pill">${val}<button aria-label="Remove" data-type="${type}" data-idx="${idx}">×</button></span>
+      `).join('');
+      container.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = btn.getAttribute('data-type');
+          const i = parseInt(btn.getAttribute('data-idx'), 10);
+          if (t === 'badge') badges.splice(i,1);
+          if (t === 'service') services.splice(i,1);
+          renderPills(badges, els.badgeList, 'badge');
+          renderPills(services, els.serviceList, 'service');
+          updatePreview();
+        });
+      });
+    }
+
+    function addValue(inputEl, list, container, type){
+      const val = (inputEl.value || '').trim();
+      if (!val) return;
+      list.push(val);
+      inputEl.value = '';
+      renderPills(list, container, type);
+      updatePreview();
+    }
+
+    els.badgeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); addValue(els.badgeInput, badges, els.badgeList, 'badge'); }
+    });
+    els.serviceInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); addValue(els.serviceInput, services, els.serviceList, 'service'); }
+    });
+
+    function updatePreview(){
+      els.previewCard.querySelector('.product-title').textContent = els.title.value || 'Preview title';
+      els.previewShort.textContent = els.short.value || '';
+      const priceVal = parseFloat(els.price.value || '');
+      els.previewPrice.textContent = isNaN(priceVal) ? '(price)' : `$${priceVal.toLocaleString()}`;
+      els.previewBadges.innerHTML = badges.map(b => `<span class="badge-preview">${b}</span>`).join('');
+    }
+
+    ['title','short','price'].forEach(id => {
+      els[id].addEventListener('input', updatePreview);
+    });
+
+    document.getElementById('btnGenerate').addEventListener('click', () => {
+      const priceVal = els.price.value ? Number(els.price.value) : undefined;
+      const data = {
+        title: els.title.value.trim(),
+        short: els.short.value.trim(),
+        description: els.description.value.trim(),
+        image: els.image.value.trim(),
+        category: els.category.value,
+        badges: [...badges],
+        services: [...services],
+        featured: els.featured.checked
+      };
+      if (!isNaN(priceVal) && priceVal > 0) data.price = priceVal;
+
+      const cleaned = Object.fromEntries(Object.entries(data).filter(([_,v]) => v !== '' && v !== null && v !== undefined && !(Array.isArray(v) && v.length===0)));
+
+      els.jsonOutput.value = JSON.stringify(cleaned, null, 2);
+      updatePreview();
+    });
+
+    document.getElementById('btnCopy').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(els.jsonOutput.value || '');
+        alert('Copied JSON to clipboard');
+      } catch {
+        alert('Copy failed. Select and copy manually.');
+      }
+    });
+
+    updatePreview();
+
+    // --- GitHub file editor ---
+    const gh = {
+      repo: document.getElementById('ghRepo'),
+      branch: document.getElementById('ghBranch'),
+      token: document.getElementById('ghToken'),
+      path: document.getElementById('filePath'),
+      status: document.getElementById('statusMsg'),
+      commitMsg: document.getElementById('commitMsg'),
+      sha: null,
+      editor: null
+    };
+
+    // Initialize Monaco
+    (function loadMonaco(){
+      const loader = document.createElement('script');
+      loader.src = 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js';
+      loader.onload = () => {
+        window.require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+        window.require(['vs/editor/editor.main'], () => {
+          gh.editor = monaco.editor.create(document.getElementById('fileEditor'), {
+            value: '// Open a file to edit',
+            language: 'json',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            minimap: { enabled: false },
+          });
+        });
+      };
+      document.head.appendChild(loader);
+    })();
+
+    function setStatus(msg){ gh.status.textContent = 'Status: ' + msg; }
+
+    async function ghFetch(url, options={}){
+      const headers = options.headers || {};
+      headers['Accept'] = 'application/vnd.github+json';
+      if (gh.token.value) headers['Authorization'] = 'Bearer ' + gh.token.value.trim();
+      return fetch(url, { ...options, headers });
+    }
+
+    async function loadFile(){
+      try {
+        setStatus('Loading...');
+        const repo = gh.repo.value.trim();
+        const branch = gh.branch.value.trim() || 'main';
+        const path = gh.path.value.trim();
+        if (!repo || !path) { setStatus('Missing repo or path'); return; }
+        const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+        const res = await ghFetch(url);
+        if (!res.ok) { setStatus('Load failed: ' + res.status); return; }
+        const data = await res.json();
+        gh.sha = data.sha;
+        const content = atob(data.content || '');
+        if (gh.editor) {
+          gh.editor.setValue(content);
+          const lang = path.endsWith('.html') ? 'html' : path.endsWith('.css') ? 'css' : path.endsWith('.js') ? 'javascript' : 'json';
+          monaco.editor.setModelLanguage(gh.editor.getModel(), lang);
+        }
+        setStatus('Loaded ' + path);
+      } catch (e){
+        setStatus('Load error');
+      }
+    }
+
+    async function saveFile(){
+      try {
+        setStatus('Saving...');
+        const repo = gh.repo.value.trim();
+        const branch = gh.branch.value.trim() || 'main';
+        const path = gh.path.value.trim();
+        const msg = gh.commitMsg.value.trim() || 'Update via admin';
+        if (!repo || !path) { setStatus('Missing repo or path'); return; }
+        if (!gh.editor) { setStatus('Editor not ready'); return; }
+        const content = btoa(unescape(encodeURIComponent(gh.editor.getValue())));
+        const body = { message: msg, content, branch };
+        if (gh.sha) body.sha = gh.sha;
+        const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+        const res = await ghFetch(url, { method: 'PUT', body: JSON.stringify(body) });
+        if (!res.ok) { setStatus('Save failed: ' + res.status); return; }
+        const data = await res.json();
+        gh.sha = data.content && data.content.sha;
+        setStatus('Saved ' + path);
+      } catch (e){
+        setStatus('Save error');
+      }
+    }
+
+    document.getElementById('btnLoad').addEventListener('click', loadFile);
+    document.getElementById('btnSave').addEventListener('click', saveFile);
+
+    // Optional: image upload helper (uses same saveFile with binary base64)
+    // To use: set path to assets/your-file.jpg and load a local file below.
+    const uploaderCard = document.createElement('div');
+    uploaderCard.className = 'admin-card';
+    uploaderCard.innerHTML = `
+      <h2>Image Upload to Repo</h2>
+      <div class="inline" style="margin-bottom:10px;">
+        <input id="uploadPath" placeholder="assets/my-image.jpg" style="flex:1; min-width:240px;" />
+        <input type="file" id="uploadFile" accept="image/*" />
+        <button class="btn btn-primary" id="btnUpload">Upload</button>
       </div>
-    </div>
-  </header>
+      <div class="hint">Uses same GitHub token. Set repo/branch above. Upload writes directly to the repo.</div>
+      <div class="hint" id="uploadStatus">Status: idle</div>
+    `;
+    document.querySelector('.admin-shell').appendChild(uploaderCard);
 
-  <main class="page">
-    <div class="container">
-      <section class="panel section">
-        <h1 class="wordmark">Admin Dashboard — Coming Soon</h1>
-        <p class="subline">A lightweight admin UI for adding and editing builds is planned. For now, manage products by editing files in <code>content/products/</code> and opening a PR.</p>
+    async function uploadImage(){
+      const fileInput = document.getElementById('uploadFile');
+      const uploadPath = document.getElementById('uploadPath');
+      const status = document.getElementById('uploadStatus');
+      try {
+        status.textContent = 'Status: uploading...';
+        const repo = gh.repo.value.trim();
+        const branch = gh.branch.value.trim() || 'main';
+        const path = uploadPath.value.trim();
+        if (!repo || !path) { status.textContent = 'Status: missing repo or path'; return; }
+        if (!fileInput.files.length) { status.textContent = 'Status: choose a file'; return; }
+        const file = fileInput.files[0];
+        const buf = await file.arrayBuffer();
+        const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+        const body = { message: 'Upload image via admin', content: base64, branch };
+        const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+        const res = await ghFetch(url, { method: 'PUT', body: JSON.stringify(body) });
+        if (!res.ok) { status.textContent = 'Status: upload failed ' + res.status; return; }
+        status.textContent = 'Status: uploaded ' + path;
+      } catch (e){
+        status.textContent = 'Status: upload error';
+      }
+    }
 
-        <div style="margin-top:18px; display:flex; gap:12px;">
-          <a class="btn" href="/content/products/index.json">View product index</a>
-          <a class="btn" href="/products.html">Browse catalog</a>
-        </div>
-
-        <div style="margin-top:18px; color:rgba(255,255,255,.72);">
-          <strong>Note:</strong> GitHub Pages is serving the static site — a dynamic admin will be added later (option: GitHub API or a separate backend).
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="panel footer" style="margin-top:24px;">
-    <div>© <span id="year"></span> Howard Resource Group</div>
-  </footer>
-
-  <script src="/script.js"></script>
+    document.getElementById('btnUpload').addEventListener('click', uploadImage);
+  </script>
 </body>
 </html>

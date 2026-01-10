@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HRG — Computers</title>
-  <meta name="description" content="HRG computers catalog — gaming-focused builds and upgrade options." />
+  <meta name="description" content="HRG catalog of custom-built computers, workstations, and on-site computer diagnostics within 25 miles of Dawsonville, GA." />
+  <meta name="keywords" content="Dawsonville computer diagnostics,on-site PC repair,Dawsonville GA laptop repair,North Georgia IT support,desktop troubleshooting,virus removal,blue screen fix,computer repair near me,home office support,Forsyth County computer service,Gainesville GA computer repair" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -18,95 +19,72 @@
 </head>
 <body>
 
-  <div class="scene" aria-hidden="true">
-    <div class="cascade" data-cascade></div>
-  </div>
-
-  <header id="siteHeader">
+  <!-- Header -->
+  <header>
     <div class="container">
-      <div class="navbar panel">
-        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
-          <div class="brand-inner">
-            <div class="brand-full">HOWARD RESOURCE GROUP</div>
-            <div class="brand-compact">HRG</div>
-          </div>
-        </a>
-
-        <div class="search-box">
-          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
+      <nav class="navbar">
+        <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
+        <div class="nav-links">
+          <a href="index.html#consulting">Consulting</a>
+          <a href="index.html#repair">Repair</a>
+          <a href="index.html#computers">Custom Computers</a>
+          <a href="index.html#contact" class="btn btn-primary">Get Started</a>
         </div>
-
-        <nav class="navlinks" aria-label="Primary navigation">
-          <a href="consulting.html">Tech Support</a>
-          <a href="consulting.html#how-it-works">How It Works</a>
-          <a href="index.html#services">Services</a>
-          <div class="dropdown" id="navProducts">
-            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navProductsMenu">Products</button>
-            <div class="dropdownMenu panel mega" id="navProductsMenu" role="menu" aria-label="Products submenu">
-              <div class="megaGrid">
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> Browse</div>
-                  <a role="menuitem" href="products.html">All Builds</a>
-                  <a role="menuitem" href="products.html#featured">Featured</a>
-                </div>
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Use</div>
-                  <a role="menuitem" href="products.html#game">Gaming</a>
-                  <a role="menuitem" href="products.html#professional">Professional</a>
-                </div>
-                <div>
-                  <div class="kTag" style="margin-bottom:8px"><span class="bar"></span> By Tier</div>
-                  <a role="menuitem" href="products.html#premium">Premium</a>
-                  <a role="menuitem" href="products.html#budget">Budget</a>
-                </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeBtn" title="Change Theme">
+            🎨
+            <div class="theme-dropdown" id="themeDropdown">
+              <div class="theme-option" data-theme="light">
+                <span class="theme-color" style="background: #ffffff;"></span>
+                Light
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <span class="theme-color" style="background: #0f0f0f;"></span>
+                Dark
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-color" style="background: #f0f4f8;"></span>
+                Blue
+              </div>
+              <div class="theme-option" data-theme="custom" id="customThemeOption">
+                <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                Custom
               </div>
             </div>
-          </div>
-        </nav>
-
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="mobileMenu panel" id="mobileMenu">
-        <a href="consulting.html">Tech Support</a>
-        <a href="consulting.html#how-it-works">How It Works</a>
-        <a href="index.html#services">Services</a>
-        <a href="products.html">Products</a>
-      </div>
+          </button>
+          <a href="cart.html" class="icon-btn" id="cartBtn" title="Cart">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <main class="page">
+  <main class="page" style="background: var(--section-alt); padding: 40px 0;">
     <div class="container">
-      <section class="panel section">
-        <h1 class="wordmark" style="font-size:clamp(22px, 3vw, 34px);">
-          Systems Catalog — Elevated Builds
-        </h1>
-        <p class="subline">Refined systems for every play-style: from accessible value builds to ultra-premium, bespoke rigs.</p>
-
-        <div class="tools">
-          <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="game">Gaming</button>
-          <button class="chip" data-filter="professional">Professional</button>
-          <button class="chip" data-filter="premium">Premium</button>
-          <button class="chip" data-filter="budget">Budget</button>
-          <button class="chip" data-filter="featured">Featured</button>
-          <input class="search" type="search" placeholder="Search builds…" data-search />
-          <button class="btn primary" data-consult style="margin-left:auto;"><span class="dot"></span>REQUEST HELP</button>
+      <section class="section" style="background: transparent; padding: 0;">
+        <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin-bottom: 32px;">
+          <h1 style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">
+            Custom Builds — Coming Soon
+          </h1>
+          <p style="color: var(--muted); font-size: 16px;">We’re preparing a curated lineup of game‑oriented PCs and program‑specific workstations.</p>
         </div>
 
-        <div id="catalog" class="catalog"></div>
+        
 
-        <div class="footer">
-          <div>© <span id="year"></span> Howard Resource Group</div>
-          <div class="footlinks">
-            <a href="index.html">Home</a>
-            <a href="index.html#consulting">Tech Support</a>
+        <div id="catalog" class="products-grid">
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+            <h3 style="font-size: 28px; margin-bottom: 12px;">Custom Builds Coming Soon</h3>
+            <p style="color: var(--muted); margin-bottom: 12px; font-size: 16px;">Our systems are designed around real‑world use:</p>
+            <div style="max-width: 760px; margin: 0 auto; text-align: left;">
+              <ul style="line-height: 1.8; color: var(--muted);">
+                <li><strong style="color: var(--text);">Game‑Oriented Builds:</strong> tuned for specific titles (e.g., Call of Duty, Minecraft, GTA, Battlefield) with target FPS and settings goals.</li>
+                <li><strong style="color: var(--text);">Program‑Specific Workstations:</strong> configured for software suites (e.g., Blender, Adobe, CAD) with the right CPU/GPU balance and memory/storage layout.</li>
+              </ul>
+            </div>
+            <p style="color: var(--muted); margin: 20px 0 32px;">Catalog launches soon. In the meantime, explore our <a href="index.html#repair" style="color: var(--accent); text-decoration: underline;">repair and diagnostics</a>—that’s where we’re currently focused.</p>
+            <a href="index.html#repair" class="btn btn-primary">View Repair Services</a>
           </div>
         </div>
       </section>
@@ -183,6 +161,5 @@
   </div>
 
   <script src="script.js"></script>
-  <script src="catalog.js"></script>
 </body>
 </html>

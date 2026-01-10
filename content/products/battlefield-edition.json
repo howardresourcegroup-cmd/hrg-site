@@ -1,0 +1,10 @@
+{
+  "title": "Battlefield Edition — High FPS Combat Build",
+  "category": "game",
+  "featured": true,
+  "short": "Tuned for Battlefield titles: high-refresh 1440p with stable frame pacing in large-scale matches.",
+  "description": "A combat-focused rig engineered for Battlefield games. High-clock CPU for busy servers, strong GPU for 1440p/4K, fast NVMe for quick map loads, and thermal headroom for long sessions.",
+  "badges": ["HIGH-FPS", "1440P", "RAY TRACING", "THERMAL-OPTIMIZED"],
+  "services": ["Custom Build — Gaming", "High-FPS Tuning", "Thermal Optimization"],
+  "image": "assets/products/battlefield-edition.svg"
+}

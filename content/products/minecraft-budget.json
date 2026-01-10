@@ -6,5 +6,5 @@
   "description": "A budget-conscious Minecraft build that runs well with moderate settings and modest modpacks. Focused on value, reliability, and upgrade paths.",
   "badges": ["BUDGET", "VALUE", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Budget Builds", "Upgrade Ready"],
-  "image": "https://via.placeholder.com/800x520?text=Minecraft+Budget"
+  "image": "assets/products/minecraft-budget.svg"
 }

@@ -1,0 +1,20 @@
+{
+  "title": "Remote Support Session — 30 Minutes",
+  "category": "service",
+  "featured": true,
+  "short": "$20 remote support for quick fixes and guidance.",
+  "description": "Get rapid, professional remote support to diagnose issues, apply fixes, and guide you through solutions. Ideal for software problems, configuration help, performance tuning, and general troubleshooting. We’ll vet the issue first, then proceed if it’s a fit.",
+  "badges": ["REMOTE", "SUPPORT", "QUICK HELP"],
+  "services": [
+    "Issue vetting and scoping",
+    "Remote diagnostic & troubleshooting",
+    "Software configuration assistance",
+    "Performance & stability checks",
+    "Clear next steps and recommendations"
+  ],
+  "price": 20,
+  "priceNote": "Billed after session via invoice or in-person. No upfront charge.",
+  "image": "assets/products/remote-support.svg",
+  "tags": ["remote support", "software help", "troubleshooting", "configuration", "quick fix"],
+  "contactOnly": true
+}

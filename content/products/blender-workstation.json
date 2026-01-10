@@ -1,0 +1,10 @@
+{
+  "title": "Blender Workstation",
+  "category": "professional",
+  "featured": true,
+  "short": "GPU-accelerated rendering, plenty of VRAM, and fast I/O for scenes and assets.",
+  "description": "A creator-focused workstation tuned for Blender. High-core CPU for physics/sims, CUDA/Optix-capable GPU with ample VRAM, NVMe scratch, and calibrated thermals for sustained renders.",
+  "badges": ["BLENDER", "GPU RENDER", "OPTIX", "NVME SCRATCH"],
+  "services": ["Custom Build — Professional", "Render Tuning", "Thermal Optimization"],
+  "image": "assets/products/blender-workstation.svg"
+}
