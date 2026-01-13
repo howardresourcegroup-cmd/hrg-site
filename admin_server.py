@@ -3,7 +3,7 @@ HRG Admin Portal - Flask-based product management system
 Simple, secure admin interface for managing products and collections
 """
 
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import json
@@ -15,6 +15,9 @@ app = Flask(__name__,
             template_folder='admin/templates',
             static_folder='assets')
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'dev-secret-change-in-production')
+
+# Root directory for serving top-level static files (style.css, etc.)
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Configuration
 PRODUCTS_DIR = 'content/products'
@@ -40,6 +43,20 @@ def after_request(response):
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+# Serve shared site assets for previewing the main site via this app (CSS/JS)
+@app.route('/style.css')
+def serve_style_css():
+    return send_from_directory(ROOT_DIR, 'style.css', mimetype='text/css')
+
+@app.route('/script.js')
+def serve_script_js():
+    return send_from_directory(ROOT_DIR, 'script.js', mimetype='application/javascript')
+
+@app.route('/catalog.js')
+def serve_catalog_js():
+    return send_from_directory(ROOT_DIR, 'catalog.js', mimetype='application/javascript')
 
 def login_required(f):
     @wraps(f)
