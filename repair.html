@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Repair & Diagnostics — HRG</title>
+  <meta name="description" content="Expert computer repair, diagnostics, and hardware fixes. Fast service, honest pricing, no surprise costs." />
+  <link rel="canonical" href="https://howardresourcegroup.com/repair.html" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%2300d9ff'>⚙️</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-123456789"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-123456789');
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
+        <div class="nav-links">
+          <a href="consulting.html">Consulting</a>
+          <a href="repair.html">Repair</a>
+          <a href="products.html">Custom Computers</a>
+          <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="header-actions">
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <button class="icon-btn" id="themeBtn" title="Change Theme">
+            🎨
+            <div class="theme-dropdown" id="themeDropdown">
+              <div class="theme-option" data-theme="light">
+                <span class="theme-color" style="background: #ffffff;"></span>
+                Light
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <span class="theme-color" style="background: #0f0f0f;"></span>
+                Dark
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-color" style="background: #f0f4f8;"></span>
+                Blue
+              </div>
+              <div class="theme-option" data-theme="custom" id="customThemeOption">
+                <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                Custom
+              </div>
+            </div>
+          </button>
+          <a href="cart.html" class="icon-btn" id="cartBtn" title="Cart">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+          </a>
+        </div>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="consulting.html">Consulting</a>
+        <a href="repair.html">Repair</a>
+        <a href="products.html">Custom Computers</a>
+        <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Computer Repair & Diagnostics</h1>
+      <p>If it's broken, slow, or acting weird—we'll diagnose it and fix it right. Fast service, honest pricing, no hidden costs.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px;">
+        <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
+        <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Issues -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Common Problems</div>
+        <h2 class="section-title">What We Can Fix</h2>
+        <p class="section-description">From slow performance to hardware failures, we handle it all.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🐢</div>
+          <h3>Slow Computer</h3>
+          <p>Running at a crawl? We'll find what's slowing you down—malware, bloatware, failing hardware—and fix it.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Won't Turn On</h3>
+          <p>Black screen? We'll diagnose power issues, failed drives, bad RAM, and get you back up and running.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <h3>Overheating</h3>
+          <p>Laptop too hot? Loud fans? Thermal paste replacement, vent cleaning, or cooling solution replacement.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">💥</div>
+          <h3>Crashes & Errors</h3>
+          <p>Blue screens, freezing, random reboots? We'll fix software conflicts, driver issues, or hardware problems.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">📡</div>
+          <h3>Network Issues</h3>
+          <p>Wi-Fi won't connect? Internet crawling? We'll fix connectivity, router issues, and network problems.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🎮</div>
+          <h3>Gaming Performance</h3>
+          <p>Low FPS, lag, stuttering? We'll optimize settings, update drivers, and boost your gaming experience.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Process</div>
+        <h2 class="section-title">How Computer Repair Works</h2>
+      </div>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display: grid; gap: 32px;">
+          <div style="display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: start;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 24px;">1</div>
+            <div>
+              <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Call or Drop Off</h3>
+              <p style="color: var(--muted);">Tell us what's wrong. We'll give you an estimate and schedule a time.</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: start;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 24px;">2</div>
+            <div>
+              <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Diagnostics</h3>
+              <p style="color: var(--muted);">We run full diagnostics and tell you exactly what's wrong—in plain English.</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: start;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 24px;">3</div>
+            <div>
+              <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">You Decide</h3>
+              <p style="color: var(--muted);">We show you the repair cost and you decide what to fix. No pressure, no surprise charges.</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: start;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 24px;">4</div>
+            <div>
+              <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">We Fix It</h3>
+              <p style="color: var(--muted);">We repair your computer using quality parts and warranty our work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Transparent Pricing</div>
+        <h2 class="section-title">Repair Service Costs</h2>
+        <p class="section-description">No hidden fees. You know the price before we start.</p>
+      </div>
+      
+      <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 20px;">
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div>
+            <h3 style="font-weight: 700; margin-bottom: 4px;">Diagnostics</h3>
+            <p style="font-size: 14px; color: var(--muted);">Full system scan and problem identification</p>
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--accent);">$49</div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div>
+            <h3 style="font-weight: 700; margin-bottom: 4px;">Software Repair</h3>
+            <p style="font-size: 14px; color: var(--muted);">Malware removal, OS repair, driver updates</p>
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--accent);">$79–$199</div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div>
+            <h3 style="font-weight: 700; margin-bottom: 4px;">Hardware Repair</h3>
+            <p style="font-size: 14px; color: var(--muted);">Parts replacement, soldering, component repair</p>
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--accent);">$99–$399</div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div>
+            <h3 style="font-weight: 700; margin-bottom: 4px;">Data Recovery</h3>
+            <p style="font-size: 14px; color: var(--muted);">Recover lost files from damaged or failed drives</p>
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--accent);">Quote</div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <p style="color: var(--muted); margin-bottom: 20px;">Questions? Call us for a free consultation.</p>
+        <a href="tel:6784214125" class="btn btn-primary">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background: var(--section-alt);">
+    <div class="container" style="text-align: center;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Ready to Get Your Computer Fixed?</h2>
+      <p style="font-size: 18px; color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Call us today or drop off your computer. We'll diagnose the problem and give you honest options.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
+        <a href="index.html#contact" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand">HOWARD RESOURCE GROUP</div>
+          <p class="footer-tagline">Professional tech consulting, repair, and custom computers.</p>
+          <p class="footer-tagline">678-421-4125</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="consulting.html">Tech Consulting</a></li>
+            <li><a href="repair.html">Repair</a></li>
+            <li><a href="products.html">Custom Computers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Howard Resource Group. All rights reserved.</p>
+        <p style="text-align: right; color: var(--muted); font-size: 12px;">
+          <a href="https://github.com/howardresourcegroup-cmd/hrg-site" style="color: inherit; text-decoration: underline;">View source on GitHub</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

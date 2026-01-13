@@ -1,7 +1,8 @@
 (() => {
   const root = document.getElementById("catalog");
   const featuredRoot = document.getElementById("featuredBuilds");
-  if (!root) return;
+  const featuredHomeRoot = document.getElementById("featuredBuildsHome");
+  if (!root && !featuredRoot && !featuredHomeRoot) return;
 
   const state = { items: [], filter: "all", q: "" };
     const chipEls = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
@@ -37,15 +38,16 @@
   }
 
   function renderFeatured(){
-    if (!featuredRoot) return;
+    if (!featuredRoot && !featuredHomeRoot) return;
     const featured = state.items.filter(item => item.featured).slice(0, 3);
 
     if (!featured.length){
-      featuredRoot.innerHTML = '';
+      if (featuredRoot) featuredRoot.innerHTML = '';
+      if (featuredHomeRoot) featuredHomeRoot.innerHTML = '';
       return;
     }
 
-    featuredRoot.innerHTML = featured.map(item => {
+    const html = featured.map(item => {
       const price = item.price || 0;
       const priceFormatted = price > 0 ? `$${price.toLocaleString()}` : 'Contact for Price';
     
@@ -62,6 +64,9 @@
         </div>
       `;
     }).join('');
+    
+    if (featuredRoot) featuredRoot.innerHTML = html;
+    if (featuredHomeRoot) featuredHomeRoot.innerHTML = html;
   }
 
   function render(){

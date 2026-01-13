@@ -186,6 +186,15 @@
       hamburger.classList.remove("active");
     });
     mobileMenu.addEventListener("click", (e) => e.stopPropagation());
+    
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.classList.remove("active");
+      });
+    });
   }
 
   // Dropdown menu (desktop + mobile friendly)
