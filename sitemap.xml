@@ -17,6 +17,10 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://howardresourcegroup.com/piano-player.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://howardresourcegroup.com/privacy.html</loc>
     <priority>0.5</priority>
   </url>

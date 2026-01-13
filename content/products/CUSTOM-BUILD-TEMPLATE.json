@@ -1,0 +1,102 @@
+{
+  "title": "Custom PC Build",
+  "description": "Design your perfect PC by selecting each component. Build gaming rigs, workstations, or streaming setups tailored to your needs.",
+  "short": "Build your own PC with flexible component selection",
+  "type": "custom-build",
+  "category": "custom",
+  "featured": false,
+  "basePrice": 0,
+  "badges": ["CUSTOM", "FLEXIBLE", "60/HOUR"],
+  "image": "assets/products/custom-build.svg",
+  "categories": [
+    {
+      "name": "Gaming Build",
+      "description": "Optimized for gaming performance",
+      "parts": [
+        {
+          "name": "Processor",
+          "category": "CPU",
+          "model": "Intel i7-13700K",
+          "price": 420,
+          "description": "12-core gaming and streaming powerhouse"
+        },
+        {
+          "name": "Processor",
+          "category": "CPU",
+          "model": "AMD Ryzen 7 5800X3D",
+          "price": 380,
+          "description": "High cache for gaming optimization"
+        },
+        {
+          "name": "Graphics Card",
+          "category": "GPU",
+          "model": "RTX 4070 Ti",
+          "price": 800,
+          "description": "1440p ultra gaming, ray tracing capable"
+        },
+        {
+          "name": "Graphics Card",
+          "category": "GPU",
+          "model": "RTX 4070",
+          "price": 650,
+          "description": "1440p high gaming performance"
+        },
+        {
+          "name": "RAM",
+          "category": "Memory",
+          "model": "32GB DDR5 6000MHz",
+          "price": 160,
+          "description": "High speed memory for gaming and multitasking"
+        },
+        {
+          "name": "Storage",
+          "category": "Storage",
+          "model": "2TB NVMe SSD",
+          "price": 180,
+          "description": "Fast loading times and game library"
+        }
+      ]
+    },
+    {
+      "name": "Workstation Build",
+      "description": "Optimized for creative work and productivity",
+      "parts": [
+        {
+          "name": "Processor",
+          "category": "CPU",
+          "model": "Intel Xeon W9-3595X",
+          "price": 6000,
+          "description": "60-core rendering and compilation beast"
+        },
+        {
+          "name": "Processor",
+          "category": "CPU",
+          "model": "AMD Ryzen Threadripper PRO 5995WX",
+          "price": 7000,
+          "description": "64-core multi-threaded powerhouse"
+        },
+        {
+          "name": "GPU (Optional)",
+          "category": "GPU",
+          "model": "RTX 6000 Ada",
+          "price": 6800,
+          "description": "Professional graphics rendering"
+        },
+        {
+          "name": "RAM",
+          "category": "Memory",
+          "model": "256GB DDR5 ECC",
+          "price": 1800,
+          "description": "Error-correcting memory for reliability"
+        },
+        {
+          "name": "Storage",
+          "category": "Storage",
+          "model": "4TB NVMe SSD RAID-0",
+          "price": 800,
+          "description": "Fast project storage"
+        }
+      ]
+    }
+  ]
+}

@@ -160,6 +160,24 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .part-card:hover {
+      border-color: var(--accent);
+      background: var(--section-alt);
+    }
+    
+    .part-card.selected {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+    
+    .part-card.selected .part-name,
+    .part-card.selected .part-price {
+      color: #fff;
     }
     
     .part-name {
@@ -167,30 +185,66 @@
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       font-weight: 600;
     }
     
     .part-pick {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 12px;
       color: var(--text);
     }
     
-    .part-alts {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
+    .part-price {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
     }
     
-    .part-alts strong {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-      color: var(--text);
+    .part-card.selected .part-pick {
+      color: #fff;
+    }
+    
+    .part-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+    
+    .part-card.selected .part-desc {
+      color: rgba(255,255,255,0.85);
+    }
+    
+    .config-summary {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 40px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .config-summary h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .config-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    
+    .config-item:last-child {
+      border-bottom: none;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+      font-weight: 700;
     }
     
     .notes-section {
@@ -326,21 +380,21 @@
         </div>
 
         <!-- Tier Selector -->
-        <div class="tier-selector">
-          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px;">Choose Your Tier</h2>
+        <div class="tier-selector" id="tierSelector" style="margin-bottom: 40px;">
+          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px;">Build Category</h2>
           <div class="tier-grid" id="tierGrid"></div>
         </div>
 
         <!-- Parts Display -->
         <div class="parts-section" id="partsSection">
-          <h2>Your Configuration</h2>
+          <h2 id="partsSectionTitle">Configure Your Build</h2>
           <div class="parts-grid" id="partsGrid"></div>
         </div>
 
-        <!-- Notes -->
-        <div class="notes-section" id="notesSection" style="display: none;">
-          <h3>Setup & Optimization Notes</h3>
-          <ul class="notes-list" id="notesList"></ul>
+        <!-- Configuration Summary -->
+        <div class="config-summary" id="configSummary" style="display: none;">
+          <h3>Your Configuration</h3>
+          <div id="configDetails"></div>
         </div>
       </div>
 
@@ -370,8 +424,20 @@
         return;
       }
 
-      let currentTier = null;
       let product = null;
+      let selectedParts = {}; // { category: selectedIndex }
+      let customJobType = null;
+
+      // Pricing structure
+      const PRICING = {
+        customBuild: { hourly: 60, baseCost: 0 },
+        customWebsite: { hourly: 40, baseCost: 0 },
+        customApp: { hourly: 35, baseCost: 0 },
+        remoteConsult: { fixed: 20 },
+        repairStandard: { hourly: 40 },
+        repairPianoPlayer: { hourly: 125 },
+        prebuiltMarkup: 0.00325 // 0.325% markup
+      };
 
       async function loadProduct() {
         try {
@@ -399,124 +465,178 @@
         const badgeHtml = (product.badges || []).map(b => `<span class="badge">${b}</span>`).join('');
         document.getElementById('productBadges').innerHTML = badgeHtml;
 
-        // Check if product has tiers or is a simple product
-        if (product.tiers && product.tiers.length > 0) {
-          // Tier-based product
+        // Handle categories (build types)
+        if (product.categories && product.categories.length > 0) {
           const tierGrid = document.getElementById('tierGrid');
-          tierGrid.innerHTML = (product.tiers || []).map((tier, i) => `
-            <div class="tier-card ${i === 0 ? 'active' : ''}" onclick="selectTier(${i})" data-tier="${i}">
-              <div class="tier-name">${tier.name}</div>
-              <div class="tier-price">$${tier.price.toLocaleString()}</div>
-              <div class="tier-target">${tier.target}</div>
+          tierGrid.innerHTML = (product.categories || []).map((cat, i) => `
+            <div class="tier-card ${i === 0 ? 'active' : ''}" onclick="selectCategory(${i})" data-category="${i}">
+              <div class="tier-name">${cat.name}</div>
+              <div class="tier-target">${cat.description || ''}</div>
             </div>
           `).join('');
-          selectTier(0);
+          selectCategory(0);
         } else {
-          // Simple product - create single tier from product data
-          product.tiers = [{
-            name: 'Standard',
-            price: product.price || 0,
-            target: product.short || '',
-            parts: product.specs ? Object.entries(product.specs).reduce((acc, [k, v]) => {
-              acc[k] = { pick: v, alts: [] };
-              return acc;
-            }, {}) : {},
-            notes: product.idealFor || []
-          }];
-          
-          // Hide tier selector for single-tier products
-          document.querySelector('.tier-selector').style.display = 'none';
-          selectTier(0);
+          document.getElementById('tierSelector').style.display = 'none';
+          renderParts(product.parts || []);
         }
       }
 
-      window.selectTier = function(idx) {
-        currentTier = idx;
-        const tier = product.tiers[idx];
+      window.selectCategory = function(idx) {
+        const category = product.categories[idx];
+        selectedParts = {};
 
         // Update active card
         document.querySelectorAll('.tier-card').forEach((card, i) => {
           card.classList.toggle('active', i === idx);
         });
 
-        // Update price
-        document.getElementById('priceDisplay').textContent = `Price: $${tier.price.toLocaleString()}`;
-
-        // Render parts
-        renderParts(tier);
-
-        // Render notes
-        if (tier.notes && tier.notes.length > 0) {
-          document.getElementById('notesSection').style.display = 'block';
-          document.getElementById('notesList').innerHTML = tier.notes.map(n => `<li>${n}</li>`).join('');
-        }
+        // Render parts for this category
+        renderParts(category.parts || []);
       };
 
-      function renderParts(tier) {
+      function renderParts(parts) {
         const grid = document.getElementById('partsGrid');
-        const parts = tier.parts || {};
-        
-        const html = Object.entries(parts).map(([key, value]) => {
-          let content = '';
-          if (typeof value === 'object' && value.pick) {
-            // Single part with alternatives
-            content = `
-              <div class="part-card">
-                <div class="part-name">${key}</div>
-                <div class="part-pick">${value.pick}</div>
-                ${value.alts && value.alts.length > 0 ? `
-                  <div class="part-alts">
-                    <strong>Alternatives:</strong>
-                    ${value.alts.join('<br>')}
-                  </div>
-                ` : ''}
+        const partsCategorized = {};
+
+        // Group parts by category
+        parts.forEach((part, idx) => {
+          const cat = part.category || 'Other';
+          if (!partsCategorized[cat]) {
+            partsCategorized[cat] = [];
+          }
+          partsCategorized[cat].push({ ...part, _idx: idx });
+        });
+
+        // Render by category
+        let html = '';
+        Object.entries(partsCategorized).forEach(([category, categoryParts]) => {
+          html += `<div style="grid-column: 1 / -1; margin-top: 24px; margin-bottom: 12px;">
+            <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em;">${category}</h3>
+          </div>`;
+
+          categoryParts.forEach((part, pidx) => {
+            const partId = `${category}-${pidx}`;
+            const isSelected = selectedParts[category] === pidx;
+            html += `
+              <div class="part-card ${isSelected ? 'selected' : ''}" onclick="selectPart('${category}', ${pidx})">
+                <div class="part-name">${part.name || 'Unknown'}</div>
+                <div class="part-pick">${part.model || ''}</div>
+                ${part.price ? `<div class="part-price">+$${parseFloat(part.price).toFixed(2)}</div>` : ''}
+                ${part.description ? `<div class="part-desc">${part.description}</div>` : ''}
               </div>
             `;
-          } else if (typeof value === 'object' && !value.pick) {
-            // Nested parts (like storage.os, storage.extra)
-            content = `
-              <div class="part-card">
-                <div class="part-name">${key}</div>
-                ${Object.entries(value).map(([subkey, subval]) => `
-                  <div style="margin-bottom: 16px;">
-                    <div style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">${subkey}</div>
-                    <div class="part-pick">${subval.pick}</div>
-                    ${subval.alts && subval.alts.length > 0 ? `
-                      <div class="part-alts">
-                        <strong>Alternatives:</strong>
-                        ${subval.alts.join('<br>')}
-                      </div>
-                    ` : ''}
-                  </div>
-                `).join('')}
+          });
+        });
+
+        grid.innerHTML = html || '<p style="color: var(--muted);">No parts available</p>';
+        updatePrice();
+      }
+
+      window.selectPart = function(category, idx) {
+        selectedParts[category] = idx;
+        renderParts(getCurrentCategoryParts());
+      };
+
+      function getCurrentCategoryParts() {
+        if (!product.categories || product.categories.length === 0) return product.parts || [];
+        const activeCategory = document.querySelector('.tier-card.active');
+        const idx = Array.from(activeCategory.parentElement.children).indexOf(activeCategory);
+        return product.categories[idx].parts || [];
+      }
+
+      function updatePrice() {
+        let total = product.basePrice || 0;
+
+        // Add selected part prices
+        const parts = getCurrentCategoryParts();
+        Object.entries(selectedParts).forEach(([category, partIdx]) => {
+          const part = parts.find(p => (p.category || 'Other') === category);
+          if (part && part.price) {
+            total += parseFloat(part.price);
+          }
+        });
+
+        // Handle prebuilt vs custom
+        if (product.type === 'prebuilt' && product.baseCost) {
+          total = parseFloat(product.baseCost) * (1 + PRICING.prebuiltMarkup);
+        }
+
+        document.getElementById('priceDisplay').textContent = `Price: $${total.toFixed(2)}`;
+
+        // Update configuration summary
+        updateConfigSummary(parts, total);
+      }
+
+      function updateConfigSummary(parts, total) {
+        const summary = document.getElementById('configSummary');
+        const details = document.getElementById('configDetails');
+
+        let configHtml = '';
+        Object.entries(selectedParts).forEach(([category, partIdx]) => {
+          const part = parts.find(p => (p.category || 'Other') === category);
+          if (part) {
+            const price = part.price ? `+$${parseFloat(part.price).toFixed(2)}` : 'Included';
+            configHtml += `
+              <div class="config-item">
+                <span>${part.name || category}: ${part.model || ''}</span>
+                <span>${price}</span>
               </div>
             `;
           }
-          return content;
-        }).join('');
+        });
 
-        grid.innerHTML = html;
+        if (configHtml) {
+          configHtml += `<div class="config-item"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
+          details.innerHTML = configHtml;
+          summary.style.display = 'block';
+        } else {
+          summary.style.display = 'none';
+        }
       }
 
       window.addToCart = function() {
-        if (currentTier === null) return;
-        const tier = product.tiers[currentTier];
-        
+        if (!product) return;
+
+        const parts = getCurrentCategoryParts();
+        let total = product.basePrice || 0;
+        let config = {};
+
+        Object.entries(selectedParts).forEach(([category, partIdx]) => {
+          const part = parts.find(p => (p.category || 'Other') === category);
+          if (part) {
+            config[category] = part.model || part.name;
+            if (part.price) total += parseFloat(part.price);
+          }
+        });
+
         const item = {
-          productId: product._id || product.title,
           title: product.title,
-          tier: tier.name,
-          price: tier.price,
-          configuration: tier.parts
+          price: total,
+          image: product.image,
+          category: product.type || 'custom-build',
+          configuration: config
         };
 
-        // Save to localStorage
-        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        cart.push(item);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        let cart = [];
+        try {
+          cart = JSON.parse(localStorage.getItem('hrg-cart') || '[]');
+        } catch(e) {
+          cart = [];
+        }
 
-        alert(`Added "${product.title}" (${tier.name}) to cart!`);
-        updateCartCount();
+        cart.push(item);
+        localStorage.setItem('hrg-cart', JSON.stringify(cart));
+        window.dispatchEvent(new Event('cart-updated'));
+
+        if (window.gtag) {
+          gtag('event', 'add_to_cart', {
+            'product_name': product.title,
+            'product_category': product.type || 'custom-build',
+            'price': total
+          });
+        }
+
+        window.location.href = 'cart.html';
       };
 
       document.getElementById('addToCartBtn').onclick = window.addToCart;

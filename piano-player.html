@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piano Player PC — Howard Resource Group</title>
+  <meta name="description" content="Specialized PC builds for digital piano playing, music production, and MIDI configuration. Optimized for zero-latency audio.">
+  <link rel="canonical" href="https://howardresourcegroup.com/piano-player.html">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Howard Resource Group" />
+  <meta property="og:title" content="Piano Player PC — Howard Resource Group" />
+  <meta property="og:description" content="Specialized PC builds for digital piano playing, music production, and MIDI configuration." />
+  <meta property="og:url" content="https://howardresourcegroup.com/piano-player.html" />
+  <meta property="og:image" content="https://howardresourcegroup.com/assets/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Piano Player PC — Howard Resource Group">
+  <meta name="twitter:description" content="Specialized PC builds for digital piano playing and music production.">
+  <meta name="keywords" content="piano PC, music production PC, MIDI setup, digital piano, zero-latency audio" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .piano-hero {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      padding: 80px 0;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .piano-hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #00d9ff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .piano-hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    .pricing-table {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      border: 1px solid var(--border);
+    }
+    
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+    
+    .pricing-row:last-child {
+      border-bottom: none;
+    }
+    
+    .pricing-row.header {
+      background: var(--section-alt);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    
+    .pricing-row.total {
+      background: var(--section-alt);
+      font-weight: 700;
+      font-size: 16px;
+      border-top: 2px solid var(--border);
+    }
+    
+    .pricing-item {
+      font-size: 14px;
+    }
+    
+    .pricing-rate {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: right;
+    }
+    
+    .pricing-total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: right;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    
+    .cta-section {
+      background: var(--section-alt);
+      border-radius: 12px;
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .cta-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .piano-hero h1 {
+        font-size: 32px;
+      }
+      
+      .pricing-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .pricing-item {
+        font-weight: 600;
+      }
+      
+      .pricing-rate,
+      .pricing-total {
+        text-align: left;
+      }
+      
+      .cta-section {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
+        <div class="nav-links">
+          <a href="consulting.html">Consulting</a>
+          <a href="repair.html">Repair</a>
+          <a href="products.html">Custom Computers</a>
+          <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="header-actions">
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <button class="icon-btn" id="themeBtn" title="Change Theme">
+            🎨
+            <div class="theme-dropdown" id="themeDropdown">
+              <div class="theme-option" data-theme="light">
+                <span class="theme-color" style="background: #ffffff;"></span>
+                Light
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <span class="theme-color" style="background: #0f0f0f;"></span>
+                Dark
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-color" style="background: #f0f4f8;"></span>
+                Blue
+              </div>
+              <div class="theme-option" data-theme="custom" id="customThemeOption">
+                <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                Custom
+              </div>
+            </div>
+          </button>
+          <a href="cart.html" class="icon-btn" id="cartBtn" title="Cart">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="piano-hero">
+    <div class="container">
+      <h1>Piano Player PC Setup</h1>
+      <p>Professional-grade computers optimized for digital piano playing, MIDI workflows, and music production with zero-latency audio performance.</p>
+    </div>
+  </section>
+
+  <main class="page" style="padding: 0 0 60px 0;">
+    <div class="container">
+      <!-- Pricing Section -->
+      <section style="margin-bottom: 80px;">
+        <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 32px;">Piano Player PC Pricing</h2>
+        
+        <div class="pricing-table">
+          <div class="pricing-row header">
+            <div>Service</div>
+            <div>Rate</div>
+            <div>Notes</div>
+          </div>
+          
+          <div class="pricing-row">
+            <div class="pricing-item">Piano Player PC Build</div>
+            <div class="pricing-rate">$125/hour</div>
+            <div style="font-size: 13px; color: var(--muted); text-align: right;">Specialized configuration</div>
+          </div>
+          
+          <div class="pricing-row">
+            <div class="pricing-item">Setup & MIDI Calibration</div>
+            <div class="pricing-rate">Included</div>
+            <div style="font-size: 13px; color: var(--muted); text-align: right;">With build service</div>
+          </div>
+          
+          <div class="pricing-row">
+            <div class="pricing-item">Remote Support (per incident)</div>
+            <div class="pricing-rate">$20</div>
+            <div style="font-size: 13px; color: var(--muted); text-align: right;">30 min consultation</div>
+          </div>
+        </div>
+
+        <p style="color: var(--muted); font-size: 14px; margin-top: 16px;">
+          💡 <strong>Typical Piano Player Build:</strong> 2-4 hours = $250-$500 plus hardware costs
+        </p>
+      </section>
+
+      <!-- Features Section -->
+      <section style="margin-bottom: 80px;">
+        <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 32px;">What's Included</h2>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎵</div>
+            <h3>MIDI Optimization</h3>
+            <p>Perfect latency settings for digital pianos, keyboards, and MIDI controllers. Tested with industry-standard DAWs.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🔌</div>
+            <h3>Hardware Setup</h3>
+            <p>Proper driver installation, audio interface configuration, and keyboard connectivity testing.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Performance Tuning</h3>
+            <p>OS optimization for audio latency, CPU affinity tuning, and background process management.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🎚️</div>
+            <h3>Software Stack</h3>
+            <p>Pre-installation and configuration of your preferred DAW, plugins, and music production tools.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Documentation</h3>
+            <p>Complete setup guide, keyboard mappings, and troubleshooting reference for your specific setup.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3>Ongoing Support</h3>
+            <p>Remote assistance available for driver updates, software issues, or workflow optimization.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Configuration Section -->
+      <section style="margin-bottom: 80px;">
+        <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 32px;">Typical Configuration</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">Processor</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">Intel i7 or AMD Ryzen 7 (6-8 cores)</p>
+            <p style="font-size: 12px; color: var(--muted);">Handles complex VST chains with minimal latency</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">RAM</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">32GB DDR4/DDR5</p>
+            <p style="font-size: 12px; color: var(--muted);">Sufficient for large sample libraries and plugin instances</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">Audio Interface</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">USB 3.0 or Thunderbolt</p>
+            <p style="font-size: 12px; color: var(--muted);">Low-latency audio I/O with multiple channels</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">Storage</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">NVMe SSD (1TB+)</p>
+            <p style="font-size: 12px; color: var(--muted);">Fast OS and sample library access</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">OS</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">Windows 10/11 or macOS</p>
+            <p style="font-size: 12px; color: var(--muted);">Optimized for audio production</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin-bottom: 16px;">Connectivity</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">MIDI USB, audio ports, headphone jack</p>
+            <p style="font-size: 12px; color: var(--muted);">All necessary I/O for music production</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2>Ready to Setup Your Piano Player PC?</h2>
+        <p>Contact us to discuss your specific needs, musical software preferences, and MIDI setup requirements.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:6784214125" class="btn btn-primary">Call Now (678) 421-4125</a>
+          <a href="sms:6784214125" class="btn btn-secondary">Text Us</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: var(--card-bg); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px;">
+    <div class="container">
+      <p>&copy; 2026 Howard Resource Group. All rights reserved.</p>
+      <p style="margin-top: 12px;"><a href="privacy.html" style="color: var(--accent); text-decoration: none;">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
