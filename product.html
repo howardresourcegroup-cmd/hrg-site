@@ -386,18 +386,35 @@
         const badgeHtml = (product.badges || []).map(b => `<span class="badge">${b}</span>`).join('');
         document.getElementById('productBadges').innerHTML = badgeHtml;
 
-        // Tiers
-        const tierGrid = document.getElementById('tierGrid');
-        tierGrid.innerHTML = (product.tiers || []).map((tier, i) => `
-          <div class="tier-card ${i === 0 ? 'active' : ''}" onclick="selectTier(${i})" data-tier="${i}">
-            <div class="tier-name">${tier.name}</div>
-            <div class="tier-price">$${tier.price.toLocaleString()}</div>
-            <div class="tier-target">${tier.target}</div>
-          </div>
-        `).join('');
-
-        // Select first tier by default
-        selectTier(0);
+        // Check if product has tiers or is a simple product
+        if (product.tiers && product.tiers.length > 0) {
+          // Tier-based product
+          const tierGrid = document.getElementById('tierGrid');
+          tierGrid.innerHTML = (product.tiers || []).map((tier, i) => `
+            <div class="tier-card ${i === 0 ? 'active' : ''}" onclick="selectTier(${i})" data-tier="${i}">
+              <div class="tier-name">${tier.name}</div>
+              <div class="tier-price">$${tier.price.toLocaleString()}</div>
+              <div class="tier-target">${tier.target}</div>
+            </div>
+          `).join('');
+          selectTier(0);
+        } else {
+          // Simple product - create single tier from product data
+          product.tiers = [{
+            name: 'Standard',
+            price: product.price || 0,
+            target: product.short || '',
+            parts: product.specs ? Object.entries(product.specs).reduce((acc, [k, v]) => {
+              acc[k] = { pick: v, alts: [] };
+              return acc;
+            }, {}) : {},
+            notes: product.idealFor || []
+          }];
+          
+          // Hide tier selector for single-tier products
+          document.querySelector('.tier-selector').style.display = 'none';
+          selectTier(0);
+        }
       }
 
       window.selectTier = function(idx) {
