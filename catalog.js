@@ -1,5 +1,6 @@
 (() => {
   const root = document.getElementById("catalog");
+  const featuredRoot = document.getElementById("featuredBuilds");
   if (!root) return;
 
   const state = { items: [], filter: "all", q: "" };
@@ -33,6 +34,34 @@
     ].join(" "));
 
     return blob.includes(q);
+  }
+
+  function renderFeatured(){
+    if (!featuredRoot) return;
+    const featured = state.items.filter(item => item.featured).slice(0, 3);
+
+    if (!featured.length){
+      featuredRoot.innerHTML = '';
+      return;
+    }
+
+    featuredRoot.innerHTML = featured.map(item => {
+      const price = item.price || 0;
+      const priceFormatted = price > 0 ? `$${price.toLocaleString()}` : 'Contact for Price';
+    
+      return `
+        <div class="featured-card" onclick="window.location.href='product.html?item=${encodeURIComponent(item.__file || '')}'">
+          <span class="featured-card-badge">⭐ Featured</span>
+          <h3>${item.title || 'Untitled Build'}</h3>
+          <p>${item.short || item.description || ''}</p>
+          <div class="featured-specs">
+            ${(item.badges || []).slice(0, 3).map(b => `<span>${b}</span>`).join('')}
+          </div>
+          <div class="featured-price">${priceFormatted}</div>
+          <a href="product.html?item=${encodeURIComponent(item.__file || '')}" class="btn btn-primary" onclick="event.stopPropagation()">Configure Build →</a>
+        </div>
+      `;
+    }).join('');
   }
 
   function render(){
@@ -105,6 +134,7 @@
     // Initialize filter from URL hash if present
     const hash = (location.hash || "").replace(/^#/,"").trim();
     if (hash){ state.filter = hash; }
+    renderFeatured();
     render();
   }
 
