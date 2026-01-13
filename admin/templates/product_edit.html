@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}{% if is_new %}New Product{% else %}Edit Product{% endif %}{% endblock %}
+
+{% block styles %}
+<style>
+    .form-grid {
+        display: grid;
+        gap: 24px;
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 0;
+    }
+    
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #1d1d1f;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #d1d1d6;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: inherit;
+    }
+    
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #0071e3;
+    }
+    
+    .form-hint {
+        font-size: 13px;
+        color: #6e6e73;
+        margin-top: 4px;
+    }
+    
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: auto;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 12px;
+        padding-top: 24px;
+        border-top: 1px solid #e5e5e7;
+    }
+    
+    .image-preview {
+        margin-top: 12px;
+        max-width: 200px;
+    }
+    
+    .image-preview img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid #d1d1d6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">{% if is_new %}Create New Product{% else %}Edit Product{% endif %}</h1>
+    <p class="page-subtitle">{% if is_new %}Add a new custom build to your catalog{% else %}Update product details{% endif %}</p>
+</div>
+
+<form method="POST" enctype="multipart/form-data" class="card">
+    <div class="form-grid">
+        <!-- Basic Info -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="title">Product Title *</label>
+                <input type="text" id="title" name="title" value="{{ product.title if product else '' }}" required>
+                <div class="form-hint">e.g., "Minecraft Ultimate Edition"</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category *</label>
+                <select id="category" name="category" required>
+                    <option value="gaming" {% if product and product.category == 'gaming' %}selected{% endif %}>Gaming</option>
+                    <option value="workstation" {% if product and product.category == 'workstation' %}selected{% endif %}>Workstation</option>
+                    <option value="budget" {% if product and product.category == 'budget' %}selected{% endif %}>Budget</option>
+                    <option value="premium" {% if product and product.category == 'premium' %}selected{% endif %}>Premium</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="short">Short Description *</label>
+            <input type="text" id="short" name="short" value="{{ product.short if product else '' }}" required>
+            <div class="form-hint">One-line summary (50-80 characters)</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Full Description</label>
+            <textarea id="description" name="description">{{ product.description if product else '' }}</textarea>
+        </div>
+        
+        <!-- Pricing & Status -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="price">Price (USD) *</label>
+                <input type="number" id="price" name="price" value="{{ product.price if product else 0 }}" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability">
+                    <option value="in-stock" {% if product and product.availability == 'in-stock' %}selected{% endif %}>In Stock</option>
+                    <option value="made-to-order" {% if product and product.availability == 'made-to-order' %}selected{% endif %}>Made to Order</option>
+                    <option value="out-of-stock" {% if product and product.availability == 'out-of-stock' %}selected{% endif %}>Out of Stock</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Badges & Tags -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="badges">Badges</label>
+                <input type="text" id="badges" name="badges" value="{{ product.badges|join(', ') if product and product.badges else '' }}">
+                <div class="form-hint">Comma-separated: e.g., "Budget Friendly, RGB Lighting"</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="idealFor">Ideal For</label>
+                <input type="text" id="idealFor" name="idealFor" value="{{ product.idealFor|join(', ') if product and product.idealFor else '' }}">
+                <div class="form-hint">Comma-separated: e.g., "Competitive gaming, Streaming"</div>
+            </div>
+        </div>
+        
+        <!-- Specs -->
+        <div>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Specifications</h3>
+            <div class="form-grid">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="spec_CPU">CPU</label>
+                        <input type="text" id="spec_CPU" name="spec_CPU" value="{{ product.specs.CPU if product and product.specs else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="spec_GPU">GPU</label>
+                        <input type="text" id="spec_GPU" name="spec_GPU" value="{{ product.specs.GPU if product and product.specs else '' }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="spec_RAM">RAM</label>
+                        <input type="text" id="spec_RAM" name="spec_RAM" value="{{ product.specs.RAM if product and product.specs else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="spec_Storage">Storage</label>
+                        <input type="text" id="spec_Storage" name="spec_Storage" value="{{ product.specs.Storage if product and product.specs else '' }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance -->
+        <div>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Performance</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="perf_1080p">1080p</label>
+                    <input type="text" id="perf_1080p" name="perf_1080p" value="{{ product.performance['1080p'] if product and product.performance else '' }}" placeholder="e.g., High settings @ 144fps">
+                </div>
+                <div class="form-group">
+                    <label for="perf_1440p">1440p</label>
+                    <input type="text" id="perf_1440p" name="perf_1440p" value="{{ product.performance['1440p'] if product and product.performance else '' }}" placeholder="e.g., Medium @ 90fps">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label for="image">Product Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            {% if product and product.image %}
+            <input type="hidden" name="existing_image" value="{{ product.image }}">
+            <div class="image-preview">
+                <img src="/{{ product.image }}" alt="Current image">
+            </div>
+            {% endif %}
+            <div class="form-hint">PNG, JPG, or WebP (max 5MB)</div>
+        </div>
+        
+        <!-- Featured Toggle -->
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="featured" name="featured" {% if product and product.featured %}checked{% endif %}>
+                <label for="featured" style="margin-bottom: 0;">Featured Product (shows on homepage)</label>
+            </div>
+        </div>
+        
+        <!-- Features (Advanced) -->
+        <div class="form-group">
+            <label for="features_json">Features (JSON)</label>
+            <textarea id="features_json" name="features_json" style="font-family: monospace; font-size: 14px;">{{ product.features|tojson if product and product.features else '[]' }}</textarea>
+            <div class="form-hint">Advanced: JSON array of feature objects with icon, title, description</div>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn">{% if is_new %}Create Product{% else %}Save Changes{% endif %}</button>
+        <a href="/admin/products" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

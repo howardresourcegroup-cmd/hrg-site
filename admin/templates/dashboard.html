@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Manage your products and track your inventory</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total_products }}</div>
+        <div class="stat-label">Total Products</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.featured }}</div>
+        <div class="stat-label">Featured Builds</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.categories }}</div>
+        <div class="stat-label">Categories</div>
+    </div>
+</div>
+
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 700;">Recent Products</h2>
+        <a href="/admin/products/new" class="btn">Add New Product</a>
+    </div>
+    
+    {% if products %}
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="border-bottom: 2px solid #e5e5e7;">
+                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Product</th>
+                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Category</th>
+                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Price</th>
+                <th style="text-align: right; padding: 12px; font-size: 14px; color: #6e6e73;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products[:10] %}
+            <tr style="border-bottom: 1px solid #f5f5f7;">
+                <td style="padding: 16px;">
+                    <div style="font-weight: 600;">{{ product.title }}</div>
+                    <div style="font-size: 14px; color: #6e6e73;">{{ product.short }}</div>
+                </td>
+                <td style="padding: 16px;">
+                    <span style="background: #f5f5f7; padding: 4px 12px; border-radius: 6px; font-size: 13px;">
+                        {{ product.category }}
+                    </span>
+                </td>
+                <td style="padding: 16px;">${{ product.price }}</td>
+                <td style="padding: 16px; text-align: right;">
+                    <a href="/admin/products/{{ product._id }}/edit" style="color: #0071e3; text-decoration: none; margin-right: 16px;">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="text-align: center; color: #6e6e73; padding: 40px;">No products yet. Create your first product!</p>
+    {% endif %}
+</div>
+{% endblock %}
