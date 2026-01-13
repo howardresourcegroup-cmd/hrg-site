@@ -357,6 +357,20 @@ body {
   display: flex;
   gap: 16px;
   align-items: center;
+  flex-direction: row;
+}
+
+.hamburger {
+  order: 1;
+  display: none;
+}
+
+.icon-btn[id="themeBtn"] {
+  order: 2;
+}
+
+.icon-btn[id="cartBtn"] {
+  order: 3;
 }
 
 .icon-btn {
@@ -889,6 +903,7 @@ footer {
 
   .hamburger {
     display: inline-flex;
+    order: 1;
   }
 
   .mobile-menu {
