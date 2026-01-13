@@ -1,3 +1,109 @@
+/* Modern AI Catalog Styles */
+.ai-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  padding: 24px 0;
+}
+
+.ai-catalog .product-card {
+  background: linear-gradient(135deg, rgba(0,217,255,0.08), rgba(168,85,247,0.08));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,217,255,0.08);
+  transition: box-shadow 0.2s, transform 0.2s;
+  padding: 28px 24px 20px 24px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.ai-catalog .product-card:hover {
+  box-shadow: 0 8px 48px rgba(0,217,255,0.18);
+  transform: translateY(-2px) scale(1.02);
+}
+.ai-catalog .product-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--section-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.ai-catalog .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.ai-catalog .product-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--accent-secondary);
+}
+.ai-catalog .product-rating {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.ai-catalog .product-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.ai-catalog .product-price-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.ai-catalog .product-delivery {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.ai-catalog .product-specs {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.ai-catalog .product-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.ai-catalog .product-actions .btn-secondary {
+  background: var(--accent-secondary);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(168,85,247,0.08);
+}
+.ai-catalog .product-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,217,255,0.12);
+}
+.ai-catalog .part-preview {
+  margin-top: 12px;
+  background: var(--section-alt);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  box-shadow: 0 2px 8px rgba(0,217,255,0.04);
+}
 /* Howard Resource Group - Advanced Raytracing Theme */
 
 /* ============================================================================
