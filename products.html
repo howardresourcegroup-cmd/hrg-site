@@ -31,9 +31,10 @@
       <nav class="navbar">
         <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
         <div class="nav-links">
-          <a href="index.html#consulting">Consulting</a>
-          <a href="index.html#repair">Repair</a>
-          <a href="index.html#computers">Custom Computers</a>
+          <a href="consulting.html">Consulting</a>
+          <a href="repair.html">Repair</a>
+          <a href="custom-computers.html">Custom Computers</a>
+          <a href="products.html">Catalog</a>
           <a href="index.html#contact" class="btn btn-primary">Get Started</a>
         </div>
         <div class="header-actions">
@@ -67,35 +68,67 @@
           </a>
         </div>
       </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="consulting.html">Consulting</a>
+        <a href="repair.html">Repair</a>
+        <a href="custom-computers.html">Custom Computers</a>
+        <a href="products.html">Catalog</a>
+        <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
     </div>
   </header>
 
   <main class="page" style="background: var(--bg); padding: 40px 0;">
     <div class="container">
-      <!-- Featured Builds Section -->
-      <section class="featured-section">
-        <div style="max-width: 800px; margin-bottom: 40px;">
-          <h1 class="featured-title">Featured Builds</h1>
-          <p class="featured-subtitle">Hand-picked professional and gaming systems optimized for performance and value.</p>
-        </div>
-        <div class="featured-cascade" id="featuredBuilds">
-          <!-- Featured products will be loaded here by catalog.js -->
-        </div>
-      </section>
-
-      <!-- All Products Section -->
-      <section class="section" style="background: transparent; padding: 0;">
-        <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin-bottom: 32px; border: 1px solid var(--border);">
-          <h2 style="font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">
-            All PC Builds
-          </h2>
-          <p style="color: var(--muted); font-size: 16px;">Gaming PCs and professional workstations. Click any build to customize it.</p>
+      <section class="section" style="padding-top: 0;">
+        <div class="section-header">
+          <div class="section-label">Catalog</div>
+          <h1 class="section-title">Custom PC Catalog</h1>
+          <p class="section-description">Filter like Amazon: pick by use case, budget, or featured picks. Configure any build on the next page.</p>
         </div>
 
-        
+        <div class="catalog-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start;">
+          <aside class="filter-panel panel" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: sticky; top: 120px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+              <input type="search" placeholder="Search builds" data-search style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);" aria-label="Search catalog">
+            </div>
 
-        <div id="catalog" class="products-grid">
-          <!-- Products will be loaded here by catalog.js -->
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div>
+                <div class="kTag" style="margin-bottom: 8px;"><span class="bar"></span> Filter by</div>
+                <div class="filter-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <button class="filter-chip active" data-filter="all">All</button>
+                  <button class="filter-chip" data-filter="featured">Featured</button>
+                  <button class="filter-chip" data-filter="game">Gaming</button>
+                  <button class="filter-chip" data-filter="workstation">Workstation</button>
+                  <button class="filter-chip" data-filter="premium">Premium</button>
+                  <button class="filter-chip" data-filter="budget">Budget</button>
+                </div>
+              </div>
+              <div style="font-size: 13px; color: var(--muted); line-height: 1.6;">Use search + filters together to narrow quickly.</div>
+            </div>
+          </aside>
+
+          <div>
+            <section class="featured-section" style="padding: 0;">
+              <div style="max-width: 800px; margin-bottom: 32px;">
+                <h2 class="featured-title">Featured Builds</h2>
+                <p class="featured-subtitle">Hand-picked systems for gaming and professional work.</p>
+              </div>
+              <div class="featured-cascade" id="featuredBuilds"></div>
+            </section>
+
+            <section class="section" style="background: transparent; padding: 0;">
+              <div style="background: var(--card-bg); padding: 16px 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <div>
+                  <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 4px; letter-spacing: -0.02em;">All PC Builds</h3>
+                  <p style="color: var(--muted); font-size: 14px;">Browse, filter, then click into a build to configure parts.</p>
+                </div>
+              </div>
+
+              <div id="catalog" class="products-grid"></div>
+            </section>
+          </div>
         </div>
       </section>
     </div>
