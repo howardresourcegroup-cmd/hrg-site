@@ -9,25 +9,38 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: #0a0e27;
+            color: #e8e8f0;
+            padding-top: 70px;
         }
         
         .admin-header {
-            background: #fff;
-            border-bottom: 1px solid #e5e5e7;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom: 1px solid #1a2142;
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1), 0 4px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
         }
         
         .admin-brand {
             font-size: 18px;
             font-weight: 700;
-            color: #1d1d1f;
+            color: #00d9ff;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .admin-brand:hover {
+            color: #a855f7;
         }
         
         .admin-nav {
@@ -37,27 +50,30 @@
         }
         
         .admin-nav a {
-            color: #6e6e73;
+            color: #8892b0;
             text-decoration: none;
             font-size: 14px;
             transition: color 0.2s;
         }
         
-        .admin-nav a:hover { color: #1d1d1f; }
-        .admin-nav a.active { color: #0071e3; font-weight: 600; }
+        .admin-nav a:hover { color: #00d9ff; }
+        .admin-nav a.active { color: #00d9ff; font-weight: 600; }
         
         .logout-btn {
-            background: #f5f5f7;
-            border: none;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
             padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            color: #6e6e73;
-            transition: background 0.2s;
+            color: #a855f7;
+            transition: all 0.2s;
         }
         
-        .logout-btn:hover { background: #e5e5e7; }
+        .logout-btn:hover { 
+            background: rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.6);
+        }
         
         .admin-container {
             max-width: 1400px;
@@ -73,17 +89,21 @@
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
+            background: linear-gradient(135deg, #00d9ff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .page-subtitle {
             font-size: 16px;
-            color: #6e6e73;
+            color: #8892b0;
         }
         
         .btn {
             display: inline-block;
             padding: 12px 24px;
-            background: #0071e3;
+            background: linear-gradient(135deg, #00d9ff 0%, #a855f7 100%);
             color: #fff;
             text-decoration: none;
             border-radius: 8px;
@@ -91,29 +111,42 @@
             font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
         }
         
-        .btn:hover { background: #0077ed; }
+        .btn:hover { 
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+            transform: translateY(-2px);
+        }
         
         .btn-secondary {
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.3);
         }
         
-        .btn-secondary:hover { background: #e5e5e7; }
+        .btn-secondary:hover { 
+            background: rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.6);
+        }
         
         .btn-danger {
             background: #ff3b30;
+            box-shadow: 0 0 20px rgba(255, 59, 48, 0.2);
         }
         
-        .btn-danger:hover { background: #ff453a; }
+        .btn-danger:hover { 
+            background: #ff453a;
+            box-shadow: 0 0 30px rgba(255, 59, 48, 0.4);
+        }
         
         .card {
-            background: #fff;
+            background: #111b3d;
+            border: 1px solid #1a2142;
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 217, 255, 0.1);
             margin-bottom: 24px;
         }
         
@@ -125,22 +158,29 @@
         }
         
         .stat-card {
-            background: #fff;
+            background: #111b3d;
+            border: 1px solid #1a2142;
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 217, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
         }
         
         .stat-value {
             font-size: 32px;
             font-weight: 700;
-            color: #0071e3;
+            color: #00d9ff;
             margin-bottom: 8px;
         }
         
         .stat-label {
             font-size: 14px;
-            color: #6e6e73;
+            color: #8892b0;
         }
         
         .flash {
@@ -150,13 +190,15 @@
         }
         
         .flash.success {
-            background: #d1f4d1;
-            color: #1d6b1d;
+            background: rgba(52, 199, 89, 0.1);
+            color: #34c759;
+            border: 1px solid rgba(52, 199, 89, 0.3);
         }
         
         .flash.error {
-            background: #ffd1d1;
-            color: #c70000;
+            background: rgba(255, 59, 48, 0.1);
+            color: #ff3b30;
+            border: 1px solid rgba(255, 59, 48, 0.3);
         }
     </style>
     {% block styles %}{% endblock %}
@@ -167,7 +209,7 @@
         <nav class="admin-nav">
             <a href="/admin" {% if request.path == '/admin' %}class="active"{% endif %}>Dashboard</a>
             <a href="/admin/products" {% if '/products' in request.path %}class="active"{% endif %}>Products</a>
-            <a href="/" target="_blank">View Site</a>
+            <a href="https://howardresourcegroup.com" target="_blank">View Site</a>
             <form action="/admin/logout" method="get" style="display: inline;">
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
