@@ -87,27 +87,39 @@
           <p class="section-description">Filter like Amazon: pick by use case, budget, or featured picks. Configure any build on the next page.</p>
         </div>
 
-        <div class="catalog-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start;">
-          <aside class="filter-panel panel" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: sticky; top: 120px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-              <input type="search" placeholder="Search builds" data-search style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);" aria-label="Search catalog">
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div>
-                <div class="kTag" style="margin-bottom: 8px;"><span class="bar"></span> Filter by</div>
-                <div class="filter-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                  <button class="filter-chip active" data-filter="all">All</button>
-                  <button class="filter-chip" data-filter="featured">Featured</button>
-                  <button class="filter-chip" data-filter="game">Gaming</button>
-                  <button class="filter-chip" data-filter="workstation">Workstation</button>
-                  <button class="filter-chip" data-filter="premium">Premium</button>
-                  <button class="filter-chip" data-filter="budget">Budget</button>
-                </div>
+        <div class="catalog-layout" style="display: grid; gap: 24px;">
+          <div class="filter-toolbar panel" style="position: sticky; top: 80px; z-index: 5; border: 1px solid var(--border); background: var(--card-bg); padding: 14px 16px; border-radius: 12px; display: grid; gap: 10px;">
+            <div style="display: grid; grid-template-columns: 1fr 260px; gap: 12px; align-items: center;">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <button class="filter-chip active" data-filter="all">All</button>
+                <button class="filter-chip" data-filter="featured">Featured</button>
+                <button class="filter-chip" data-filter="game">Gaming</button>
+                <button class="filter-chip" data-filter="workstation">Workstation</button>
+                <button class="filter-chip" data-filter="premium">Premium</button>
+                <button class="filter-chip" data-filter="budget">Budget</button>
               </div>
-              <div style="font-size: 13px; color: var(--muted); line-height: 1.6;">Use search + filters together to narrow quickly.</div>
+              <div style="display: flex; gap: 8px;">
+                <input type="search" placeholder="Search builds" data-search style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);" aria-label="Search catalog">
+                <button class="btn btn-secondary" type="button" data-reset-filters style="white-space: nowrap;">Reset</button>
+              </div>
             </div>
-          </aside>
+            <div style="display: grid; grid-template-columns: 1fr 240px; gap: 12px; align-items: center;">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span class="kTag" style="margin-right: 4px;"><span class="bar"></span> Use case</span>
+                <button class="filter-chip" data-tag="streaming">Streaming</button>
+                <button class="filter-chip" data-tag="content">Content/3D</button>
+                <button class="filter-chip" data-tag="office">Office/Home</button>
+                <button class="filter-chip" data-tag="vr">VR/AR</button>
+              </div>
+              <select data-price-filter style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+                <option value="any">Any price</option>
+                <option value="under-1500">Under $1,500</option>
+                <option value="1500-2500">$1,500–$2,500</option>
+                <option value="2500-3500">$2,500–$3,500</option>
+                <option value="3500-plus">$3,500+</option>
+              </select>
+            </div>
+          </div>
 
           <div>
             <section class="featured-section" style="padding: 0;">
@@ -119,7 +131,7 @@
             </section>
 
             <section class="section" style="background: transparent; padding: 0;">
-              <div style="background: var(--card-bg); padding: 16px 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <div style="background: var(--card-bg); padding: 16px 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
                 <div>
                   <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 4px; letter-spacing: -0.02em;">All PC Builds</h3>
                   <p style="color: var(--muted); font-size: 14px;">Browse, filter, then click into a build to configure parts.</p>

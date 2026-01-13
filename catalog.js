@@ -4,9 +4,12 @@
   const featuredHomeRoot = document.getElementById("featuredBuildsHome");
   if (!root && !featuredRoot && !featuredHomeRoot) return;
 
-  const state = { items: [], filter: "all", q: "" };
-    const chipEls = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
+  const state = { items: [], filter: "all", q: "", tag: "", price: "any" };
+  const chipEls = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
+  const tagChips = Array.from(document.querySelectorAll(".filter-chip[data-tag]"));
   const searchEl = document.querySelector("[data-search]");
+  const priceEl = document.querySelector("[data-price-filter]");
+  const resetEl = document.querySelector("[data-reset-filters]");
 
   const norm = (s) => (s || "").toString().toLowerCase().trim();
 
@@ -24,6 +27,25 @@
       }
     }
     if (!inFilter) return false;
+
+    // Tag filter (use-case chips)
+    if (state.tag){
+      const tagBlob = norm([
+        item.category,
+        (item.badges || []).join(" "),
+        (item.tags || []).join(" ")
+      ].join(" "));
+      if (!tagBlob.includes(norm(state.tag))) return false;
+    }
+
+    // Price filter
+    if (state.price && state.price !== "any"){
+      const p = Number(item.price || 0);
+      if (state.price === "under-1500" && !(p > 0 && p < 1500)) return false;
+      if (state.price === "1500-2500" && !(p >= 1500 && p <= 2500)) return false;
+      if (state.price === "2500-3500" && !(p >= 2500 && p <= 3500)) return false;
+      if (state.price === "3500-plus" && !(p >= 3500)) return false;
+    }
 
     const q = norm(state.q);
     if (!q) return true;
@@ -152,9 +174,44 @@
     });
   });
 
+  tagChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      const isActive = chip.classList.contains("active");
+      tagChips.forEach(c => c.classList.remove("active"));
+      if (isActive){
+        state.tag = "";
+      } else {
+        chip.classList.add("active");
+        state.tag = chip.getAttribute("data-tag") || "";
+      }
+      render();
+    });
+  });
+
   if (searchEl){
     searchEl.addEventListener("input", () => {
       state.q = searchEl.value;
+      render();
+    });
+  }
+
+  if (priceEl){
+    priceEl.addEventListener("change", () => {
+      state.price = priceEl.value || "any";
+      render();
+    });
+  }
+
+  if (resetEl){
+    resetEl.addEventListener("click", () => {
+      state.filter = "all";
+      state.tag = "";
+      state.price = "any";
+      state.q = "";
+      searchEl && (searchEl.value = "");
+      chipEls.forEach(c => c.classList.toggle("active", (c.getAttribute("data-filter") || "") === "all"));
+      tagChips.forEach(c => c.classList.remove("active"));
+      priceEl && (priceEl.value = "any");
       render();
     });
   }
