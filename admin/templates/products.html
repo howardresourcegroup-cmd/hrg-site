@@ -1,60 +1,90 @@
 {% extends "base.html" %}
 
-{% block title %}Products{% endblock %}
+{% block title %}All Products{% endblock %}
 
 {% block content %}
-<div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
     <div>
-        <h1 class="page-title">Products</h1>
-        <p class="page-subtitle">{{ products|length }} total products</p>
+        <h1 class="page-title">📋 Product Catalog</h1>
+        <p class="page-subtitle">{{ products|length }} products total</p>
     </div>
-    <a href="/admin/products/new" class="btn">Add New Product</a>
+    <a href="/admin/products/new" class="btn">+ New Product</a>
 </div>
 
 <div class="card">
     {% if products %}
-    <div style="display: grid; gap: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
         {% for product in products %}
-        <div style="display: flex; gap: 20px; padding: 20px; border: 1px solid #e5e5e7; border-radius: 8px; align-items: center;">
-            <div style="width: 100px; height: 100px; background: #f5f5f7; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                {% if product.image %}
-                <img src="/{{ product.image }}" alt="{{ product.title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                {% else %}
-                <span style="font-size: 32px;">💻</span>
-                {% endif %}
-            </div>
+        <div style="border: 1px solid #e5e5e7; border-radius: 12px; overflow: hidden; background: #fff; transition: all 0.2s;" 
+             onmouseover="this.style.boxShadow='0 12px 24px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)'" 
+             onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
             
-            <div style="flex: 1;">
-                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">
-                    {{ product.title }}
+            <!-- Image Section -->
+            <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                {% if product.image %}
+                    <img src="/{{ product.image }}" alt="{{ product.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                    <span style="font-size: 48px;">💻</span>
+                {% endif %}
+                
+                <!-- Status Badge -->
+                <div style="position: absolute; top: 8px; left: 8px;">
                     {% if product.featured %}
-                    <span style="background: #0071e3; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-left: 8px;">FEATURED</span>
+                    <span style="display: inline-block; background: #0071e3; color: white; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700;">★ FEATURED</span>
                     {% endif %}
-                </h3>
-                <p style="color: #6e6e73; font-size: 14px; margin-bottom: 8px;">{{ product.short }}</p>
-                <div style="display: flex; gap: 12px; align-items: center;">
-                    <span style="font-weight: 600; color: #1d1d1f;">${{ product.price }}</span>
-                    <span style="background: #f5f5f7; padding: 4px 12px; border-radius: 6px; font-size: 13px;">{{ product.category }}</span>
-                    {% for badge in product.badges[:2] %}
-                    <span style="border: 1px solid #d1d1d6; padding: 4px 10px; border-radius: 6px; font-size: 12px; color: #6e6e73;">{{ badge }}</span>
-                    {% endfor %}
                 </div>
             </div>
             
-            <div style="display: flex; gap: 12px;">
-                <a href="/admin/products/{{ product._id }}/edit" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;">Edit</a>
-                <form method="POST" action="/admin/products/{{ product._id }}/delete" onsubmit="return confirm('Delete this product?');" style="display: inline;">
-                    <button type="submit" class="btn btn-danger" style="padding: 8px 16px; font-size: 14px;">Delete</button>
-                </form>
+            <!-- Content Section -->
+            <div style="padding: 16px;">
+                <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 4px; word-wrap: break-word;">{{ product.title }}</h3>
+                <p style="font-size: 12px; color: #6e6e73; margin-bottom: 10px; line-height: 1.4;">{{ product.short }}</p>
+                
+                <!-- Price & Category Row -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #f5f5f7;">
+                    <span style="font-size: 16px; font-weight: 700; color: #0071e3;">${{ product.price }}</span>
+                    <span style="background: #f5f5f7; padding: 3px 8px; border-radius: 4px; font-size: 10px; color: #6e6e73;">{{ product.category }}</span>
+                </div>
+                
+                <!-- Tiers Display -->
+                {% if product.get('tiers') %}
+                <div style="margin-bottom: 10px; padding: 8px; background: #f5f5f7; border-radius: 6px;">
+                    <div style="font-size: 10px; font-weight: 700; color: #6e6e73; margin-bottom: 4px;">{{ product.tiers|length }} Pricing Tiers:</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
+                        {% for tier in product.tiers[:3] %}
+                        <span style="background: white; padding: 2px 6px; border-radius: 3px; font-size: 9px; border: 1px solid #d1d1d6;">{{ tier.name }} - ${{ tier.price }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Stock Status -->
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 12px; font-size: 11px;">
+                    {% if product.get('availability') == 'in-stock' %}
+                    <span style="width: 6px; height: 6px; background: #34c759; border-radius: 50%;"></span>
+                    <span style="color: #34c759; font-weight: 600;">In Stock</span>
+                    {% else %}
+                    <span style="width: 6px; height: 6px; background: #ff3b30; border-radius: 50%;"></span>
+                    <span style="color: #ff3b30; font-weight: 600;">Out of Stock</span>
+                    {% endif %}
+                </div>
+                
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 8px;">
+                    <a href="/admin/products/{{ product._id }}/edit" class="btn" style="flex: 1; padding: 8px; text-align: center; font-size: 12px; background: #0071e3; color: white; text-decoration: none; border-radius: 6px; border: none; cursor: pointer;">Edit</a>
+                    <form method="POST" action="/admin/products/{{ product._id }}/delete" onsubmit="return confirm('Delete {{ product.title }}?');" style="flex: 0; margin: 0;">
+                        <button type="submit" style="padding: 8px 12px; font-size: 12px; background: #ff3b30; color: white; border: none; border-radius: 6px; cursor: pointer;">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
     {% else %}
     <div style="text-align: center; padding: 60px 20px;">
-        <div style="font-size: 48px; margin-bottom: 16px;">📦</div>
-        <h3 style="font-size: 20px; margin-bottom: 8px;">No products yet</h3>
-        <p style="color: #6e6e73; margin-bottom: 24px;">Start by creating your first product</p>
+        <div style="font-size: 48px; margin-bottom: 16px;">🛍️</div>
+        <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Catalog is Empty</h3>
+        <p style="color: #6e6e73; margin-bottom: 24px;">Add your first product to get started with your inventory</p>
         <a href="/admin/products/new" class="btn">Create Product</a>
     </div>
     {% endif %}

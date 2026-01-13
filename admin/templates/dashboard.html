@@ -1,68 +1,107 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Inventory Dashboard{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1 class="page-title">Dashboard</h1>
-    <p class="page-subtitle">Manage your products and track your inventory</p>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
+    <div>
+        <h1 class="page-title">📦 Inventory Management</h1>
+        <p class="page-subtitle">Visual catalog of all products and builds</p>
+    </div>
+    <a href="/admin/products/new" class="btn" style="margin-top: 8px;">+ Add Product</a>
 </div>
 
+<!-- Stats Overview -->
 <div class="stats-grid">
     <div class="stat-card">
         <div class="stat-value">{{ stats.total_products }}</div>
         <div class="stat-label">Total Products</div>
     </div>
-    
     <div class="stat-card">
         <div class="stat-value">{{ stats.featured }}</div>
         <div class="stat-label">Featured Builds</div>
     </div>
-    
     <div class="stat-card">
         <div class="stat-value">{{ stats.categories }}</div>
         <div class="stat-label">Categories</div>
     </div>
 </div>
 
+<!-- Product Catalog Grid -->
 <div class="card">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 700;">Recent Products</h2>
-        <a href="/admin/products/new" class="btn">Add New Product</a>
-    </div>
-    
     {% if products %}
-    <table style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="border-bottom: 2px solid #e5e5e7;">
-                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Product</th>
-                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Category</th>
-                <th style="text-align: left; padding: 12px; font-size: 14px; color: #6e6e73;">Price</th>
-                <th style="text-align: right; padding: 12px; font-size: 14px; color: #6e6e73;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products[:10] %}
-            <tr style="border-bottom: 1px solid #f5f5f7;">
-                <td style="padding: 16px;">
-                    <div style="font-weight: 600;">{{ product.title }}</div>
-                    <div style="font-size: 14px; color: #6e6e73;">{{ product.short }}</div>
-                </td>
-                <td style="padding: 16px;">
-                    <span style="background: #f5f5f7; padding: 4px 12px; border-radius: 6px; font-size: 13px;">
-                        {{ product.category }}
-                    </span>
-                </td>
-                <td style="padding: 16px;">${{ product.price }}</td>
-                <td style="padding: 16px; text-align: right;">
-                    <a href="/admin/products/{{ product._id }}/edit" style="color: #0071e3; text-decoration: none; margin-right: 16px;">Edit</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        {% for product in products %}
+        <div style="border: 1px solid #e5e5e7; border-radius: 12px; overflow: hidden; background: #fff; transition: box-shadow 0.2s; cursor: pointer;" 
+             onmouseover="this.style.boxShadow='0 8px 16px rgba(0,0,0,0.1)'" 
+             onmouseout="this.style.boxShadow='none'">
+            
+            <!-- Product Image -->
+            <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                {% if product.image %}
+                    <img src="/{{ product.image }}" alt="{{ product.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                    <span>💻</span>
+                {% endif %}
+                
+                <!-- Featured Badge -->
+                {% if product.featured %}
+                <div style="position: absolute; top: 8px; right: 8px; background: #0071e3; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;">★ FEATURED</div>
+                {% endif %}
+            </div>
+            
+            <!-- Product Info -->
+            <div style="padding: 16px;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px; word-wrap: break-word;">{{ product.title }}</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 12px; line-height: 1.4;">{{ product.short }}</p>
+                
+                <!-- Price & Category -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-size: 18px; font-weight: 700; color: #0071e3;">${{ product.price }}</span>
+                    <span style="background: #f5f5f7; padding: 4px 8px; border-radius: 4px; font-size: 11px; color: #6e6e73; font-weight: 500;">{{ product.category }}</span>
+                </div>
+                
+                <!-- Availability -->
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    {% if product.get('availability') == 'in-stock' %}
+                    <span style="width: 8px; height: 8px; background: #34c759; border-radius: 50%;"></span>
+                    <span style="font-size: 12px; color: #34c759; font-weight: 600;">In Stock</span>
+                    {% else %}
+                    <span style="width: 8px; height: 8px; background: #ff3b30; border-radius: 50%;"></span>
+                    <span style="font-size: 12px; color: #ff3b30; font-weight: 600;">Out of Stock</span>
+                    {% endif %}
+                </div>
+                
+                <!-- Tiers Info (if available) -->
+                {% if product.get('tiers') %}
+                <div style="background: #f5f5f7; padding: 8px; border-radius: 6px; margin-bottom: 12px;">
+                    <div style="font-size: 11px; color: #6e6e73; font-weight: 600; margin-bottom: 4px;">{{ product.tiers|length }} Tiers:</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                        {% for tier in product.tiers %}
+                        <span style="background: #fff; padding: 2px 6px; border-radius: 3px; font-size: 10px; border: 1px solid #d1d1d6;">{{ tier.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 8px;">
+                    <a href="/admin/products/{{ product._id }}/edit" class="btn" style="flex: 1; padding: 10px 12px; text-align: center; font-size: 13px; background: #0071e3; color: white; text-decoration: none; border-radius: 6px; display: block;">✏️ Edit</a>
+                    <form method="POST" action="/admin/products/{{ product._id }}/delete" onsubmit="return confirm('Delete this product?');" style="flex: 0.5;">
+                        <button type="submit" class="btn" style="width: 100%; padding: 10px 0; font-size: 13px; background: #f5f5f7; color: #6e6e73; border: none; border-radius: 6px; cursor: pointer;">🗑️</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     {% else %}
-    <p style="text-align: center; color: #6e6e73; padding: 40px;">No products yet. Create your first product!</p>
+    <div style="text-align: center; padding: 60px 20px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">📭</div>
+        <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">No products yet</h3>
+        <p style="color: #6e6e73; margin-bottom: 24px;">Start building your catalog by creating your first product</p>
+        <a href="/admin/products/new" class="btn">Create First Product</a>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
