@@ -1,0 +1,72 @@
+{
+  "title": "Build Name Here",
+  "short": "One-line description for cards and previews",
+  "description": "Full description with more details about the build, target audience, and what makes it special.",
+  "price": 1299,
+  "category": "gaming",
+  "badges": ["Budget Friendly", "High Performance", "Popular"],
+  "featured": false,
+  "specs": {
+    "CPU": "AMD Ryzen 5 7600X",
+    "GPU": "NVIDIA RTX 4060 Ti 8GB",
+    "RAM": "16GB DDR5-6000",
+    "Storage": "1TB NVMe Gen4 SSD",
+    "Motherboard": "B650 ATX",
+    "PSU": "650W 80+ Gold",
+    "Case": "Mid-Tower with RGB",
+    "Cooling": "Tower Air Cooler"
+  },
+  "performance": {
+    "1080p": "Ultra settings, 144+ FPS in most games",
+    "1440p": "High settings, 90+ FPS",
+    "4K": "Medium settings, 60 FPS"
+  },
+  "idealFor": [
+    "Competitive gaming at 1080p/1440p",
+    "Streaming on Twitch/YouTube",
+    "Content creation and video editing",
+    "VR gaming"
+  ],
+  "features": [
+    {
+      "icon": "🚀",
+      "title": "Lightning Fast",
+      "description": "Gen4 NVMe storage with instant boot times under 10 seconds"
+    },
+    {
+      "icon": "❄️",
+      "title": "Runs Cool & Quiet",
+      "description": "Premium cooling keeps temps under 70°C even under load"
+    },
+    {
+      "icon": "🎨",
+      "title": "RGB Lighting",
+      "description": "Fully customizable RGB with sync across all components"
+    },
+    {
+      "icon": "🔧",
+      "title": "Easy Upgrades",
+      "description": "Tool-free design with room for future GPU and storage expansion"
+    }
+  ],
+  "image": "assets/products/build-name.jpg",
+  "availability": "in-stock",
+  "tiers": [
+    {
+      "name": "Value",
+      "price": 1199,
+      "target": "What this tier is optimized for",
+      "bottlenecks": ["Part that limits performance"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 7 7700", "alts": ["Alternative CPU"]},
+        "gpu": {"pick": "RTX 4070 Super", "alts": ["RTX 4080"]},
+        "ram": {"pick": "32GB DDR5", "alts": ["64GB DDR5"]},
+        "storage": {"os": {"pick": "1TB NVMe", "alts": []}, "extra": {"pick": "2TB NVMe", "alts": []}},
+        "cooling": {"pick": "High-end air", "alts": ["360mm AIO"]},
+        "psu": {"pick": "850W Gold", "alts": []},
+        "case": {"pick": "Airflow mid tower", "alts": []}
+      },
+      "notes": ["Setup tip 1", "Setup tip 2"]
+    }
+  ]
+}

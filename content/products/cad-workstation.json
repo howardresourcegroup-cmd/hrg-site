@@ -1,0 +1,54 @@
+{
+  "_id": "ws_cad",
+  "title": "CAD Workstation (AutoCAD / SolidWorks)",
+  "short": "Single-core speed, stable drivers, and smooth large-assembly workflows.",
+  "description": "Professional CAD workstation optimized for AutoCAD, SolidWorks, and similar applications. Single-core performance and driver stability are paramount.",
+  "price": 1899,
+  "category": "Workstation",
+  "featured": false,
+  "image": "assets/products/cad-workstation.jpg",
+  "badges": ["Single-core focused", "Driver stability", "32-64GB RAM"],
+  "availability": "in-stock",
+  "specs": {
+    "Focus": "Single-core CAD performance",
+    "CPU Preference": "Intel/AMD high-freq",
+    "RAM": "32-64GB",
+    "GPU": "NVIDIA RTX A-series or RTX 40-series"
+  },
+  "idealFor": [
+    "Mechanical engineers",
+    "Architects",
+    "Product designers",
+    "CAD professionals"
+  ],
+  "tiers": [
+    {
+      "name": "Value",
+      "price": 1499,
+      "target": "Small-to-medium assemblies, general CAD work",
+      "bottlenecks": ["Single-core still matters"],
+      "parts": {
+        "cpu": {"pick": "Intel Core i5-14600K", "alts": ["AMD Ryzen 7 7700"]},
+        "gpu": {"pick": "NVIDIA RTX 4060 Ti 16GB", "alts": ["NVIDIA RTX A2000 12GB"]},
+        "ram": {"pick": "32GB DDR5", "alts": ["64GB DDR5 for large assemblies"]},
+        "storage": {"os": {"pick": "1-2TB NVMe Gen4", "alts": []}},
+        "psu": {"pick": "650-750W Gold", "alts": []}
+      },
+      "notes": ["CAD favors fewer fast cores. Keep it stable, not overclocked."]
+    },
+    {
+      "name": "Pro",
+      "price": 2199,
+      "target": "Large assemblies, complex simulations",
+      "bottlenecks": [],
+      "parts": {
+        "cpu": {"pick": "Intel Core i7-14700K", "alts": ["AMD Ryzen 9 7900"]},
+        "gpu": {"pick": "NVIDIA RTX 4070 SUPER 12GB", "alts": ["Workstation-class RTX A-series equivalent"]},
+        "ram": {"pick": "64GB DDR5", "alts": []},
+        "storage": {"os": {"pick": "2TB NVMe Gen4", "alts": []}},
+        "psu": {"pick": "750-850W Gold", "alts": []}
+      },
+      "notes": ["Enable XMP for stable high-frequency RAM operation."]
+    }
+  ]
+}

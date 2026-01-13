@@ -1,0 +1,46 @@
+{
+  "_id": "setup_streaming",
+  "title": "Streaming Setup (OBS + Gaming)",
+  "short": "Quiet NVENC-first streaming with strong frame pacing and low-latency tuning.",
+  "description": "Gaming + streaming workstation optimized for OBS with NVIDIA NVENC. Quiet cooling, strong single/multi-core for gaming frame rates, and smooth stream encoding.",
+  "price": 1999,
+  "category": "Gaming",
+  "featured": false,
+  "image": "assets/products/streaming-pc.jpg",
+  "badges": ["NVENC", "Quiet cooling", "Creator ready"],
+  "availability": "in-stock",
+  "specs": {
+    "Focus": "Gaming + NVENC streaming",
+    "CPU": "High single-core (Ryzen X3D or i7)",
+    "GPU": "RTX 4070/4080",
+    "RAM": "32-64GB DDR5"
+  },
+  "idealFor": [
+    "Twitch streamers",
+    "YouTube creators",
+    "Gaming content creators",
+    "IRL streamers"
+  ],
+  "tiers": [
+    {
+      "name": "Pro",
+      "price": 1999,
+      "target": "1440p or 4K60 streaming with strong in-game frame rates",
+      "bottlenecks": [],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 7 7800X3D", "alts": ["Intel Core i7-14700K"]},
+        "gpu": {"pick": "NVIDIA RTX 4070 SUPER 12GB", "alts": ["RTX 4070 Ti SUPER 16GB"]},
+        "ram": {"pick": "32GB DDR5-6000 CL30", "alts": ["64GB for heavy multitasking"]},
+        "storage": {"os": {"pick": "2TB NVMe Gen4", "alts": []}},
+        "cooling": {"pick": "High-end air cooler (quiet)", "alts": ["240mm AIO (quiet profile)"]},
+        "psu": {"pick": "850W Gold ATX 3.x", "alts": []},
+        "case": {"pick": "Well-ventilated case (quiet fans)", "alts": []}
+      },
+      "notes": [
+        "Prioritize quiet fans for microphone use. Hardware encoding keeps CPU load low.",
+        "Use NVENC for streaming—it's designed for this and keeps CPU free for gaming.",
+        "Test audio isolation (shock mount, foam)" 
+      ]
+    }
+  ]
+}

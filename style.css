@@ -1,5 +1,14 @@
 /* Howard Resource Group - Clean Modern Style */
 
+/* ============================================================================
+   PERFORMANCE OPTIMIZATIONS FOR CORE WEB VITALS
+   ============================================================================
+   - Uses CSS containment for improved layout performance
+   - Hardware acceleration via transform for animations
+   - Reduced motion support for accessibility
+   - Efficient selectors and minimal repaints
+   ============================================================================ */
+
 :root {
 
   --bg: #ffffff;
@@ -78,6 +87,18 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Respect user's motion preferences for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Subtle site-wide premium background accent */
@@ -1922,5 +1943,263 @@ footer {
   
   .carousel-header h3 {
     font-size: 22px;
+  }
+}
+
+/* FAQ Section */
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(0, 168, 232, 0.1);
+  transform: translateY(-2px);
+}
+
+.faq-item h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.faq-item p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Build Showcase Section */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 60px;
+}
+
+.showcase-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+
+.showcase-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(0, 168, 232, 0.12);
+  transform: translateY(-4px);
+}
+
+.showcase-image {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--section-alt);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.showcase-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.showcase-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-item {
+    padding: 24px;
+  }
+  
+  .faq-item h3 {
+    font-size: 18px;
+  }
+}
+
+/* Google Reviews Section */
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.review-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s;
+}
+
+.review-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(0, 168, 232, 0.1);
+  transform: translateY(-2px);
+}
+
+.review-stars {
+  font-size: 18px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .reviews-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .review-card {
+    padding: 20px;
+  }
+}
+
+/* Service Areas Section */
+.service-areas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 60px;
+}
+
+.area-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s;
+}
+
+.area-card.primary {
+  background: linear-gradient(135deg, rgba(0,168,232,0.05), rgba(0,168,232,0.02));
+  border-color: var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.area-card.primary::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,168,232,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.area-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 168, 232, 0.15);
+}
+
+.area-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.area-card h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.area-tagline {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.area-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+}
+
+.area-list li {
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--text);
+  position: relative;
+  padding-left: 20px;
+}
+
+.area-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 968px) {
+  .service-areas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .area-card {
+    padding: 32px;
+  }
+  
+  .area-list {
+    grid-template-columns: 1fr;
   }
 }

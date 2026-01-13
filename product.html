@@ -3,25 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HRG — Product</title>
-  <meta name="description" content="Custom gaming PCs and professional workstations." />
+  <title>Product - HRG</title>
+  <meta name="description" content="Configure your custom PC build with flexible tier options." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+      align-items: start;
+    }
+    
+    .product-image-container {
+      background: var(--card-bg);
+      border-radius: 16px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .product-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-info h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .product-meta {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    .product-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+    
+    .tier-selector {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .tier-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .tier-card:hover {
+      border-color: var(--accent);
+      background: var(--section-alt);
+    }
+    
+    .tier-card.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+    
+    .tier-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .tier-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    
+    .tier-card.active .tier-price {
+      color: #fff;
+    }
+    
+    .tier-target {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    
+    .tier-card.active .tier-target {
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .parts-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    
+    .parts-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    
+    .part-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    
+    .part-name {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .part-pick {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .part-alts {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    
+    .part-alts strong {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    
+    .notes-section {
+      background: var(--section-alt);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    
+    .notes-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .notes-list {
+      list-style: none;
+    }
+    
+    .notes-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .notes-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    .cta-sticky {
+      position: sticky;
+      bottom: 0;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .price-display {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    @media (max-width: 768px) {
+      .product-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .tier-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .parts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-sticky {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header id="siteHeader">
+  <header>
     <div class="container">
       <nav class="navbar">
         <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
         <div class="nav-links">
           <a href="index.html#consulting">Consulting</a>
           <a href="index.html#repair">Repair</a>
-          <a href="index.html#computers">Custom Computers</a>
+          <a href="products.html">Custom Computers</a>
           <a href="index.html#contact" class="btn btn-primary">Get Started</a>
         </div>
         <div class="header-actions">
@@ -55,224 +297,202 @@
     </div>
   </header>
 
-  <!-- Product Hero -->
-  <section class="section" style="padding: 80px 0 40px;">
+  <main class="page" style="background: var(--section-alt); padding: 60px 0;">
     <div class="container">
-      <div class="product-hero-grid">
-        <div class="product-info">
-          <div class="product-meta">
-            <span class="badge-pill" id="categoryBadge">System</span>
-            <span class="badge-pill" style="background: var(--section-alt); color: var(--text);" id="featuredFlag" hidden>Featured</span>
+      <div id="productContent" style="display: none;">
+        <!-- Product Hero -->
+        <div class="product-hero">
+          <div class="product-image-container">
+            <img id="productImage" src="" alt="">
           </div>
-          <h1 id="pTitle" class="product-title-main">Loading…</h1>
-          <p id="pShort" class="product-subline"></p>
-          <div class="product-price-row">
-            <span id="priceTag" class="price-tag"></span>
-            <span id="priceNote" class="price-note"></span>
-          </div>
-          <div id="pBadges" class="product-badges"></div>
-          <div id="pServices" class="product-tags"></div>
-          <div class="product-actions-row">
-            <button class="btn btn-primary" data-consult><span class="dot"></span>Request Build</button>
-            <button class="btn btn-secondary" id="addToCartBtn">Add to Cart</button>
-            <a class="btn btn-secondary" href="products.html">View Catalog</a>
+          <div class="product-info">
+            <h1 id="productTitle"></h1>
+            <div class="product-meta" id="productBadges"></div>
+            <p class="product-description" id="productDesc"></p>
           </div>
         </div>
-        <div class="product-media">
-          <div class="product-image-frame">
-            <img id="pImage" src="" alt="Product image" loading="lazy" onerror="this.style.display='none'">
-            <div class="image-fallback" id="imageFallback">Add image via product JSON</div>
-          </div>
+
+        <!-- Tier Selector -->
+        <div class="tier-selector">
+          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px;">Choose Your Tier</h2>
+          <div class="tier-grid" id="tierGrid"></div>
         </div>
+
+        <!-- Parts Display -->
+        <div class="parts-section" id="partsSection">
+          <h2>Your Configuration</h2>
+          <div class="parts-grid" id="partsGrid"></div>
+        </div>
+
+        <!-- Notes -->
+        <div class="notes-section" id="notesSection" style="display: none;">
+          <h3>Setup & Optimization Notes</h3>
+          <ul class="notes-list" id="notesList"></ul>
+        </div>
+      </div>
+
+      <div id="loadingState" style="text-align: center; padding: 60px 20px;">
+        <p style="color: var(--muted); font-size: 16px;">Loading product...</p>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Product Details -->
-  <section class="section section-alt" style="padding: 60px 0;">
-    <div class="container">
-      <div class="detail-card">
-        <div class="section-label">Details</div>
-        <div id="pDescription" class="p" style="margin-top:10px"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bundle Options -->
-  <section class="section" id="bundleSection" style="display:none;">
-    <div class="container">
-      <div class="bundle-wrapper">
-        <div class="kicker"><span class="line"></span> COMPLETE YOUR SETUP</div>
-        <h2 style="font-size: 28px; margin: 16px 0 24px; font-weight: 700;">Ready for your custom build? Add essentials only.</h2>
-
-        <!-- Peripherals Section -->
-        <div class="bundle-category">
-          <h3 class="bundle-title">⌨️ Complete Your Battle Station</h3>
-          <p class="bundle-desc">Pro-grade peripherals for maximum performance.</p>
-          <div class="bundle-grid" id="peripheralOptions">
-            <label class="bundle-option">
-              <input type="checkbox" name="peripheral" value="gaming-keyboard" data-price="79.99">
-              <div class="bundle-card">
-                <div class="bundle-icon">⌨️</div>
-                <div class="bundle-name">RGB Gaming Keyboard</div>
-                <div class="bundle-price">$79.99</div>
-              </div>
-            </label>
-            <label class="bundle-option">
-              <input type="checkbox" name="peripheral" value="gaming-mouse" data-price="59.99">
-              <div class="bundle-card">
-                <div class="bundle-icon">🖱️</div>
-                <div class="bundle-name">Gaming Mouse</div>
-                <div class="bundle-price">$59.99</div>
-              </div>
-            </label>
-            <label class="bundle-option">
-              <input type="checkbox" name="peripheral" value="gaming-headset" data-price="89.99">
-              <div class="bundle-card">
-                <div class="bundle-icon">🎧</div>
-                <div class="bundle-name">Gaming Headset</div>
-                <div class="bundle-price">$89.99</div>
-              </div>
-            </label>
-            <label class="bundle-option">
-              <input type="checkbox" name="peripheral" value="mousepad" data-price="29.99">
-              <div class="bundle-card">
-                <div class="bundle-icon">🟦</div>
-                <div class="bundle-name">XL Gaming Mousepad</div>
-                <div class="bundle-price">$29.99</div>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <!-- Bundle Summary -->
-        <div class="bundle-summary" id="bundleSummary" style="display:none;">
-          <h3>Bundle Total</h3>
-          <div class="bundle-items" id="bundleItems"></div>
-          <div class="bundle-total">
-            <span>Additional Items:</span>
-            <span id="bundlePrice">$0</span>
-          </div>
-          <button class="btn primary" id="addBundleToCart" style="width:100%; margin-top:16px;">
-            <span class="dot"></span>ADD COMPLETE SETUP TO CART
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Consultation Modal -->
-  <div class="modal-backdrop" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
-    <div class="modal">
-      <div class="modal-inner">
-        <div class="modal-head">
-          <div>
-            <h3 id="consultTitle">REQUEST TECH CONSULTATION</h3>
-            <p>Describe your issue and we'll help you understand what's happening and what your options are.</p>
-          </div>
-          <button class="x" id="closeModal" aria-label="Close">✕</button>
-        </div>
-
-        <div class="success" id="consultSuccess">✅ Sent. You’re all set — we’ll follow up soon.</div>
-
-        <form id="consultForm" action="https://formspree.io/f/xkgqpggr" method="POST">
-          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" />
-
-          <label>Name <input name="name" autocomplete="name" required /></label>
-          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
-
-          <label>Phone (optional) <input name="phone" autocomplete="tel" /></label>
-          <label>
-            Topic
-            <select name="topic" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Remote Support</option>
-              <option>Computer Repair</option>
-              <option>Custom Build — Gaming</option>
-              <option>Custom Build — Professional</option>
-              <option>Diagnostics & Troubleshooting</option>
-              <option>Upgrades & Performance Tuning</option>
-              <option>Thermal & Cooling Optimization</option>
-              <option>Data Recovery & Backup Setup</option>
-              <option>Parts Sourcing & Installation</option>
-              <option>Game-specific Optimization</option>
-              <option>Ongoing Maintenance & Support Plans</option>
-              <option>General Tech Support & Consulting</option>
-            </select>
-          </label> 
-
-          <div class="hint">Include: symptoms • what you've tried • system specs (if known) • urgency.</div>
-          <textarea name="details" placeholder="What are you trying to run or fix?"></textarea>
-
-          <div class="form-actions">
-            <button class="btn" type="button" id="closeModal2">CANCEL</button>
-            <button class="btn primary" type="submit"><span class="dot"></span>SEND</button>
-          </div>
-        </form>
-      </div>
+  <!-- CTA -->
+  <div class="cta-sticky">
+    <div class="price-display" id="priceDisplay">Price: $--</div>
+    <div style="display: flex; gap: 12px;">
+      <button class="btn btn-secondary" onclick="window.location.href='products.html'">Back to Catalog</button>
+      <button class="btn" id="addToCartBtn">Add to Cart</button>
     </div>
   </div>
-
-  <div class="floating-cta" id="floatingCta">
-    <div class="container">
-      <div class="cta-inner panel">
-        <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
-        <div class="cta-left">
-          <strong>NEED HELP?</strong>
-          <span>Call/text <span data-phone-display></span> • Speak with a consultant</span>
-        </div>
-        <div class="cta-actions">
-          <a class="btn" data-call-link href="tel:6784214125">CALL</a>
-          <a class="btn" data-text-link href="sms:6784214125">TEXT</a>
-          <button class="btn primary" data-consult><span class="dot"></span>GET HELP</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <div class="footer-brand">HOWARD RESOURCE GROUP</div>
-          <p class="footer-tagline">Professional tech consulting, repair, and custom computers.</p>
-          <p class="footer-tagline">678-421-4125</p>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="index.html#consulting">Tech Consulting</a></li>
-            <li><a href="index.html#repair">Repair</a></li>
-            <li><a href="index.html#computers">Custom Computers</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <ul class="footer-links">
-            <li><a href="tel:6784214125">Call Us</a></li>
-            <li><a href="sms:6784214125">Text Us</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div>© 2026 Howard Resource Group — All rights reserved.</div>
-        <div>Atlanta, GA</div>
-      </div>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
-  <script src="product.js"></script>
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const itemFile = params.get('item');
+      
+      if (!itemFile) {
+        document.getElementById('loadingState').innerHTML = '<p style="color: var(--muted);">Product not found. <a href="products.html">Back to catalog</a></p>';
+        return;
+      }
+
+      let currentTier = null;
+      let product = null;
+
+      async function loadProduct() {
+        try {
+          const res = await fetch(`content/products/${itemFile}`);
+          if (!res.ok) throw new Error('Product not found');
+          product = await res.json();
+          
+          renderProduct();
+          document.getElementById('productContent').style.display = 'block';
+          document.getElementById('loadingState').style.display = 'none';
+        } catch (e) {
+          document.getElementById('loadingState').innerHTML = `<p style="color: red;">Error loading product: ${e.message}</p>`;
+        }
+      }
+
+      function renderProduct() {
+        // Basic info
+        document.getElementById('productTitle').textContent = product.title;
+        document.getElementById('productDesc').textContent = product.description;
+        if (product.image) {
+          document.getElementById('productImage').src = product.image;
+        }
+
+        // Badges
+        const badgeHtml = (product.badges || []).map(b => `<span class="badge">${b}</span>`).join('');
+        document.getElementById('productBadges').innerHTML = badgeHtml;
+
+        // Tiers
+        const tierGrid = document.getElementById('tierGrid');
+        tierGrid.innerHTML = (product.tiers || []).map((tier, i) => `
+          <div class="tier-card ${i === 0 ? 'active' : ''}" onclick="selectTier(${i})" data-tier="${i}">
+            <div class="tier-name">${tier.name}</div>
+            <div class="tier-price">$${tier.price.toLocaleString()}</div>
+            <div class="tier-target">${tier.target}</div>
+          </div>
+        `).join('');
+
+        // Select first tier by default
+        selectTier(0);
+      }
+
+      window.selectTier = function(idx) {
+        currentTier = idx;
+        const tier = product.tiers[idx];
+
+        // Update active card
+        document.querySelectorAll('.tier-card').forEach((card, i) => {
+          card.classList.toggle('active', i === idx);
+        });
+
+        // Update price
+        document.getElementById('priceDisplay').textContent = `Price: $${tier.price.toLocaleString()}`;
+
+        // Render parts
+        renderParts(tier);
+
+        // Render notes
+        if (tier.notes && tier.notes.length > 0) {
+          document.getElementById('notesSection').style.display = 'block';
+          document.getElementById('notesList').innerHTML = tier.notes.map(n => `<li>${n}</li>`).join('');
+        }
+      };
+
+      function renderParts(tier) {
+        const grid = document.getElementById('partsGrid');
+        const parts = tier.parts || {};
+        
+        const html = Object.entries(parts).map(([key, value]) => {
+          let content = '';
+          if (typeof value === 'object' && value.pick) {
+            // Single part with alternatives
+            content = `
+              <div class="part-card">
+                <div class="part-name">${key}</div>
+                <div class="part-pick">${value.pick}</div>
+                ${value.alts && value.alts.length > 0 ? `
+                  <div class="part-alts">
+                    <strong>Alternatives:</strong>
+                    ${value.alts.join('<br>')}
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          } else if (typeof value === 'object' && !value.pick) {
+            // Nested parts (like storage.os, storage.extra)
+            content = `
+              <div class="part-card">
+                <div class="part-name">${key}</div>
+                ${Object.entries(value).map(([subkey, subval]) => `
+                  <div style="margin-bottom: 16px;">
+                    <div style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">${subkey}</div>
+                    <div class="part-pick">${subval.pick}</div>
+                    ${subval.alts && subval.alts.length > 0 ? `
+                      <div class="part-alts">
+                        <strong>Alternatives:</strong>
+                        ${subval.alts.join('<br>')}
+                      </div>
+                    ` : ''}
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          }
+          return content;
+        }).join('');
+
+        grid.innerHTML = html;
+      }
+
+      window.addToCart = function() {
+        if (currentTier === null) return;
+        const tier = product.tiers[currentTier];
+        
+        const item = {
+          productId: product._id || product.title,
+          title: product.title,
+          tier: tier.name,
+          price: tier.price,
+          configuration: tier.parts
+        };
+
+        // Save to localStorage
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`Added "${product.title}" (${tier.name}) to cart!`);
+        updateCartCount();
+      };
+
+      document.getElementById('addToCartBtn').onclick = window.addToCart;
+
+      loadProduct();
+    })();
+  </script>
 </body>
 </html>

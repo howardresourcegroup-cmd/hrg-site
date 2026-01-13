@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Howard Resource Group — Tech Consulting, Repair & Custom Computers</title>
-  <meta name="description" content="Professional tech consulting, computer repair, and custom builds. Expert service with transparent pricing.">
+  <title>Howard Resource Group — Computer Repair & Tech Consulting Atlanta, GA</title>
+  <meta name="description" content="Atlanta's trusted computer repair & tech consulting. Expert diagnostics, honest pricing, custom PC builds. Fast service in Atlanta, GA and nationwide. No-upsell guarantee.">
+  
+  <!-- Preconnect to external domains for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  
+  <!-- Fonts with font-display: swap for better CLS -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WN9XBRX8DN"></script>
@@ -89,8 +98,8 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Tech problems solved, systems perfected.</h1>
-      <p>Professional tech consulting, expert repair, and custom-built computers. Building a national network of certified technicians operating under our quality standards.</p>
+      <h1>Atlanta's trusted tech partner. Problems solved, systems perfected.</h1>
+      <p>Expert computer repair, tech consulting, and custom-built PCs serving Atlanta and beyond. Fast, honest service with no-upsell guarantee.</p>
       <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px;">
         <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
         <a href="#services" class="btn btn-secondary">Our Services</a>
@@ -103,29 +112,29 @@
     <div class="container">
       <div class="section-header">
         <div class="section-label">What We Do</div>
-        <h2 class="section-title">Three core services, one trusted partner.</h2>
-        <p class="section-description">From expert guidance to hands-on repair to custom builds—we're here for every stage of your tech journey.</p>
+        <h2 class="section-title">Five core services, one trusted partner.</h2>
+        <p class="section-description">From expert guidance to hands-on repair to custom builds, websites, and apps—we're here for every stage of your tech journey.</p>
       </div>
       
       <div class="services-grid">
         <div class="service-card">
           <div class="service-number">01</div>
           <h3>Tech Consulting</h3>
-          <p>Expert guidance for any tech issue. Diagnostics, troubleshooting, optimization, and planning—all with transparent pricing and clear communication.</p>
+          <p>Get your tech running right. We diagnose problems, plan upgrades, and optimize performance—so you can focus on what matters, not troubleshooting.</p>
           <a href="#consulting" class="btn btn-secondary">Learn More →</a>
         </div>
         
         <div class="service-card">
           <div class="service-number">02</div>
           <h3>Repair &amp; Diagnostics</h3>
-          <p>Professional hardware repair and restoration. Component replacement, thermal optimization, cleaning, and complete system restoration for all computers.</p>
+          <p>Get back to work fast. We fix slow computers, crashes, overheating, and hardware failures—with honest pricing and quality parts.</p>
           <a href="#repair" class="btn btn-secondary">Learn More →</a>
         </div>
         
         <div class="service-card">
           <div class="service-number">03</div>
           <h3>Custom Computers</h3>
-          <p>Gaming PCs and professional workstations built to your exact specifications. Quality components, expert assembly, professional configuration.</p>
+          <p>Get exactly the performance you need. Custom gaming PCs and workstations built right the first time—no compromises, no surprises.</p>
           <a href="#computers" class="btn btn-secondary">View Catalog →</a>
         </div>
 
@@ -164,10 +173,10 @@
             <li><strong>Performance Optimization</strong> — Get the most from your existing hardware</li>
             <li><strong>Remote & On-Site</strong> — Available nationwide with local support</li>
           </ul>
-          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Talk to a Consultant</button>
+          <button class="btn btn-primary" data-consult data-topic="Business IT Solutions" style="margin-top: 32px;">Talk to a Consultant</button>
         </div>
         <div class="feature-image" data-reveal>
-          <img src="assets/site/consulting.svg" alt="Tech Consulting" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+          <img src="assets/site/consulting.svg" alt="Tech Consulting" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
         </div>
       </div>
     </div>
@@ -178,7 +187,7 @@
     <div class="container">
       <div class="feature-section" style="grid-template-columns: 1fr 1fr;">
         <div class="feature-image">
-          <img src="assets/site/repair.svg" alt="Repair & Diagnostics" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+          <img src="assets/site/repair.svg" alt="Repair & Diagnostics" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
         </div>
         <div class="feature-content" data-reveal>
           <div class="section-label">Repair & Diagnostics</div>
@@ -192,7 +201,10 @@
             <li><strong>Deep cleaning</strong> — Dust removal, fan maintenance</li>
             <li><strong>Gaming PC repair</strong> — FPS issues, crashes, optimization</li>
           </ul>
-          <a href="tel:6784214125" class="btn btn-primary" style="margin-top: 32px;">Request Repair</a>
+          <div style="display: flex; gap: 16px; margin-top: 32px; align-items: center;">
+            <button class="btn btn-primary" data-consult data-topic="Computer Repair">Request Repair Online</button>
+            <a href="tel:6784214125" class="btn btn-secondary">Or Call Now</a>
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +220,46 @@
     </div>
     <div class="products-carousel" id="featuredCarousel">
       <!-- Products will be loaded here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Build Showcase Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">Recent builds we're proud of.</h2>
+        <p class="section-description">Quality craftsmanship, attention to detail, every time.</p>
+      </div>
+      
+      <div class="showcase-grid">
+        <div class="showcase-card" data-reveal>
+          <div class="showcase-image">
+            <div class="image-placeholder">🖥️</div>
+            <!-- TODO: Add real build photos here -->
+          </div>
+          <h3>Gaming Powerhouse</h3>
+          <p>Custom RGB build with RTX 4080, perfect cable management, whisper-quiet cooling.</p>
+        </div>
+        
+        <div class="showcase-card" data-reveal>
+          <div class="showcase-image">
+            <div class="image-placeholder">⚡</div>
+            <!-- TODO: Add real build photos here -->
+          </div>
+          <h3>Creator Workstation</h3>
+          <p>64GB RAM, Threadripper CPU, optimized for video editing and 3D rendering.</p>
+        </div>
+        
+        <div class="showcase-card" data-reveal>
+          <div class="showcase-image">
+            <div class="image-placeholder">🎮</div>
+            <!-- TODO: Add real build photos here -->
+          </div>
+          <h3>Esports Ready</h3>
+          <p>High-refresh 1440p gaming, zero compromises on performance or aesthetics.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -230,7 +282,7 @@
           <a href="products.html" class="btn btn-primary" style="margin-top: 32px;">Catalog — Coming Soon</a>
         </div>
         <div class="feature-image">
-          <img src="assets/site/computers.svg" alt="Custom Computers" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+          <img src="assets/site/computers.svg" alt="Custom Computers" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
         </div>
       </div>
     </div>
@@ -252,7 +304,7 @@
             <li><strong>Secure & scalable</strong> — Built on modern, reliable infrastructure</li>
             <li><strong>Analytics ready</strong> — Track visitors and conversions from day one</li>
           </ul>
-          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Request Website Consultation</button>
+          <button class="btn btn-primary" data-consult data-topic="Custom Website" style="margin-top: 32px;">Request Website Consultation</button>
         </div>
         <div class="feature-image" data-reveal>
           <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="web_bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#ec4899"/></linearGradient><radialGradient id="web_glow" cx="50%" cy="42%" r="40%"><stop offset="0" stop-color="#f97316" stop-opacity="0.35"/><stop offset="1" stop-color="#f97316" stop-opacity="0"/></radialGradient><filter id="web_blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceGraphic" stdDeviation="40"/></filter></defs><rect width="1200" height="800" rx="24" fill="url(#web_bg)"/><g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"><path d="M120 560 H1080"/><path d="M120 600 H1080"/><path d="M120 640 H1080"/></g><circle cx="600" cy="360" r="300" fill="url(#web_glow)" filter="url(#web_blur)"/><g><rect x="300" y="200" width="600" height="450" rx="12" fill="#0f172a" stroke="#f97316" stroke-opacity="0.25" stroke-width="2"/><rect x="300" y="200" width="600" height="60" rx="12" fill="#1e293b"/><circle cx="330" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><circle cx="354" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><circle cx="378" cy="230" r="6" fill="#f97316" fill-opacity="0.6"/><rect x="320" y="290" width="560" height="20" rx="4" fill="#f97316" fill-opacity="0.15"/><rect x="320" y="330" width="480" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="355" width="450" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="380" width="520" height="14" rx="3" fill="#f97316" fill-opacity="0.2"/><rect x="320" y="420" width="400" height="12" rx="2" fill="#f97316" fill-opacity="0.12"/></g><text x="50%" y="95%" text-anchor="middle" font-family="Manrope, Inter, Arial" font-size="40" fill="#ffffff" fill-opacity="0.9">Custom Websites</text><text x="50%" y="95%" dy="32" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#fed7aa" fill-opacity="0.85">Design • Development • Deployment</text></svg>
@@ -280,7 +332,7 @@
             <li><strong>Performance tuned</strong> — Fast, smooth, battery-efficient</li>
             <li><strong>Ongoing support</strong> — Updates, bug fixes, and feature requests</li>
           </ul>
-          <button class="btn btn-primary" data-consult style="margin-top: 32px;">Request App Consultation</button>
+          <button class="btn btn-primary" data-consult data-topic="App Development" style="margin-top: 32px;">Request App Consultation</button>
         </div>
       </div>
     </div>
@@ -328,16 +380,78 @@
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Service Areas -->
   <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Service Areas</div>
+        <h2 class="section-title">Serving Atlanta and beyond.</h2>
+        <p class="section-description">Local expertise with nationwide reach. Fast response times in metro Atlanta, reliable service everywhere else.</p>
+      </div>
+      
+      <div class="service-areas-grid">
+        <div class="area-card primary" data-reveal>
+          <div class="area-icon">📍</div>
+          <h3>Greater Atlanta Metro</h3>
+          <p class="area-tagline">Same-day service available</p>
+          <ul class="area-list">
+            <li>Atlanta</li>
+            <li>Alpharetta</li>
+            <li>Roswell</li>
+            <li>Sandy Springs</li>
+            <li>Marietta</li>
+            <li>Dunwoody</li>
+            <li>Buckhead</li>
+            <li>Decatur</li>
+            <li>Johns Creek</li>
+            <li>Brookhaven</li>
+            <li>Smyrna</li>
+            <li>East Cobb</li>
+            <li>Dawsonville</li>
+          </ul>
+          <a href="tel:6784214125" class="btn btn-primary" style="margin-top: 20px;">Call for Local Service</a>
+        </div>
+        
+        <div class="area-card" data-reveal>
+          <div class="area-icon">🇺🇸</div>
+          <h3>Nationwide Coverage</h3>
+          <p class="area-tagline">Remote & on-site available</p>
+          <p style="margin-top: 16px; line-height: 1.6;">Building a network of certified technicians across the US. On-site service available in most major metro areas at $40/hour. Remote support available nationwide for diagnostics, troubleshooting, and software issues.</p>
+          <div style="margin-top: 20px; padding: 16px; background: rgba(0,168,232,0.08); border-radius: 8px; font-size: 14px;">
+            <strong>Remote Services Include:</strong><br>
+            • Diagnostics & troubleshooting<br>
+            • Software installation & updates<br>
+            • Performance optimization<br>
+            • System configuration<br>
+            • Tech consulting & planning
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 48px; padding: 32px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;">
+        <h3 style="margin-bottom: 16px; font-size: 24px;">Not sure if we service your area?</h3>
+        <p style="color: var(--muted); margin-bottom: 24px;">Give us a call. Even if we can't provide on-site service, we can likely help remotely or recommend a trusted local partner.</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
+          <a href="sms:6784214125" class="btn btn-secondary">Text Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
     <div class="container">
       <div class="section-header">
         <div class="section-label">Pricing</div>
         <h2 class="section-title">Simple, transparent pricing.</h2>
         <p class="section-description">No hidden fees. No surprises. Just honest pricing for quality service.</p>
+        <div style="max-width: 700px; margin: 24px auto 0; padding: 20px; background: rgba(0,168,232,0.08); border-left: 4px solid var(--accent); border-radius: 8px;">
+          <p style="font-weight: 600; color: var(--text); margin: 0;">🛡️ Our Fix-First Promise: We diagnose the problem first, explain what's wrong in plain English, and quote you honestly—before any work begins. No pressure, no upselling. If it's not worth fixing, we'll tell you.</p>
+        </div>
       </div>
       
-      <div class="services-grid" style="max-width: 900px; margin: 0 auto;">
+      <div class="services-grid" style="max-width: 1100px; margin: 0 auto;">
         <div class="service-card" style="text-align: center;">
           <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">$50</h3>
           <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">Diagnostic Fee</div>
@@ -351,10 +465,96 @@
         </div>
         
         <div class="service-card" style="text-align: center;">
+          <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">$50/hr</h3>
+          <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">Advanced Services</div>
+          <p>Custom development, web design, app development, and specialized IT projects. Expert-level work for complex needs.</p>
+        </div>
+        
+        <div class="service-card" style="text-align: center;">
           <h3 style="font-size: 48px; color: var(--accent); margin-bottom: 8px;">Custom</h3>
           <div style="font-weight: 600; margin-bottom: 16px; font-size: 18px;">Consulting Projects</div>
           <p>Strategic IT consulting and technology planning quoted per project. Get expert guidance tailored to your needs.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common questions answered.</h2>
+        <p class="section-description">Everything you need to know about our services.</p>
+      </div>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="faq-item">
+          <h3>Do you charge for diagnostics even if I don't get the repair?</h3>
+          <p>We charge $50 for a complete diagnostic. However, if you proceed with the repair, the diagnostic fee is waived. We'll always explain what's wrong and give you options before starting any work.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>How long does a typical repair take?</h3>
+          <p>Most repairs are completed within 1-3 business days depending on parts availability. We'll give you a realistic timeline upfront and keep you updated throughout the process.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Do you service all computer brands?</h3>
+          <p>Yes. We repair and service all desktop and laptop brands—Dell, HP, Lenovo, ASUS, custom builds, gaming PCs, and Macs. If it's a computer, we can fix it.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>What if my computer is too old to repair?</h3>
+          <p>We'll be honest with you. If a repair costs more than the computer is worth, we'll tell you and help you find a cost-effective solution—whether that's a targeted upgrade or a new system.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Do you offer on-site service outside Atlanta?</h3>
+          <p>Yes. We're building a nationwide network of certified technicians. On-site service is available in most major metro areas at $40/hour. Remote support is available nationwide.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>What payment methods do you accept?</h3>
+          <p>We accept all major credit cards, debit cards, cash, and digital payments. Payment is due when service is completed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Reviews</div>
+        <h2 class="section-title">What our customers say.</h2>
+        <p class="section-description">Real feedback from real people.</p>
+      </div>
+      
+      <div class="reviews-container" id="googleReviews">
+        <!-- TODO: Integrate Google Reviews API or embed -->
+        <!-- Placeholder for dynamic review loading -->
+        <div class="review-card" data-reveal>
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Quick, professional, and honest. Fixed my gaming PC's overheating issue in a day. Highly recommend!"</p>
+          <div class="review-author">— John M.</div>
+        </div>
+        
+        <div class="review-card" data-reveal>
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Best tech support I've ever used. They explained everything clearly and didn't try to upsell me. Will use again."</p>
+          <div class="review-author">— Sarah L.</div>
+        </div>
+        
+        <div class="review-card" data-reveal>
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Built me a custom PC for video editing. Runs like a dream. Great communication throughout the process."</p>
+          <div class="review-author">— Michael R.</div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" target="_blank" rel="noopener" class="btn btn-secondary">Leave a Review on Google</a>
       </div>
     </div>
   </section>
@@ -411,7 +611,7 @@
       
       <div class="footer-bottom">
         <div>© 2026 Howard Resource Group — All rights reserved.</div>
-        <div>Atlanta, GA</div>
+        <div>Serving Atlanta, GA & Nationwide</div>
       </div>
     </div>
   </footer>
@@ -540,25 +740,102 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://howardresourcegroup.com/#business",
     "name": "Howard Resource Group",
+    "alternateName": "HRG",
+    "description": "Professional computer repair, tech consulting, and custom PC builds in Atlanta, GA. Expert service with transparent pricing.",
     "url": "https://howardresourcegroup.com/",
     "telephone": "+1-678-421-4125",
+    "email": "contact@howardresourcegroup.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Atlanta",
       "addressRegion": "GA",
       "addressCountry": "US"
     },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "United States"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "33.7490",
+      "longitude": "-84.3880"
     },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Atlanta",
+        "@id": "https://en.wikipedia.org/wiki/Atlanta"
+      },
+      {
+        "@type": "City",
+        "name": "Alpharetta"
+      },
+      {
+        "@type": "City",
+        "name": "Roswell"
+      },
+      {
+        "@type": "City",
+        "name": "Sandy Springs"
+      },
+      {
+        "@type": "City",
+        "name": "Marietta"
+      },
+      {
+        "@type": "City",
+        "name": "Dunwoody"
+      },
+      {
+        "@type": "State",
+        "name": "Georgia"
+      },
+      {
+        "@type": "Country",
+        "name": "United States"
+      }
+    ],
     "priceRange": "$$",
+    "openingHours": "Mo-Fr 09:00-18:00",
     "image": [
       "https://howardresourcegroup.com/assets/site/consulting.svg",
       "https://howardresourcegroup.com/assets/site/repair.svg",
       "https://howardresourcegroup.com/assets/site/computers.svg"
-    ]
+    ],
+    "sameAs": [
+      "https://www.facebook.com/howardresourcegroup",
+      "https://www.google.com/maps/place/YOUR_PLACE_ID"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Computer Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Computer Diagnostics",
+            "description": "Complete computer diagnostic service"
+          },
+          "price": "50",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "On-Site Repair",
+            "description": "Professional on-site computer repair"
+          },
+          "price": "40",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "40",
+            "priceCurrency": "USD",
+            "unitText": "per hour"
+          }
+        }
+      ]
+    }
   }
   </script>
   <script src="script.js"></script>

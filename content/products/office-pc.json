@@ -1,0 +1,46 @@
+{
+  "_id": "office_perf",
+  "title": "Office Performance PC",
+  "short": "Fast, quiet multitasking for Microsoft 365, dozens of tabs, and daily reliability.",
+  "description": "Professional office workstation for productivity. Emphasis on stability, quietness, and responsive multitasking with dozens of browser tabs and Microsoft 365 applications.",
+  "price": 999,
+  "category": "Office",
+  "featured": false,
+  "image": "assets/products/office-pc.jpg",
+  "badges": ["Quiet", "Responsive", "32GB RAM"],
+  "availability": "in-stock",
+  "specs": {
+    "Focus": "Office productivity",
+    "CPU": "Efficient mid-range",
+    "GPU": "Integrated or modest discrete",
+    "RAM": "32GB DDR5"
+  },
+  "idealFor": [
+    "Business professionals",
+    "Remote workers",
+    "Office staff",
+    "Light content creation"
+  ],
+  "tiers": [
+    {
+      "name": "Value",
+      "price": 899,
+      "target": "Microsoft 365, email, web browsing, video calls",
+      "bottlenecks": [],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 5 7600", "alts": ["Intel Core i5-14600K"]},
+        "gpu": {"pick": "Integrated graphics", "alts": ["Entry discrete GPU for multi-monitor"]},
+        "ram": {"pick": "32GB DDR5", "alts": ["16GB for light use"]},
+        "storage": {"os": {"pick": "1-2TB NVMe Gen4", "alts": []}},
+        "cooling": {"pick": "Quiet tower cooler", "alts": ["Quiet AIO"]},
+        "psu": {"pick": "650W Gold", "alts": []},
+        "case": {"pick": "Quiet mid-tower case", "alts": []}
+      },
+      "notes": [
+        "Quiet cooling and stable BIOS profiles matter more than raw power.",
+        "Fanless or low-RPM components reduce office noise.",
+        "Plenty of RAM (32GB) ensures smooth multitasking with many browser tabs."
+      ]
+    }
+  ]
+}

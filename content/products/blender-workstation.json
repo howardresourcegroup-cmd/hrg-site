@@ -1,10 +1,103 @@
 {
+  "_id": "ws_blender",
   "title": "Blender Workstation",
-  "category": "professional",
+  "short": "GPU-first Cycles performance with large-scene VRAM and cache headroom.",
+  "description": "Professional Blender rendering workstation optimized for Cycles GPU rendering. Choose your tier based on scene complexity, VRAM needs, and cache requirements.",
+  "price": 2999,
+  "category": "Workstation",
   "featured": true,
-  "short": "GPU-accelerated rendering, plenty of VRAM, and fast I/O for scenes and assets.",
-  "description": "A creator-focused workstation tuned for Blender. High-core CPU for physics/sims, CUDA/Optix-capable GPU with ample VRAM, NVMe scratch, and calibrated thermals for sustained renders.",
-  "badges": ["BLENDER", "GPU RENDER", "OPTIX", "NVME SCRATCH"],
-  "services": ["Custom Build — Professional", "Render Tuning", "Thermal Optimization"],
-  "image": "assets/products/blender-workstation.svg"
+  "image": "assets/products/blender-workstation.svg",
+  "badges": ["Cycles + OptiX", "VRAM headroom", "64-128GB RAM", "Dual NVMe"],
+  "availability": "in-stock",
+  "specs": {
+    "Focus": "GPU Cycles Rendering",
+    "VRAM Range": "16-24GB",
+    "RAM Range": "64-128GB",
+    "Storage": "Dual NVMe Gen4/5"
+  },
+  "performance": {
+    "cycles_gpu": "Value 70 | Pro 85 | Elite 100",
+    "cycles_cpu": "Value 55 | Pro 65 | Elite 75"
+  },
+  "idealFor": [
+    "Professional 3D artists",
+    "VFX studios",
+    "Architectural visualization",
+    "Product rendering",
+    "Animation studios"
+  ],
+  "tiers": [
+    {
+      "name": "Value",
+      "price": 1999,
+      "target": "Learning to intermediate scenes, light sims, fast Cycles renders",
+      "bottlenecks": ["GPU VRAM", "RAM capacity"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 7 7700", "alts": ["Ryzen 7 7700X", "Intel Core i7-14700K"]},
+        "motherboard": {"pick": "B650 creator-class board", "alts": ["ASUS ProArt B650-CREATOR", "MSI B650 Tomahawk"]},
+        "ram": {"pick": "64GB DDR5-6000 CL30 (2x32)", "alts": ["96GB DDR5-6000 (2x48)"]},
+        "gpu": {"pick": "NVIDIA RTX 4070 Ti SUPER 16GB", "alts": ["RTX 4070 SUPER 12GB", "RTX 4080 SUPER 16GB"]},
+        "storage": {
+          "os": {"pick": "2TB NVMe Gen4", "alts": ["1TB NVMe Gen4"]},
+          "projects_cache": {"pick": "2TB NVMe Gen4", "alts": ["4TB NVMe Gen4"]}
+        },
+        "cooling": {"pick": "High-end air cooler", "alts": ["360mm AIO"]},
+        "psu": {"pick": "850W Gold ATX 3.x", "alts": ["1000W Gold ATX 3.x"]},
+        "case": {"pick": "Airflow mid tower (mesh)", "alts": ["Airflow full tower"]}
+      },
+      "notes": [
+        "Enable EXPO only (no manual OC).",
+        "Use NVIDIA Studio Driver for stability.",
+        "Keep Blender cache on the Projects/Cache NVMe."
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": 2999,
+      "target": "Professional scenes, stronger sims, better VRAM headroom",
+      "bottlenecks": ["GPU VRAM", "RAM capacity", "NVMe cache"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 9 7900", "alts": ["Ryzen 9 7900X", "Ryzen 9 7950X"]},
+        "motherboard": {"pick": "ASUS ProArt X670E-CREATOR WIFI", "alts": ["High-end X670E"]},
+        "ram": {"pick": "128GB DDR5-6000 CL30 (2x64)", "alts": ["96GB DDR5-6000 (2x48)"]},
+        "gpu": {"pick": "NVIDIA RTX 4080 SUPER 16GB", "alts": ["RTX 4090 24GB"]},
+        "storage": {
+          "os": {"pick": "2TB NVMe Gen4", "alts": ["2TB NVMe Gen5"]},
+          "projects_cache": {"pick": "4TB NVMe Gen4", "alts": ["4TB NVMe Gen5"]}
+        },
+        "cooling": {"pick": "360mm AIO or top dual-tower air", "alts": []},
+        "psu": {"pick": "1000W Gold ATX 3.x", "alts": ["1200W Gold ATX 3.x"]},
+        "case": {"pick": "Airflow case w/ 4-6 fans", "alts": ["Full tower airflow"]}
+      },
+      "notes": [
+        "Separate cache drive is mandatory at this tier.",
+        "Tune fans for sustained loads (quiet, stable clocks)."
+      ]
+    },
+    {
+      "name": "Elite",
+      "price": 4299,
+      "target": "Large scenes, heavy textures, long renders, maximum stability",
+      "bottlenecks": ["GPU VRAM", "NVMe cache", "RAM capacity"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 9 7950X", "alts": ["Ryzen 9 9950X (platform permitting)"]},
+        "motherboard": {"pick": "ASUS ProArt X670E-CREATOR WIFI", "alts": ["High-end X670E with 3+ NVMe"]},
+        "ram": {"pick": "128GB DDR5-6000 CL30 (2x64)", "alts": ["192GB (4x48) DDR5-5600 if stable"]},
+        "gpu": {"pick": "NVIDIA RTX 4090 24GB", "alts": ["Workstation 48GB VRAM class for extreme scenes"]},
+        "storage": {
+          "os": {"pick": "2TB NVMe Gen4/Gen5", "alts": []},
+          "projects_cache": {"pick": "4TB NVMe Gen4/Gen5", "alts": []},
+          "scratch_optional": {"pick": "4TB NVMe Gen4", "alts": []}
+        },
+        "cooling": {"pick": "360mm AIO", "alts": ["Premium dual-tower air (quiet)"]},
+        "psu": {"pick": "1200W Gold ATX 3.x", "alts": ["1300W Gold/Platinum ATX 3.x"]},
+        "case": {"pick": "Full tower airflow", "alts": ["Large airflow mid tower"]}
+      },
+      "notes": [
+        "Separate cache and scratch drives for optimal performance.",
+        "Consider dual GPUs for extreme workloads.",
+        "Invest in premium cooling and power delivery."
+      ]
+    }
+  ]
 }

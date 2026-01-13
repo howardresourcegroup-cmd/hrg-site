@@ -1,0 +1,61 @@
+{
+  "_id": "creator_video",
+  "title": "Video Editing Workstation (Premiere / Resolve)",
+  "short": "Smooth timelines, fast exports, and proper media/scratch storage layout.",
+  "description": "Professional video editing workstation optimized for Adobe Premiere, DaVinci Resolve, and 4K-6K workflows. Fast storage and GPU acceleration for smooth playback.",
+  "price": 2299,
+  "category": "Creator",
+  "featured": true,
+  "image": "assets/products/video-workstation.jpg",
+  "badges": ["GPU acceleration", "Fast scratch", "4K-6K ready"],
+  "availability": "in-stock",
+  "specs": {
+    "Focus": "Video editing & export",
+    "GPU": "RTX 4070/4080",
+    "RAM": "64-128GB",
+    "Storage": "Dual NVMe + fast scratch"
+  },
+  "idealFor": [
+    "Video editors",
+    "Filmmakers",
+    "Content creators",
+    "Post-production studios"
+  ],
+  "tiers": [
+    {
+      "name": "Value",
+      "price": 1899,
+      "target": "4K editing, proxies, comfortable timeline performance",
+      "bottlenecks": ["Storage throughput"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 7 7700", "alts": ["Intel Core i7-14700K"]},
+        "gpu": {"pick": "NVIDIA RTX 4070 SUPER 12GB", "alts": ["RTX 4070 Ti SUPER 16GB"]},
+        "ram": {"pick": "64GB DDR5", "alts": ["32GB for lighter 4K work"]},
+        "storage": {
+          "os": {"pick": "2TB NVMe Gen4", "alts": []},
+          "media": {"pick": "2TB NVMe Gen4", "alts": ["4TB NVMe Gen4"]}
+        },
+        "psu": {"pick": "850W Gold ATX 3.x", "alts": []}
+      },
+      "notes": ["Use external storage for archives. Keep media and OS drives separate."]
+    },
+    {
+      "name": "Pro",
+      "price": 2999,
+      "target": "6K editing, heavy effects, multi-track 4K timelines",
+      "bottlenecks": ["NVMe cache for effects"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 9 7900", "alts": ["Ryzen 9 7950X"]},
+        "gpu": {"pick": "NVIDIA RTX 4080 SUPER 16GB", "alts": ["RTX 4090 24GB"]},
+        "ram": {"pick": "64GB DDR5", "alts": ["128GB for heavy AE/Fusion"]},
+        "storage": {
+          "os": {"pick": "2TB NVMe Gen4", "alts": []},
+          "media": {"pick": "4TB NVMe Gen4", "alts": []},
+          "scratch_optional": {"pick": "2-4TB NVMe Gen4", "alts": []}
+        },
+        "psu": {"pick": "1000W Gold ATX 3.x", "alts": []}
+      },
+      "notes": ["Dedicated scratch drive significantly improves timeline responsiveness.", "Monitor thermals under sustained export loads."]
+    }
+  ]
+}

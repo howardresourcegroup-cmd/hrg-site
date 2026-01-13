@@ -1,8 +1,10 @@
 {
   "items": [
-    "remote-support.json",
-    "diagnostic-dawsonville.json",
     "blender-workstation.json",
+    "cad-workstation.json",
+    "video-workstation.json",
+    "streaming-pc.json",
+    "office-pc.json",
     "vr-superhot.json",
     "minecraft-ultimate.json",
     "minecraft-performance.json",

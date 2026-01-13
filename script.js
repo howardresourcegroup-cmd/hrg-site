@@ -1,4 +1,22 @@
 (() => {
+  // ============================================================================
+  // HOWARD RESOURCE GROUP - MAIN SCRIPT
+  // ============================================================================
+  // Core functionality for website interactions, analytics, and UI components
+  // 
+  // FUTURE FEATURES (TODO - not implemented):
+  // - [ ] Admin panel for content management (see /admin/README.md)
+  //       → Product catalog CRUD interface
+  //       → Image upload and management
+  //       → Bulk import from spreadsheet
+  //       → Real-time preview
+  // - [ ] Interactive build configurator with real-time pricing
+  // - [ ] Online checkout with Stripe integration
+  // - [ ] Appointment scheduling system integration
+  // - [ ] Live chat widget integration
+  // - [ ] Customer portal for order tracking
+  // ============================================================================
+
   const HRG = {
     phoneDisplay: "678-421-4125",
     phoneDial: "6784214125",
@@ -48,6 +66,7 @@
   onScroll();
 
   // Intersection Observer for fade-in animations
+  // PERFORMANCE: Using IntersectionObserver for efficient scroll-based animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -281,14 +300,28 @@
   openBtns.forEach(b => b.addEventListener("click", (e) => { 
     e.preventDefault(); 
     e.stopPropagation();
+    
+    // Auto-fill topic from data-topic attribute
+    const topic = b.getAttribute('data-topic');
+    const topicSelect = modal.querySelector('select[name="topic"]');
+    if (topic && topicSelect) {
+      // Try to find matching option
+      const options = Array.from(topicSelect.options);
+      const matchingOption = options.find(opt => opt.value === topic);
+      if (matchingOption) {
+        topicSelect.value = topic;
+      }
+    }
+    
     // Pre-fill message with subject if data-subject exists
     const subject = b.getAttribute('data-subject');
     if (subject) {
-      const messageField = modal.querySelector('textarea[name="message"]');
+      const messageField = modal.querySelector('textarea[name="details"]');
       if (messageField) {
         messageField.value = `I need help with: ${subject}\n\n`;
       }
     }
+    
     openModal(); 
   }));
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
