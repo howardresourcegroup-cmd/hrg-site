@@ -28,35 +28,49 @@
     <div class="cascade" data-cascade></div>
   </div>
 
-  <header id="siteHeader">
+  <header>
     <div class="container">
-      <div class="navbar panel">
-        <a class="brand" href="index.html" aria-label="HRG — Howard Resource Group">
-          <div class="brand-inner">
-            <div class="brand-full">HOWARD RESOURCE GROUP</div>
-            <div class="brand-compact">HRG</div>
-          </div>
-        </a>
-        <div class="search-box">
-          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search site" />
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </div>
-        <nav class="nav-links" aria-label="Primary navigation">
+      <nav class="navbar">
+        <a href="/" class="brand">HOWARD RESOURCE GROUP</a>
+        <div class="nav-links">
           <a href="consulting.html">Consulting</a>
           <a href="repair.html">Repair</a>
           <a href="custom-computers.html">Custom Computers</a>
           <a href="products.html">Catalog</a>
           <a href="index.html#contact" class="btn btn-primary">Get Started</a>
-        </nav>
-
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="mobile-menu panel" id="mobileMenu" aria-label="Mobile navigation">
+        </div>
+        <div class="header-actions">
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <button class="icon-btn" id="themeBtn" title="Change Theme">
+            🎨
+            <div class="theme-dropdown" id="themeDropdown">
+              <div class="theme-option" data-theme="light">
+                <span class="theme-color" style="background: #ffffff;"></span>
+                Light
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <span class="theme-color" style="background: #0f0f0f;"></span>
+                Dark
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-color" style="background: #f0f4f8;"></span>
+                Blue
+              </div>
+              <div class="theme-option" data-theme="custom" id="customThemeOption">
+                <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                Custom
+              </div>
+            </div>
+          </button>
+          <a href="cart.html" class="icon-btn" id="cartBtn" title="Cart">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+          </a>
+        </div>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
         <a href="consulting.html">Consulting</a>
         <a href="repair.html">Repair</a>
         <a href="custom-computers.html">Custom Computers</a>
