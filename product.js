@@ -25,11 +25,9 @@
   async function fetchProduct(identifier){
     const name = identifier || "";
     if (!name) throw new Error("Missing product id");
-
     const candidates = [];
     if (name.endsWith('.json')) candidates.push(name);
     candidates.push(name.replace(/\.json$/, ''));
-
     const tried = new Set();
     for (const base of candidates){
       const file = base.endsWith('.json') ? base : `${base}.json`;
@@ -40,6 +38,10 @@
         if (!r.ok) throw new Error('not found');
         const obj = await r.json();
         obj.__file = file;
+        // Normalize tiers for legacy products
+        if (!obj.tiers && obj.price) {
+          obj.tiers = [{ name: 'Standard', price: obj.price, target: obj.short || '', parts: obj.parts || {} }];
+        }
         return obj;
       } catch {}
     }
@@ -47,13 +49,127 @@
   }
 
   function render(data){
+        // Add to Cart logic for modular builds
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        if (addToCartBtn) {
+          addToCartBtn.onclick = function() {
+            const tier = data.tiers && data.tiers[selectedTier];
+            if (!tier) return;
+            let config = {};
+            Object.entries(tier.parts || {}).forEach(([cat, partObj]) => {
+              const picks = [partObj.pick, ...(partObj.alts || [])];
+              const idx = selectedParts[cat] !== undefined ? selectedParts[cat] : 0;
+              config[cat] = picks[idx];
+            });
+            let cart = [];
+            try {
+              cart = JSON.parse(localStorage.getItem('hrg-cart') || '[]');
+            } catch(e) { cart = []; }
+            cart.push({
+              title: data.title,
+              price: tier.price,
+              image: data.image,
+              category: data.category,
+              configuration: config,
+              tier: tier.name
+            });
+            localStorage.setItem('hrg-cart', JSON.stringify(cart));
+            window.dispatchEvent(new Event('cart-updated'));
+            window.location.href = 'cart.html';
+          };
+        }
     document.title = `HRG — ${data.title || 'Product'}`;
-    setText('pTitle', data.title || 'Untitled Build');
-    setText('pShort', data.short || '');
-    const badgeHTML = (data.badges || []).map(b => `<span class=\"badge\">${b}</span>`).join('');
-    setHTML('pBadges', badgeHTML);
-    const servicesHTML = (data.services || []).map(s => `<span class=\"service\">${s}</span>`).join('');
-    setHTML('pServices', servicesHTML);
+    setText('productTitle', data.title || 'Untitled Build');
+    setHTML('productBadges', (data.badges || []).map(b => `<span class="badge">${b}</span>`).join(''));
+    setText('productDesc', data.description || '');
+    // Render spec list
+    const specList = document.getElementById('specList');
+    if (specList && data.specs && typeof data.specs === 'object') {
+      let html = '<ul style="list-style:none; padding:0; margin:0;">';
+      Object.entries(data.specs).forEach(([key, val]) => {
+        html += `<li style="margin-bottom:8px;"><strong>${key}:</strong> ${val}</li>`;
+      });
+      html += '</ul>';
+      specList.innerHTML = html;
+    } else if (specList) {
+      specList.innerHTML = '';
+    }
+
+    // Modular tier/part selection
+    const tierSelector = document.getElementById('tierSelector');
+    const tierGrid = document.getElementById('tierGrid');
+    const partsGrid = document.getElementById('partsGrid');
+    let selectedTier = 0;
+    let selectedParts = {};
+
+    if (data.tiers && Array.isArray(data.tiers) && data.tiers.length > 0) {
+      tierSelector.style.display = '';
+      tierGrid.innerHTML = data.tiers.map((tier, i) => `
+        <div class="tier-card${i === 0 ? ' active' : ''}" data-tier="${i}">
+          <div class="tier-name">${tier.name}</div>
+          <div class="tier-price">$${tier.price ? tier.price.toLocaleString() : 'N/A'}</div>
+          <div class="tier-target">${tier.target || ''}</div>
+        </div>
+      `).join('');
+      Array.from(tierGrid.children).forEach((card, i) => {
+        card.onclick = () => {
+          selectedTier = i;
+          Array.from(tierGrid.children).forEach((c, idx) => c.classList.toggle('active', idx === i));
+          renderParts(data.tiers[i]);
+        };
+      });
+      renderParts(data.tiers[0]);
+    } else {
+      tierSelector.style.display = 'none';
+      partsGrid.innerHTML = '<p style="color: var(--muted);">No configurable parts for this build.</p>';
+    }
+
+    function renderParts(tier) {
+      const parts = tier.parts || {};
+      let html = '';
+      Object.entries(parts).forEach(([cat, partObj]) => {
+        html += `<div style="grid-column: 1 / -1; margin-top: 24px; margin-bottom: 12px;"><h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em;">${cat}</h3></div>`;
+        const picks = [partObj.pick, ...(partObj.alts || [])];
+        picks.forEach((pick, idx) => {
+          const isSelected = selectedParts[cat] === idx || (selectedParts[cat] === undefined && idx === 0);
+          html += `<div class="part-card${isSelected ? ' selected' : ''}" onclick="selectPart('${cat}', ${idx})"><div class="part-name">${cat}</div><div class="part-pick">${pick}</div></div>`;
+        });
+      });
+      partsGrid.innerHTML = html || '<p style="color: var(--muted);">No parts available</p>';
+      updatePrice();
+    }
+
+    window.selectPart = function(category, idx) {
+      selectedParts[category] = idx;
+      renderParts(data.tiers[selectedTier]);
+    };
+
+    function updatePrice() {
+      let total = data.tiers[selectedTier].price || 0;
+      // Optionally add price logic for upgrades here
+      document.getElementById('priceDisplay').textContent = `Price: $${total.toLocaleString()}`;
+      // Update config summary
+      updateConfigSummary(data.tiers[selectedTier], total);
+    }
+
+    function updateConfigSummary(tier, total) {
+      const summary = document.getElementById('configSummary');
+      const details = document.getElementById('configDetails');
+      let configHtml = '';
+      Object.entries(tier.parts || {}).forEach(([cat, partObj]) => {
+        const picks = [partObj.pick, ...(partObj.alts || [])];
+        const idx = selectedParts[cat] !== undefined ? selectedParts[cat] : 0;
+        const pick = picks[idx];
+        configHtml += `<div class="config-item"><span>${cat}: ${pick}</span><span>Included</span></div>`;
+      });
+      if (configHtml) {
+        configHtml += `<div class="config-item"><span>Total</span><span>$${total.toLocaleString()}</span></div>`;
+        details.innerHTML = configHtml;
+        summary.style.display = 'block';
+      } else {
+        summary.style.display = 'none';
+      }
+    }
 
     const img = document.getElementById('pImage');
     const fallback = document.getElementById('imageFallback');

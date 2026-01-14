@@ -4,7 +4,7 @@
   "short": "Fast, quiet multitasking for Microsoft 365, dozens of tabs, and daily reliability.",
   "description": "Professional office workstation for productivity. Emphasis on stability, quietness, and responsive multitasking with dozens of browser tabs and Microsoft 365 applications.",
   "price": 999,
-  "category": "Office",
+  "category": "office",
   "featured": false,
   "image": "assets/products/office-pc.jpg",
   "badges": ["Quiet", "Responsive", "32GB RAM"],

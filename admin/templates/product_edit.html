@@ -117,10 +117,10 @@
             <div class="form-group">
                 <label for="category">Category *</label>
                 <select id="category" name="category" required>
-                    <option value="gaming" {% if product and product.category == 'gaming' %}selected{% endif %}>Gaming</option>
-                    <option value="workstation" {% if product and product.category == 'workstation' %}selected{% endif %}>Workstation</option>
-                    <option value="budget" {% if product and product.category == 'budget' %}selected{% endif %}>Budget</option>
-                    <option value="premium" {% if product and product.category == 'premium' %}selected{% endif %}>Premium</option>
+                    <option value="game" {% if product and product.category == 'game' %}selected{% endif %}>Game</option>
+                    <option value="productivity" {% if product and product.category == 'productivity' %}selected{% endif %}>Productivity</option>
+                    <option value="pro" {% if product and product.category == 'pro' %}selected{% endif %}>Pro</option>
+                    <option value="office" {% if product and product.category == 'office' %}selected{% endif %}>Office</option>
                 </select>
             </div>
         </div>
@@ -232,10 +232,66 @@
         </div>
         
         <!-- Features (Advanced) -->
-        <div class="form-group">
-            <label for="features_json">Features (JSON)</label>
-            <textarea id="features_json" name="features_json" style="font-family: monospace; font-size: 14px;">{{ product.features|tojson if product and product.features else '[]' }}</textarea>
-            <div class="form-hint">Advanced: JSON array of feature objects with icon, title, description</div>
+        <div>
+            <h3 class="section-title">Tiers & Parts (Configurable)</h3>
+            <div id="tiersContainer">
+                {% set tiers = product.tiers if product and product.tiers else [] %}
+                {% for tier in tiers %}
+                <div class="tier-block" style="border:1px solid #1a2142; border-radius:8px; padding:16px; margin-bottom:16px;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tier Name</label>
+                            <input type="text" name="tier_name_{{ loop.index0 }}" value="{{ tier.name }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Tier Price</label>
+                            <input type="number" name="tier_price_{{ loop.index0 }}" value="{{ tier.price }}" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tier Target/Description</label>
+                        <input type="text" name="tier_target_{{ loop.index0 }}" value="{{ tier.target }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Parts (JSON)</label>
+                        <textarea name="tier_parts_{{ loop.index0 }}" style="font-family: monospace; font-size: 14px;" rows="4">{{ tier.parts|tojson if tier.parts else '{}' }}</textarea>
+                        <div class="form-hint">Example: {"cpu": {"pick": "Ryzen 7 7700", "alts": ["Ryzen 7 7700X"]}, "gpu": {"pick": "RTX 4070 Super", "alts": ["RTX 4080"]}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+                <button type="button" onclick="addTierBlock()" class="btn btn-secondary" style="margin-bottom:16px;">Add Tier</button>
+            </div>
+            <script>
+            function addTierBlock() {
+                const container = document.getElementById('tiersContainer');
+                const idx = container.querySelectorAll('.tier-block').length;
+                const block = document.createElement('div');
+                block.className = 'tier-block';
+                block.style = 'border:1px solid #1a2142; border-radius:8px; padding:16px; margin-bottom:16px;';
+                block.innerHTML = `
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tier Name</label>
+                            <input type="text" name="tier_name_${idx}" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Tier Price</label>
+                            <input type="number" name="tier_price_${idx}" value="" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tier Target/Description</label>
+                        <input type="text" name="tier_target_${idx}" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>Parts (JSON)</label>
+                        <textarea name="tier_parts_${idx}" style="font-family: monospace; font-size: 14px;" rows="4">{}</textarea>
+                        <div class="form-hint">Example: {"cpu": {"pick": "Ryzen 7 7700", "alts": ["Ryzen 7 7700X"]}, "gpu": {"pick": "RTX 4070 Super", "alts": ["RTX 4080"]}}</div>
+                    </div>
+                `;
+                container.insertBefore(block, container.querySelector('button'));
+            }
+            </script>
         </div>
     </div>
     

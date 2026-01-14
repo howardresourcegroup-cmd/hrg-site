@@ -4,7 +4,7 @@
   "short": "GPU-first Cycles performance with large-scene VRAM and cache headroom.",
   "description": "Professional Blender rendering workstation optimized for Cycles GPU rendering. Choose your tier based on scene complexity, VRAM needs, and cache requirements.",
   "price": 2999,
-  "category": "Workstation",
+  "category": "workstation",
   "featured": true,
   "image": "assets/products/blender-workstation.svg",
   "badges": ["Cycles + OptiX", "VRAM headroom", "64-128GB RAM", "Dual NVMe"],

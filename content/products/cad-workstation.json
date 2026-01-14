@@ -4,7 +4,7 @@
   "short": "Single-core speed, stable drivers, and smooth large-assembly workflows.",
   "description": "Professional CAD workstation optimized for AutoCAD, SolidWorks, and similar applications. Single-core performance and driver stability are paramount.",
   "price": 1899,
-  "category": "Workstation",
+  "category": "workstation",
   "featured": false,
   "image": "assets/products/cad-workstation.jpg",
   "badges": ["Single-core focused", "Driver stability", "32-64GB RAM"],

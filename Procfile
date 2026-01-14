@@ -1,1 +1,1 @@
-web: python admin_server.py
+web: gunicorn admin_server:app

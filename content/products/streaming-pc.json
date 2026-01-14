@@ -4,7 +4,7 @@
   "short": "Quiet NVENC-first streaming with strong frame pacing and low-latency tuning.",
   "description": "Gaming + streaming workstation optimized for OBS with NVIDIA NVENC. Quiet cooling, strong single/multi-core for gaming frame rates, and smooth stream encoding.",
   "price": 1999,
-  "category": "Gaming",
+  "category": "game",
   "featured": false,
   "image": "assets/products/streaming-pc.jpg",
   "badges": ["NVENC", "Quiet cooling", "Creator ready"],
