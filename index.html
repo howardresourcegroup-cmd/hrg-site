@@ -16,6 +16,32 @@
   <meta name="twitter:title" content="Howard Resource Group — Computer Repair & Tech Consulting">
   <meta name="twitter:description" content="Expert computer repair, diagnostics, consulting & custom PCs in Atlanta.">
   <meta name="keywords" content="computer repair Atlanta, PC repair, tech consulting, diagnostics, custom PC builds, Dawsonville">
+  <!-- Schema.org Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Howard Resource Group",
+    "url": "https://howardresourcegroup.com/",
+    "logo": "https://howardresourcegroup.com/assets/og.jpg",
+    "description": "Atlanta's trusted computer repair & tech consulting. Expert diagnostics, honest pricing, custom PC builds.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Atlanta",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+1-678-421-4125",
+      "contactType": "customer service"
+    }],
+    "sameAs": [
+      "https://www.facebook.com/howardresourcegroup",
+      "https://www.instagram.com/howardresourcegroup"
+    ]
+  }
+  </script>
   
   <!-- Preconnect to external domains for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,14 +118,55 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Atlanta's trusted tech partner. Problems solved, systems perfected.</h1>
-      <p>Expert computer repair, tech consulting, and custom-built PCs serving Atlanta and beyond. Fast, honest service with no-upsell guarantee.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px;">
-        <a href="tel:6784214125" class="btn btn-primary">Call 678-421-4125</a>
-        <a href="#featured-builds" class="btn btn-secondary">View Featured Builds</a>
+
+  <!-- COPILOT:
+  Create a diagonal split hero like a game menu with two big clickable panels:
+  Left = Repair/Tech Support (Single Player), Right = Custom Computers (Multiplayer).
+  Add hover expand, diagonal divider, and mobile stacked fallback. -->
+
+  <section class="hero-menu" aria-label="Choose a path">
+    <div class="hero-menu__bg" aria-hidden="true"></div>
+
+    <div class="hero-menu__content">
+      <div class="hero-menu__top">
+        <p class="hero-menu__eyebrow">Howard Resource Group</p>
+        <h1 class="hero-menu__title">Choose your path</h1>
+        <p class="hero-menu__subtitle">
+          Local tech support in North Georgia — and custom computers built to match your game, workload, and budget.
+        </p>
+      </div>
+
+      <div class="hero-menu__split" role="navigation" aria-label="Primary choices">
+        <!-- LEFT: REPAIR -->
+        <a class="hero-menu__panel hero-menu__panel--repair" href="{{ url_for('static', filename='repair.html') if url_for is defined else 'repair.html' }}">
+          <div class="hero-menu__overlay"></div>
+          <div class="hero-menu__panelContent">
+            <div class="hero-menu__mode">Single Player</div>
+            <div class="hero-menu__choice">Repair & Tech Support</div>
+            <div class="hero-menu__desc">Troubleshooting • Upgrades • Wi-Fi • On-site & remote</div>
+            <div class="hero-menu__cta">Press Start →</div>
+          </div>
+        </a>
+
+        <!-- RIGHT: COMPUTERS -->
+        <a class="hero-menu__panel hero-menu__panel--computers" href="{{ url_for('static', filename='products.html') if url_for is defined else 'products.html' }}">
+          <div class="hero-menu__overlay"></div>
+          <div class="hero-menu__panelContent">
+            <div class="hero-menu__mode">Multiplayer</div>
+            <div class="hero-menu__choice">Custom Computers</div>
+            <div class="hero-menu__desc">Gaming builds • Workstations • Office rigs • Themed designs</div>
+            <div class="hero-menu__cta">Queue Up →</div>
+          </div>
+        </a>
+
+        <!-- Diagonal divider -->
+        <div class="hero-menu__divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-menu__bottom">
+        <a class="hero-menu__quick" href="tel:6784214125">Call now</a>
+        <span class="hero-menu__dot">•</span>
+        <a class="hero-menu__quick" href="#consult">Request consultation</a>
       </div>
     </div>
   </section>
@@ -176,7 +243,7 @@
           <button class="btn btn-primary" data-consult data-topic="Business IT Solutions" style="margin-top: 32px;">Talk to a Consultant</button>
         </div>
         <div class="feature-image" data-reveal>
-          <img src="assets/site/consulting-new.jpeg" alt="Tech Consulting" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" onerror="this.onerror=null;this.src='assets/Screenshot 2026-01-13 174149.png';" />
+          <img src="assets/site/consulting-new.jpeg" alt="Consulting: Tech expert at work with client" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" onerror="this.onerror=null;this.src='assets/Screenshot 2026-01-13 174149.png';" />
         </div>
       </div>
     </div>
@@ -187,7 +254,7 @@
     <div class="container">
       <div class="feature-section" style="grid-template-columns: 1fr 1fr;">
         <div class="feature-image">
-          <img src="assets/site/repair.svg" alt="Repair & Diagnostics" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" onerror="this.onerror=null;this.src='assets/Screenshot 2026-01-13 174149.png';" />
+          <img src="assets/site/repair.svg" alt="Repair: Computer technician fixing a PC" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" onerror="this.onerror=null;this.src='assets/Screenshot 2026-01-13 174149.png';" />
         </div>
         <div class="feature-content" data-reveal>
           <div class="section-label">Repair & Diagnostics</div>

@@ -6,5 +6,49 @@
   "description": "A clean themed system with a soft frosted-glass aesthetic and stable performance for Roblox + daily use.",
   "badges": ["THEMED", "QUIET", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Performance Tuning", "Remote Support"],
-  "image": "assets/products/roblox-themed.svg"
+  "image": "assets/products/roblox-themed.svg",
+  "price": 1099,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "AMD Ryzen 5 5600G",
+    "GPU": "Integrated Vega 7",
+    "RAM": "16GB DDR4-3200",
+    "Storage": "1TB SATA SSD",
+    "Motherboard": "B550 mATX",
+    "PSU": "500W 80+ Bronze",
+    "Case": "Frosted Glass mATX",
+    "Cooling": "Tower Air"
+  },
+  "performance": {
+    "1080p": "Medium settings, 90+ FPS",
+    "1440p": "Low/Medium settings, 60+ FPS",
+    "4K": "Not recommended"
+  },
+  "idealFor": [
+    "Themed setups",
+    "Quiet operation",
+    "Daily use"
+  ],
+  "tiers": [
+    {
+      "name": "Themed",
+      "price": 1099,
+      "target": "Themed Roblox, quiet operation, and daily use.",
+      "bottlenecks": ["Integrated GPU for high settings"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 5 5600G", "alts": ["Intel Core i5-12400"]},
+        "gpu": {"pick": "Integrated Vega 7", "alts": ["GT 1030"]},
+        "ram": {"pick": "16GB DDR4-3200", "alts": ["32GB DDR4-3200"]},
+        "storage": {"os": {"pick": "1TB SATA SSD", "alts": ["500GB NVMe SSD"]}},
+        "cooling": {"pick": "Tower Air", "alts": ["Low-profile Air"]},
+        "psu": {"pick": "500W Bronze", "alts": ["400W Bronze"]},
+        "case": {"pick": "Frosted Glass mATX", "alts": ["Mini Tower"]}
+      },
+      "notes": [
+        "Upgrade RAM for multitasking.",
+        "Add dedicated GPU for higher settings.",
+        "Keep OS and Roblox on SSD."
+      ]
+    }
+  ]
 }

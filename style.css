@@ -1,3 +1,266 @@
+/* ===== Game Menu Hero (Diagonal Split) ===== */
+
+.hero-menu {
+  position: relative;
+  overflow: visible;
+  min-height: 380px;
+  margin: 0;
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+  color: var(--text, #222);
+}
+
+
+.hero-menu__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 20% 30%, rgba(0,217,255,.08), transparent 60%),
+    radial-gradient(700px 400px at 80% 20%, rgba(168,85,247,.06), transparent 55%),
+    linear-gradient(135deg, var(--accent, #00d9ff) 0%, transparent 100%);
+  filter: saturate(1.05);
+  transform: scale(1.02);
+}
+
+
+.hero-menu__content {
+  position: relative;
+  padding: 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+.hero-menu__eyebrow {
+  margin: 0;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: .8;
+}
+
+
+.hero-menu__title {
+  margin: 8px 0 0;
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+
+.hero-menu__subtitle {
+  margin: 10px 0 0;
+  max-width: 720px;
+  font-size: 16px;
+  opacity: .9;
+}
+
+
+.hero-menu__split {
+  position: relative;
+  inset: unset;
+  border-radius: 0;
+  overflow: visible;
+  display: flex;
+  width: 100%;
+  height: 380px;
+  background: none;
+  border: none;
+  z-index: 0;
+}
+
+
+.hero-menu__panel--repair {
+  flex: 1 1 0;
+  /* Sharper diagonal: top left to about 65% top, then to bottom center */
+  clip-path: polygon(0 0, 65% 0, 50% 100%, 0% 100%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:
+    linear-gradient(120deg, rgba(0,217,255,.18), rgba(0,0,0,.05)),
+    url("/static/img/hero-repair.jpg") center/cover no-repeat,
+    var(--accent, #00d9ff);
+  color: #fff;
+}
+
+.hero-menu__panel--computers {
+  flex: 1 1 0;
+  /* Sharper diagonal: top right to about 35% top, then to bottom center */
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 50% 0, 35% 0);
+  margin-left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:
+    linear-gradient(120deg, rgba(168,85,247,.18), rgba(0,0,0,.05)),
+    url("/static/img/hero-computers.jpg") center/cover no-repeat,
+    var(--accent-secondary, #a855f7);
+  color: #fff;
+}
+
+
+.hero-menu__panel {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  transition: transform .25s cubic-bezier(.4,1.6,.4,1), filter .25s;
+  will-change: transform;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 1;
+}
+
+
+.hero-menu__panel:focus-visible {
+  outline: 3px solid rgba(255,255,255,.55);
+  outline-offset: -3px;
+}
+
+
+
+.hero-menu__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+  opacity: .85;
+  transition: opacity .25s ease;
+}
+
+
+.hero-menu__panelContent {
+  position: relative;
+  padding: 22px;
+  width: 100%;
+}
+
+
+.hero-menu__mode {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+
+
+.hero-menu__choice {
+  margin-top: 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+
+.hero-menu__desc {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: .9;
+  max-width: 420px;
+}
+
+
+.hero-menu__cta {
+  margin-top: 14px;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+
+
+.hero-menu__divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  border-left: 4px solid #fff;
+  filter: drop-shadow(0 0 16px var(--accent, #00d9ff));
+  transform: skewX(-24deg);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 3;
+}
+
+
+/* Hover behavior: expand the hovered side slightly */
+.hero-menu__split:hover .hero-menu__panel {
+  filter: brightness(.93);
+}
+.hero-menu__split:hover .hero-menu__panel:hover {
+  transform: scale(1.025) skewX(-2deg);
+  filter: brightness(1.08);
+  z-index: 3;
+  box-shadow: 0 8px 32px 0 var(--accent, #00d9ff33);
+}
+.hero-menu__split:hover .hero-menu__panel:hover .hero-menu__overlay {
+  opacity: .7;
+}
+
+
+/* Bottom quick actions */
+.hero-menu__bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  opacity: .95;
+}
+.hero-menu__quick {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+}
+.hero-menu__quick:hover {
+  border-bottom-color: rgba(255,255,255,.65);
+}
+.hero-menu__dot {
+  opacity: .6;
+}
+
+
+/* Mobile fallback: stack panels */
+@media (max-width: 860px) {
+  .hero-menu {
+    border-radius: 18px;
+    min-height: 620px;
+  }
+  .hero-menu__title {
+    font-size: 36px;
+  }
+  .hero-menu__split {
+    flex-direction: column;
+    min-height: 380px;
+    height: auto;
+  }
+  .hero-menu__divider {
+    display: none;
+  }
+  .hero-menu__panel {
+    min-height: 190px;
+    clip-path: none !important;
+  }
+}
+
+
+/* (Optional) Game menu hover effect */
+.hero-menu__panel:hover .hero-menu__cta {
+  transform: translateY(-1px);
+  transition: transform .2s ease;
+}
+.hero-menu__panel:hover .hero-menu__choice {
+  text-shadow: 0 10px 30px rgba(0,0,0,.6);
+}
 /* Modern AI Catalog Styles */
 .ai-catalog {
   display: grid;

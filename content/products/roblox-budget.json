@@ -6,5 +6,49 @@
   "description": "A value-themed system tuned for Roblox and daily use — quiet, easy to upgrade, and focused on consistent performance.",
   "badges": ["BUDGET", "THEMED", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Upgrade Options"],
-  "image": "assets/products/roblox-budget.svg"
+  "image": "assets/products/roblox-budget.svg",
+  "price": 699,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "Intel Core i3-12100F",
+    "GPU": "Integrated UHD 730",
+    "RAM": "8GB DDR4-3200",
+    "Storage": "500GB SATA SSD",
+    "Motherboard": "B660 mATX",
+    "PSU": "400W 80+ Bronze",
+    "Case": "Mini Tower",
+    "Cooling": "Stock Air"
+  },
+  "performance": {
+    "1080p": "Medium settings, 60+ FPS",
+    "1440p": "Low/Medium settings, 40+ FPS",
+    "4K": "Not recommended"
+  },
+  "idealFor": [
+    "Casual play",
+    "Daily use",
+    "Value builds"
+  ],
+  "tiers": [
+    {
+      "name": "Budget",
+      "price": 699,
+      "target": "Casual Roblox, daily use, and value builds.",
+      "bottlenecks": ["Integrated GPU for high settings"],
+      "parts": {
+        "cpu": {"pick": "Intel Core i3-12100F", "alts": ["Ryzen 3 4100"]},
+        "gpu": {"pick": "Integrated UHD 730", "alts": ["GT 1030"]},
+        "ram": {"pick": "8GB DDR4-3200", "alts": ["16GB DDR4-3200"]},
+        "storage": {"os": {"pick": "500GB SATA SSD", "alts": ["1TB NVMe SSD"]}},
+        "cooling": {"pick": "Stock Air", "alts": ["Low-profile Air"]},
+        "psu": {"pick": "400W Bronze", "alts": ["500W Bronze"]},
+        "case": {"pick": "Mini Tower", "alts": ["Compact mATX"]}
+      },
+      "notes": [
+        "Upgrade RAM for multitasking.",
+        "Add dedicated GPU for higher settings.",
+        "Keep OS and Roblox on SSD."
+      ]
+    }
+  ]
 }

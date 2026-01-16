@@ -6,5 +6,49 @@
   "description": "A value-focused starter build for Minecraft. Runs vanilla smoothly, handles light modpacks, and supports starter shaders. Quiet operation with easy upgrade paths.",
   "badges": ["BUDGET", "STARTER", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Budget Builds", "Upgrade Ready"],
-  "image": "assets/products/minecraft-starter.svg"
+  "image": "assets/products/minecraft-starter.svg",
+  "price": 699,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "Intel Pentium Gold G6400",
+    "GPU": "Integrated UHD 610",
+    "RAM": "8GB DDR4-2666",
+    "Storage": "256GB SATA SSD",
+    "Motherboard": "H410 mATX",
+    "PSU": "400W 80+ Bronze",
+    "Case": "Mini Tower",
+    "Cooling": "Stock Air"
+  },
+  "performance": {
+    "1080p": "Low/Medium settings, 60+ FPS",
+    "1440p": "Low settings, 40+ FPS",
+    "4K": "Not recommended"
+  },
+  "idealFor": [
+    "Vanilla play",
+    "Light modpacks",
+    "Starter shaders"
+  ],
+  "tiers": [
+    {
+      "name": "Starter",
+      "price": 699,
+      "target": "Vanilla Minecraft, light modpacks, and starter shaders.",
+      "bottlenecks": ["Integrated GPU for anything beyond vanilla"],
+      "parts": {
+        "cpu": {"pick": "Intel Pentium Gold G6400", "alts": ["Intel Core i3-10100"]},
+        "gpu": {"pick": "Integrated UHD 610", "alts": ["GT 1030"]},
+        "ram": {"pick": "8GB DDR4-2666", "alts": ["16GB DDR4-2666"]},
+        "storage": {"os": {"pick": "256GB SATA SSD", "alts": ["500GB NVMe SSD"]}},
+        "cooling": {"pick": "Stock Air", "alts": ["Low-profile Air"]},
+        "psu": {"pick": "400W Bronze", "alts": ["500W Bronze"]},
+        "case": {"pick": "Mini Tower", "alts": ["Compact mATX"]}
+      },
+      "notes": [
+        "Upgrade RAM for modpacks.",
+        "Add dedicated GPU for shaders.",
+        "Keep OS and Minecraft on SSD."
+      ]
+    }
+  ]
 }

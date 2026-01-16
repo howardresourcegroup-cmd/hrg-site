@@ -6,5 +6,49 @@
   "description": "A budget-conscious Minecraft build that runs well with moderate settings and modest modpacks. Focused on value, reliability, and upgrade paths.",
   "badges": ["BUDGET", "VALUE", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Budget Builds", "Upgrade Ready"],
-  "image": "assets/products/minecraft-budget.svg"
+  "image": "assets/products/minecraft-budget.svg",
+  "price": 899,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "Intel Core i3-12100F",
+    "GPU": "NVIDIA GTX 1650",
+    "RAM": "16GB DDR4-3200",
+    "Storage": "500GB NVMe SSD",
+    "Motherboard": "B660 mATX",
+    "PSU": "500W 80+ Bronze",
+    "Case": "Compact mATX",
+    "Cooling": "Stock Air"
+  },
+  "performance": {
+    "1080p": "Medium settings, 90+ FPS",
+    "1440p": "Low/Medium settings, 60+ FPS",
+    "4K": "Not recommended"
+  },
+  "idealFor": [
+    "Casual play",
+    "Creative mode",
+    "Light modpacks"
+  ],
+  "tiers": [
+    {
+      "name": "Budget",
+      "price": 899,
+      "target": "Casual and creative Minecraft, light modpacks.",
+      "bottlenecks": ["GPU for heavy shaders/mods"],
+      "parts": {
+        "cpu": {"pick": "Intel Core i3-12100F", "alts": ["Ryzen 5 4500"]},
+        "gpu": {"pick": "NVIDIA GTX 1650", "alts": ["RX 6500 XT"]},
+        "ram": {"pick": "16GB DDR4-3200", "alts": ["8GB DDR4-3200"]},
+        "storage": {"os": {"pick": "500GB NVMe SSD", "alts": ["1TB SATA SSD"]}},
+        "cooling": {"pick": "Stock Air", "alts": ["Low-profile Air"]},
+        "psu": {"pick": "500W Bronze", "alts": ["450W Bronze"]},
+        "case": {"pick": "Compact mATX", "alts": ["Mini Tower"]}
+      },
+      "notes": [
+        "Upgrade GPU for shaders/mods.",
+        "Add RAM for heavier modpacks.",
+        "Keep OS and Minecraft on SSD."
+      ]
+    }
+  ]
 }

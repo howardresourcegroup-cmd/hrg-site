@@ -6,5 +6,50 @@
   "description": "Top-end Minecraft system for creators: high-core CPU, powerful GPU, generous RAM, and premium cooling. Built for heavy shaders, massive modpacks, and recording/streaming without stutter.",
   "badges": ["ULTRA", "SHADERS", "CREATOR", "HIGH-END"],
   "services": ["Custom Build — Gaming", "Creator Tuning", "Thermal Optimization"],
-  "image": "assets/products/minecraft-ultimate.svg"
+  "image": "assets/products/minecraft-ultimate.svg",
+  "price": 2999,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "AMD Ryzen 9 7900X3D",
+    "GPU": "NVIDIA RTX 4090 24GB",
+    "RAM": "64GB DDR5-6000",
+    "Storage": "2TB NVMe Gen4 SSD",
+    "Motherboard": "X670E ATX",
+    "PSU": "1000W 80+ Gold",
+    "Case": "Premium Full Tower",
+    "Cooling": "360mm AIO"
+  },
+  "performance": {
+    "1080p": "Ultra settings, 300+ FPS",
+    "1440p": "Ultra settings, 200+ FPS",
+    "4K": "High settings, 120+ FPS"
+  },
+  "idealFor": [
+    "Heavy modpacks",
+    "Shader packs",
+    "Streaming and recording",
+    "Content creation"
+  ],
+  "tiers": [
+    {
+      "name": "Ultimate",
+      "price": 2999,
+      "target": "Maxed-out Minecraft with heavy shaders and mods, plus streaming.",
+      "bottlenecks": ["None for Minecraft"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 9 7900X3D", "alts": ["Ryzen 9 7950X"]},
+        "gpu": {"pick": "NVIDIA RTX 4090 24GB", "alts": ["RTX 4080 SUPER"]},
+        "ram": {"pick": "64GB DDR5-6000", "alts": ["128GB DDR5-6000"]},
+        "storage": {"os": {"pick": "2TB NVMe Gen4", "alts": ["4TB NVMe Gen4"]}},
+        "cooling": {"pick": "360mm AIO", "alts": ["Premium air"]},
+        "psu": {"pick": "1000W Gold", "alts": ["1200W Platinum"]},
+        "case": {"pick": "Premium Full Tower", "alts": ["Airflow Mid Tower"]}
+      },
+      "notes": [
+        "Enable XMP/EXPO for RAM.",
+        "Use NVIDIA Studio drivers for best stability.",
+        "Keep mods and shader cache on NVMe."
+      ]
+    }
+  ]
 }

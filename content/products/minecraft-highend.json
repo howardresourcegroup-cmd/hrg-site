@@ -6,5 +6,50 @@
   "description": "High-end system tuned for Minecraft with shaders and heavy modpacks: high-core CPU, powerful GPU, abundant RAM, and NVMe storage for fast world loads.",
   "badges": ["HIGH-END", "SHADERS", "MODS", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Shaders & Mods Tuning", "Performance Tuning"],
-  "image": "assets/products/minecraft-highend.svg"
+  "image": "assets/products/minecraft-highend.svg",
+  "price": 2499,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "AMD Ryzen 7 7800X3D",
+    "GPU": "NVIDIA RTX 4080 SUPER",
+    "RAM": "32GB DDR5-6000",
+    "Storage": "2TB NVMe Gen4 SSD",
+    "Motherboard": "B650 ATX",
+    "PSU": "850W 80+ Gold",
+    "Case": "Airflow Mid Tower",
+    "Cooling": "High-end Air"
+  },
+  "performance": {
+    "1080p": "Ultra settings, 240+ FPS",
+    "1440p": "Ultra settings, 160+ FPS",
+    "4K": "High settings, 90+ FPS"
+  },
+  "idealFor": [
+    "Shaders",
+    "Large modpacks",
+    "Creative/survival worlds",
+    "Streaming"
+  ],
+  "tiers": [
+    {
+      "name": "High-End",
+      "price": 2499,
+      "target": "Shaders, large modpacks, creative builds, and streaming.",
+      "bottlenecks": ["None for Minecraft"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 7 7800X3D", "alts": ["Ryzen 9 7900X"]},
+        "gpu": {"pick": "NVIDIA RTX 4080 SUPER", "alts": ["RTX 4070 Ti SUPER"]},
+        "ram": {"pick": "32GB DDR5-6000", "alts": ["64GB DDR5-6000"]},
+        "storage": {"os": {"pick": "2TB NVMe Gen4", "alts": ["4TB NVMe Gen4"]}},
+        "cooling": {"pick": "High-end Air", "alts": ["240mm AIO"]},
+        "psu": {"pick": "850W Gold", "alts": ["1000W Gold"]},
+        "case": {"pick": "Airflow Mid Tower", "alts": ["Premium Full Tower"]}
+      },
+      "notes": [
+        "Enable XMP/EXPO for RAM.",
+        "Keep mods and shader cache on NVMe.",
+        "Use latest GPU drivers for best performance."
+      ]
+    }
+  ]
 }

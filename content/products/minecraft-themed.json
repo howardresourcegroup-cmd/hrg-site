@@ -6,5 +6,49 @@
   "description": "A balanced system tuned for Minecraft with mods and shaders, offering stable fps and upgrade paths.",
   "badges": ["THEMED", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Mods & Shaders Tuning"],
-  "image": "assets/products/minecraft-themed.svg"
+  "image": "assets/products/minecraft-themed.svg",
+  "price": 1399,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "AMD Ryzen 5 5600G",
+    "GPU": "NVIDIA RTX 3050",
+    "RAM": "16GB DDR4-3200",
+    "Storage": "1TB NVMe SSD",
+    "Motherboard": "B550 mATX",
+    "PSU": "600W 80+ Bronze",
+    "Case": "Custom Themed mATX",
+    "Cooling": "Tower Air"
+  },
+  "performance": {
+    "1080p": "High settings, 120+ FPS",
+    "1440p": "Medium settings, 80+ FPS",
+    "4K": "Low/Medium settings, 40+ FPS"
+  },
+  "idealFor": [
+    "Creative play",
+    "Mods and shaders",
+    "Themed setups"
+  ],
+  "tiers": [
+    {
+      "name": "Themed",
+      "price": 1399,
+      "target": "Creative Minecraft, mods, shaders, and themed builds.",
+      "bottlenecks": ["GPU for heavy shaders"],
+      "parts": {
+        "cpu": {"pick": "AMD Ryzen 5 5600G", "alts": ["Intel Core i5-12400"]},
+        "gpu": {"pick": "NVIDIA RTX 3050", "alts": ["RX 6600"]},
+        "ram": {"pick": "16GB DDR4-3200", "alts": ["32GB DDR4-3200"]},
+        "storage": {"os": {"pick": "1TB NVMe SSD", "alts": ["2TB SATA SSD"]}},
+        "cooling": {"pick": "Tower Air", "alts": ["120mm AIO"]},
+        "psu": {"pick": "600W Bronze", "alts": ["650W Bronze"]},
+        "case": {"pick": "Custom Themed mATX", "alts": ["Standard mATX"]}
+      },
+      "notes": [
+        "Upgrade GPU for advanced shaders.",
+        "Add RAM for large modpacks.",
+        "Keep OS and Minecraft on SSD."
+      ]
+    }
+  ]
 }

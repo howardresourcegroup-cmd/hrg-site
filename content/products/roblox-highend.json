@@ -6,5 +6,49 @@
   "description": "A themed Roblox-focused system with high single-thread performance, fast storage, and quiet cooling — perfect for creators and high-FPS play.",
   "badges": ["HIGH-END", "THEMED", "QUIET", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Performance Tuning", "Build & Tune"],
-  "image": "assets/products/roblox-highend.svg"
+  "image": "assets/products/roblox-highend.svg",
+  "price": 1799,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "Intel Core i7-13700K",
+    "GPU": "NVIDIA RTX 4060 Ti",
+    "RAM": "32GB DDR5-5600",
+    "Storage": "1TB NVMe SSD",
+    "Motherboard": "Z690 ATX",
+    "PSU": "750W 80+ Gold",
+    "Case": "Themed ATX",
+    "Cooling": "240mm AIO"
+  },
+  "performance": {
+    "1080p": "Ultra settings, 240+ FPS",
+    "1440p": "Ultra settings, 180+ FPS",
+    "4K": "High settings, 90+ FPS"
+  },
+  "idealFor": [
+    "Roblox creators",
+    "High-FPS play",
+    "Themed setups"
+  ],
+  "tiers": [
+    {
+      "name": "High-End",
+      "price": 1799,
+      "target": "Roblox creators, high-FPS play, and themed builds.",
+      "bottlenecks": ["None for Roblox"],
+      "parts": {
+        "cpu": {"pick": "Intel Core i7-13700K", "alts": ["Ryzen 7 7700X"]},
+        "gpu": {"pick": "NVIDIA RTX 4060 Ti", "alts": ["RTX 3070"]},
+        "ram": {"pick": "32GB DDR5-5600", "alts": ["16GB DDR5-5600"]},
+        "storage": {"os": {"pick": "1TB NVMe SSD", "alts": ["2TB NVMe SSD"]}},
+        "cooling": {"pick": "240mm AIO", "alts": ["High-end Air"]},
+        "psu": {"pick": "750W Gold", "alts": ["650W Gold"]},
+        "case": {"pick": "Themed ATX", "alts": ["Standard ATX"]}
+      },
+      "notes": [
+        "Enable XMP/EXPO for RAM.",
+        "Keep OS and Roblox on NVMe.",
+        "Update GPU drivers for best performance."
+      ]
+    }
+  ]
 }

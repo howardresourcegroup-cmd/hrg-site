@@ -6,5 +6,49 @@
   "description": "Balanced CPU/GPU pairing tuned for heavier Minecraft modpacks and well-known shaders. Faster RAM, solid cooling, and NVMe storage keep worlds snappy and frame times even.",
   "badges": ["MODPACKS", "SHADERS", "BALANCED", "UPGRADABLE"],
   "services": ["Custom Build — Gaming", "Shaders & Mods Tuning", "Performance Tuning"],
-  "image": "assets/products/minecraft-performance.svg"
+  "image": "assets/products/minecraft-performance.svg",
+  "price": 1699,
+  "availability": "in-stock",
+  "specs": {
+    "CPU": "Intel Core i5-13600K",
+    "GPU": "NVIDIA RTX 4060 Ti",
+    "RAM": "32GB DDR4-3600",
+    "Storage": "1TB NVMe SSD",
+    "Motherboard": "B660 ATX",
+    "PSU": "650W 80+ Gold",
+    "Case": "Airflow Mid Tower",
+    "Cooling": "Tower Air"
+  },
+  "performance": {
+    "1080p": "High settings, 180+ FPS",
+    "1440p": "High settings, 120+ FPS",
+    "4K": "Medium settings, 60+ FPS"
+  },
+  "idealFor": [
+    "Big modpacks",
+    "Popular shaders",
+    "Creative/survival worlds"
+  ],
+  "tiers": [
+    {
+      "name": "Performance",
+      "price": 1699,
+      "target": "Big modpacks, popular shaders, and creative builds.",
+      "bottlenecks": ["None for most Minecraft use"],
+      "parts": {
+        "cpu": {"pick": "Intel Core i5-13600K", "alts": ["Ryzen 7 5700X"]},
+        "gpu": {"pick": "NVIDIA RTX 4060 Ti", "alts": ["RTX 3070"]},
+        "ram": {"pick": "32GB DDR4-3600", "alts": ["16GB DDR4-3600"]},
+        "storage": {"os": {"pick": "1TB NVMe SSD", "alts": ["2TB NVMe SSD"]}},
+        "cooling": {"pick": "Tower Air", "alts": ["120mm AIO"]},
+        "psu": {"pick": "650W Gold", "alts": ["750W Gold"]},
+        "case": {"pick": "Airflow Mid Tower", "alts": ["Compact ATX"]}
+      },
+      "notes": [
+        "Enable XMP/EXPO for RAM.",
+        "Keep mods and shader cache on NVMe.",
+        "Update Java and GPU drivers."
+      ]
+    }
+  ]
 }
